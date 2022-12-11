@@ -22,8 +22,26 @@ import { useParams } from "react-router-dom";
 
 const Movie = () => {
   const dispatch = useDispatch();
+
+  // Get params id
   const { id } = useParams();
+
+  // Get singleMovie state
   const selectSingleMovie = useSelector((state) => state.singleMovie);
+
+  // Destructure all state variables
+  const {
+    title,
+    year,
+    duration,
+    main_image,
+    video_placeholder_image,
+    short_info,
+  } = selectSingleMovie.singleMovie;
+  const titleInfo = {
+    title,
+    additional: [year, duration],
+  };
 
   const selectCreators = useSelector(
     (state) => state.singleMovie.singleMovie.creators
@@ -64,15 +82,15 @@ const Movie = () => {
   } else if (status === "succeeded") {
     return (
       <main className={classes["single-movie"]}>
-        <section className={classes["single-movie__main"]}>
+        <section className="main-container__bg">
           <div className="container-single-movie">
             <SubNav />
-            <Title />
-            <HeroBanner />
+            <Title titleInfo={titleInfo} />
+            <HeroBanner images={[main_image, video_placeholder_image]} />
             <GridTwoColumns sizing="3/4">
               <div>
                 <Genres />
-                <ShortDescription />
+                <ShortDescription shortInfo={short_info} />
                 <MembersMetaData />
               </div>
             </GridTwoColumns>

@@ -1,12 +1,3 @@
-.single-movie {
-}
-
-.single-movie__main {
-  min-height: 80vh;
-  padding-bottom: 1.5rem;
-  background-color: var(--main-single-movie-bg-color);
-}
-
 .single-movie__additional {
   padding-top: 2rem;
 }

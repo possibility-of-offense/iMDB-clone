@@ -45,20 +45,6 @@ export const fetchSingleMovie = createAsyncThunk(
 
 export default singleMovieSlice.reducer;
 
-// Selectors
-export const selectTitleYearDuration = (state) => {
-  return {
-    title: state.singleMovie.singleMovie.title,
-    year: state.singleMovie.singleMovie.year,
-    duration: state.singleMovie.singleMovie.duration,
-  };
-};
-
-export const selectSingleMovieImages = (state) => [
-  state.singleMovie.singleMovie.main_image,
-  state.singleMovie.singleMovie.video_placeholder_image,
-];
-
 export const selectShortInfo = (state) =>
   state.singleMovie.singleMovie.short_info;
 

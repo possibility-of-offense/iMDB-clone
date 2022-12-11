@@ -1,10 +1,6 @@
-import { useSelector } from "react-redux";
-import { selectSingleMovieImages } from "../../features/movies/singleMovieSlice";
 import classes from "./styles/HeroBanner.module.css";
 
-const HeroBanner = () => {
-  const images = useSelector(selectSingleMovieImages);
-
+const HeroBanner = ({ images }) => {
   return (
     <section className={classes["hero-banner"]}>
       <div className={classes["hero-banner__media"]}>

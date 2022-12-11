@@ -1,0 +1,8 @@
+.story-line {
+  margin-top: 2rem;
+}
+
+.story-line > p {
+  font-size: 17px;
+  line-height: 27px;
+}

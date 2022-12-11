@@ -1,0 +1,59 @@
+.title {
+  color: #fff;
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+@media (orientation: landscape) {
+  .title {
+    margin-top: 0.5rem;
+    text-align: left;
+  }
+}
+
+.title h1 {
+  font-size: 2.2rem;
+  line-height: 2.5rem;
+  font-weight: normal;
+}
+
+@media (orientation: landscape) {
+  .title h1 {
+    font-size: 2.8rem;
+    line-height: 3rem;
+  }
+}
+
+.year-duration-wrapper ul {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+@media (orientation: landscape) {
+  .year-duration-wrapper ul {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+}
+
+.year-duration-wrapper ul li {
+  font-size: 13px;
+  font-weight: 500;
+  color: #bcbcb2;
+  padding-right: 9px;
+  margin-right: 9px;
+  position: relative;
+}
+
+.year-duration-wrapper ul li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #bcbcb2;
+}

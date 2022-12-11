@@ -1,0 +1,22 @@
+.single-movie {
+}
+
+.single-movie__main {
+  min-height: 80vh;
+  padding-bottom: 1.5rem;
+  background-color: var(--main-single-movie-bg-color);
+}
+
+.single-movie__additional {
+  padding-top: 2rem;
+}
+
+.single-movie footer {
+  margin-top: 4rem;
+  height: 50vh;
+  background-color: #000;
+  color: #fff;
+  display: grid;
+  place-content: center;
+  font-size: 4rem;
+}

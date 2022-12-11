@@ -1,0 +1,27 @@
+.box-office {
+  margin-top: 3.5rem;
+}
+
+.box-office__grid {
+  display: grid;
+  grid-gap: 1.5rem;
+}
+
+.box-office__grid > div {
+  border: 1px solid var(--light-gray-3);
+  border-radius: 3px;
+  padding: 10px 20px;
+  box-shadow: 0 0 1px rgb(0 0 0 / 20%);
+}
+
+@media (orientation: landscape) {
+  .box-office__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.box-office__grid > div p {
+  font-size: 18px;
+  margin-top: 4px;
+  color: rgba(0, 0, 0, 0.87);
+}

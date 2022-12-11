@@ -1,0 +1,37 @@
+.members {
+  margin-top: 20px;
+}
+
+.members .members-single {
+  padding: 10px 0;
+  border-top: 1px solid var(--light-gray-2);
+  display: flex;
+  align-items: center;
+}
+
+.members .members-single > p {
+  font-weight: 700;
+  color: #fff;
+  margin-right: 15px;
+  font-size: 16px;
+}
+
+.members .members-single > div {
+  display: flex;
+  color: var(--blue-1);
+  font-size: 16px;
+}
+
+.members .members-single > div * {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.members .members-single > div * {
+  padding-right: 6px;
+  border-right: 1px solid var(--light-gray-2);
+}
+
+.members .members-single > div *:last-child {
+  border-right: 0;
+}

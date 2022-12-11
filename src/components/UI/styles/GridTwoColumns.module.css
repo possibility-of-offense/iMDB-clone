@@ -1,0 +1,8 @@
+.grid {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.grid-third-fourth {
+  grid-template-columns: 1fr 0.3fr;
+}

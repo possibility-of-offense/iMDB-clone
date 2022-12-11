@@ -1,0 +1,16 @@
+.nav ul {
+  display: flex;
+  align-items: center;
+}
+
+.nav ul > * {
+  margin: 0 10px;
+  display: flex;
+}
+
+.nav ul a {
+  flex: 1;
+  display: flex;
+  color: #fff;
+  text-decoration: none;
+}

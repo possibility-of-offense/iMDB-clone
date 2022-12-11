@@ -1,0 +1,41 @@
+.movie-section-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.movie-section-title:hover svg {
+  fill: var(--yellow-1);
+  transition: fill 0.3s ease-out;
+}
+
+.movie-section-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--yellow-1);
+  border-radius: 4px;
+}
+
+.movie-section-title h2 {
+  margin-right: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--main-font-family);
+  letter-spacing: 1px;
+}
+
+.movie-section-title span {
+  font-size: 13px;
+  color: var(--light-gray-2);
+}
+
+.movie-section-title svg {
+  transition: fill 0.2s ease-out;
+}

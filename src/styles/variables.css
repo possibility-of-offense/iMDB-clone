@@ -1,0 +1,13 @@
+:root {
+  --main-single-movie-bg-color: #1f1f1f;
+  --hover-main-bg-color: #313131;
+  --light-gray-1: rgba(255, 255, 255, 0.2);
+  --light-gray-2: #676767;
+  --light-gray-3: rgba(0, 0, 0, 0.12);
+  --yellow-1: #f5c518;
+  --blue-1: rgb(87, 153, 239);
+
+  --main-font-family: "Roboto", sans-serif;
+  --second-font-family: "Montserrat", sans-serif;
+  --main-serif-font-family: "Playfair Display", serif;
+}

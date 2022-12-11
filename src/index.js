@@ -12,6 +12,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Movie from "./views/Movie";
+import Actor from "./views/Actor";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
     <Fragment>
       <Route path="/" element={<Home />}>
         <Route path="/movies/:id" element={<Movie />}></Route>
+        <Route path="/actors/:id" element={<Actor />}></Route>
       </Route>
     </Fragment>
   )

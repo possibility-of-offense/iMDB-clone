@@ -24,6 +24,7 @@ const Movie = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const selectSingleMovie = useSelector((state) => state.singleMovie);
+
   const selectCreators = useSelector(
     (state) => state.singleMovie.singleMovie.creators
   );

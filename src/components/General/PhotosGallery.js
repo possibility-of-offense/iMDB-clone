@@ -1,10 +1,7 @@
-import { useParams } from "react-router-dom";
-import HeaderImageInfo from "../components/General/HeaderImageInfo";
-import classes from "./styles/Gallery.module.css";
+import HeaderImageInfo from "./HeaderImageInfo";
+import classes from "./styles/PhotosGallery.module.css";
 
-const Gallery = () => {
-  const { id } = useParams();
-
+const PhotosGallery = ({ id }) => {
   return (
     <section className={classes["gallery__wrapper"]}>
       <div className={classes["gallery__wrapper--inner"]}>
@@ -132,4 +129,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default PhotosGallery;

@@ -59,3 +59,8 @@
 .mbot2-rem {
   margin-bottom: 2rem;
 }
+
+/* Cursor */
+.cursor-pointer {
+  cursor: pointer;
+}

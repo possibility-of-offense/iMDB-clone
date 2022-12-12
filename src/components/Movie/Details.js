@@ -1,4 +1,4 @@
-import DetailsList from "./DetailsList";
+import DetailsList from "../General/DetailsList";
 import SectionTitle from "./SectionTitle";
 import classes from "./styles/Details.module.css";
 

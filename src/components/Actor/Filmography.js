@@ -11,9 +11,7 @@ const Filmography = ({ layoutClasses, films }) => {
 
   return (
     <section>
-      <SectionTitle moreInfo={true} layoutClasses={layoutClasses}>
-        Filmography
-      </SectionTitle>
+      <SectionTitle layoutClasses={layoutClasses}>Filmography</SectionTitle>
       <div className={classes["filmography__grid"]}>
         {listFilms &&
           listFilms.length > 0 &&

@@ -1,6 +1,6 @@
 import BoxOffice from "../components/Movie/BoxOffice";
 import Details from "../components/Movie/Details";
-import DetailsList from "../components/Movie/DetailsList";
+import DetailsList from "../components/General/DetailsList";
 import DidYouKnow from "../components/Movie/DidYouKnow";
 import Genres from "../components/Movie/Genres";
 import HeroBanner from "../components/Movie/HeroBanner";
@@ -85,6 +85,8 @@ const Movie = () => {
 
   const status = selectSingleMovie.status;
 
+  console.log(mappedMembersData);
+
   if (status === "loading") {
     return <GlobalLoader bgColor="#1F1F1F" />;
   } else if (status === "succeeded") {
@@ -96,7 +98,7 @@ const Movie = () => {
             <Title titleInfo={titleInfo} />
             <HeroBanner
               images={[main_image, video_placeholder_image]}
-              photosLink={`/gallery/${id}`}
+              photosLink={`/movie-gallery/${id}`}
             />
             <GridTwoColumns sizing="3/4">
               <div>
@@ -114,7 +116,7 @@ const Movie = () => {
                 <Photos
                   photos={photos}
                   layoutClasses="mbot2-rem"
-                  link={`/gallery/${id}`}
+                  link={`/movie-gallery/${id}`}
                 />
                 <TopCast
                   layoutClasses="mbot1-rem"
@@ -125,12 +127,8 @@ const Movie = () => {
                   details={[
                     ...mappedMembersData,
                     {
-                      additionalLinks: [
-                        {
-                          title: "All cast & crew",
-                          link: "/cast-and-crew",
-                        },
-                      ],
+                      description: "All cast & crew",
+                      body: "/cast/" + id,
                     },
                   ]}
                 />

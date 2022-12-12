@@ -9,7 +9,7 @@ const SearchBar = () => {
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
-          class="ipc-icon ipc-icon--magnify"
+          className="ipc-icon ipc-icon--magnify"
           id="iconContext-magnify"
           viewBox="0 0 24 24"
           fill="currentColor"

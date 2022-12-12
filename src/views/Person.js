@@ -1,6 +1,7 @@
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import Filmography from "../components/Actor/Filmography";
 import KnownFor from "../components/Actor/KnownFor";
 import DidYouKnow from "../components/Movie/DidYouKnow";
@@ -9,11 +10,13 @@ import Photos from "../components/Movie/Photos";
 import ShortDescription from "../components/Movie/ShortDescription";
 import Title from "../components/Movie/Title";
 import GridTwoColumns from "../components/UI/GridTwoColumns";
+import GlobalLoader from "../components/UI/GlobalLoader";
+
 import { db } from "../config/config";
 
 import classes from "./styles/Actor.module.css";
 
-const Actor = () => {
+const Person = () => {
   const titleInfo = {
     title: "Brad Pitt",
     additional: ["Producer", "Actor", "Executive"],
@@ -59,6 +62,7 @@ const Actor = () => {
                 actorState[0].main_image,
                 actorState[0].video_placeholder_image,
               ]}
+              photosLink={`/person-gallery/${id}`}
             />
             <GridTwoColumns sizing="3/4" layoutClasses="p1-rem">
               <ShortDescription shortInfo={actorState[0].short_bio} />
@@ -70,14 +74,18 @@ const Actor = () => {
         <div className="main-container">
           <GridTwoColumns sizing="3/4">
             <div>
-              <Photos photos={actorState[0].photos} layoutClasses="mbot1-rem" />
+              <Photos
+                photos={actorState[0].photos}
+                layoutClasses="mbot1-rem"
+                link={`/person-gallery/${id}`}
+              />
               <KnownFor
                 knownFor={actorState[0].known_for}
                 layoutClasses="mbot2-rem"
               />
               <Filmography
                 films={actorState[0].filomography}
-                layoutClasses="mtop2-rem mbot1-rem"
+                layoutClasses="mtop2-rem mbot2-rem"
               />
               <DidYouKnow
                 facts={actorState[0].did_you_know}
@@ -89,8 +97,8 @@ const Actor = () => {
       </section>
     </main>
   ) : (
-    <h1>No info yet</h1>
+    <GlobalLoader bgColor="#1F1F1F" />
   );
 };
 
-export default Actor;
+export default Person;

@@ -1,4 +1,4 @@
-import DetailsList from "./DetailsList";
+import DetailsList from "../General/DetailsList";
 import SectionTitle from "./SectionTitle";
 import classes from "./styles/StoryLine.module.css";
 
@@ -18,14 +18,6 @@ const StoryLine = ({ synopsis, genres, layoutClasses }) => {
           {
             description: "genres",
             body: genres ? genres : [],
-          },
-          {
-            additionalLinks: [
-              {
-                title: "Parents guide",
-                link: "/cast-and-crew",
-              },
-            ],
           },
         ]}
       />

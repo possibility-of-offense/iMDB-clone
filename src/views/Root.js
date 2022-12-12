@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/General/Footer";
 import Navigation from "../components/General/Navigation";
+import ScrollToTop from "../components/General/ScrollTop";
 
 function Root() {
   return (
@@ -9,8 +10,10 @@ function Root() {
       <header className="App-header">
         <Navigation />
       </header>
-      <Outlet />
 
+      <ScrollToTop>
+        <Outlet />
+      </ScrollToTop>
       <Footer />
     </div>
   );

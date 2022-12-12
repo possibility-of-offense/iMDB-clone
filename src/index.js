@@ -11,12 +11,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Movie from "./views/Movie";
-import Actor from "./views/Actor";
+import Actor from "./views/Person";
 import Genres from "./views/Genres";
 import Root from "./views/Root";
 import Home from "./views/Home";
-import Gallery from "./views/Gallery";
+import MovieGallery from "./views/MovieGallery";
 import Cast from "./views/Cast";
+import PersonGallery from "./views/PersonGallery";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -29,7 +30,8 @@ const router = createBrowserRouter(
         <Route path="/movies/:id" element={<Movie />}></Route>
         <Route path="/actors/:id" element={<Actor />}></Route>
         <Route path="/genres/:id" element={<Genres />}></Route>
-        <Route path="/gallery/:id" element={<Gallery />}></Route>
+        <Route path="/movie-gallery/:id" element={<MovieGallery />}></Route>
+        <Route path="/person-gallery/:id" element={<PersonGallery />}></Route>
         <Route path="/cast/:id" element={<Cast />}></Route>
       </Route>
     </Fragment>

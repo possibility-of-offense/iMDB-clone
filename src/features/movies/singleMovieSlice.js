@@ -45,11 +45,6 @@ export const fetchSingleMovie = createAsyncThunk(
 
 export default singleMovieSlice.reducer;
 
-export const selectShortInfo = (state) =>
-  state.singleMovie.singleMovie.short_info;
-
-export const selectPhotos = (state) => state.singleMovie.singleMovie.photos;
-
 export const selectTopCast = (state) => state.singleMovie.singleMovie.top_cast;
 
 export const selectBoxOffice = (state) =>

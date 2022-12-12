@@ -3,7 +3,9 @@
   display: flex;
   align-items: center;
   padding-left: 10px;
-  margin-bottom: 25px;
+}
+
+.movie-section-title--cursor {
   cursor: pointer;
 }
 

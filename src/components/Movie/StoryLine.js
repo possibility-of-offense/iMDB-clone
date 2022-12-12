@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import DetailsList from "./DetailsList";
-import MovieSectionTitle from "./MovieSectionTitle";
+import SectionTitle from "./SectionTitle";
 import classes from "./styles/StoryLine.module.css";
 
 const StoryLine = () => {
@@ -13,7 +13,7 @@ const StoryLine = () => {
 
   return (
     <section className={classes["story-line"]}>
-      <MovieSectionTitle moreInfo={false}>Storyline</MovieSectionTitle>
+      <SectionTitle moreInfo={false}>Storyline</SectionTitle>
       <p>{synopsis}</p>
       <DetailsList
         details={[

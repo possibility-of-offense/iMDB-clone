@@ -1,11 +1,15 @@
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import KnownFor from "../components/Actor/KnownFor";
 import HeroBanner from "../components/Movie/HeroBanner";
+import Photos from "../components/Movie/Photos";
 import ShortDescription from "../components/Movie/ShortDescription";
 import Title from "../components/Movie/Title";
 import GridTwoColumns from "../components/UI/GridTwoColumns";
 import { db } from "../config/config";
+
+import classes from "./styles/Actor.module.css";
 
 const Actor = () => {
   const titleInfo = {
@@ -29,15 +33,17 @@ const Actor = () => {
     fetching();
   }, []);
 
+  console.log(classes);
+
   return actorState ? (
-    <main>
+    <main className={classes["actor"]}>
       <section
         className="main-container__bg no-paddings"
         style={{ display: "grid" }}
       >
-        <div className="container-single-movie" style={{ display: "flex" }}>
+        <div className="main-container" style={{ display: "flex" }}>
           <div
-            className="container-single-movie__inner"
+            className={classes[`container-actor__inner`]}
             style={{ backgroundImage: `url(${actorState[0].main_image})` }}
           >
             <br />
@@ -54,10 +60,20 @@ const Actor = () => {
                 actorState[0].video_placeholder_image,
               ]}
             />
-            <GridTwoColumns sizing="3/4">
+            <GridTwoColumns sizing="3/4" layoutClasses="p1-rem">
               <ShortDescription shortInfo={actorState[0].short_bio} />
             </GridTwoColumns>
           </div>
+        </div>
+      </section>
+      <section className={`${classes["actor__additional"]} ptop2-rem`}>
+        <div className="main-container">
+          <GridTwoColumns sizing="3/4">
+            <div>
+              <Photos layoutClasses="mbot1-rem" />
+              <KnownFor layoutClasses="mbot2-rem" />
+            </div>
+          </GridTwoColumns>
         </div>
       </section>
     </main>

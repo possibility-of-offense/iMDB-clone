@@ -1,16 +1,10 @@
-import { useSelector } from "react-redux";
 import classes from "./styles/Genres.module.css";
 
-const Genres = () => {
-  const selectGenres = useSelector((state) => {
-    return state.singleMovie.singleMovie.genres;
-  });
-
+const Genres = ({ genres }) => {
   return (
     <section className={classes["genres"]}>
       <ul>
-        {selectGenres?.length > 0 &&
-          selectGenres.map((el, i) => <li key={i}>{el}</li>)}
+        {genres?.length > 0 && genres.map((el, i) => <li key={i}>{el}</li>)}
       </ul>
     </section>
   );

@@ -3,6 +3,8 @@
   grid-gap: 10px;
 }
 
-.grid-third-fourth {
-  grid-template-columns: 1fr 0.3fr;
+@media (orientation: landscape) {
+  .grid-third-fourth {
+    grid-template-columns: 1fr 0.3fr;
+  }
 }

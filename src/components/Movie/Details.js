@@ -1,11 +1,11 @@
 import DetailsList from "./DetailsList";
-import MovieSectionTitle from "./MovieSectionTitle";
+import SectionTitle from "./SectionTitle";
 import classes from "./styles/Details.module.css";
 
 const Details = () => {
   return (
     <section className={classes["details"]}>
-      <MovieSectionTitle moreInfo={false}>Details</MovieSectionTitle>
+      <SectionTitle moreInfo={false}>Details</SectionTitle>
 
       <DetailsList
         details={[

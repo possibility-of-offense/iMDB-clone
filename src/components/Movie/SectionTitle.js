@@ -1,8 +1,12 @@
-import classes from "./styles/MovieSectionTitle.module.css";
+import classes from "./styles/SectionTitle.module.css";
 
-const MovieSectionTitle = ({ children, count, moreInfo }) => {
+const SectionTitle = ({ children, count, moreInfo, layoutClasses }) => {
   return (
-    <div className={classes["movie-section-title"]}>
+    <div
+      className={`${classes["movie-section-title"]} ${
+        moreInfo ? classes["movie-section-title--cursor"] : ""
+      } ${layoutClasses}`}
+    >
       <h2>{children}</h2>
       <span>{count}</span>
       {moreInfo && (
@@ -22,4 +26,4 @@ const MovieSectionTitle = ({ children, count, moreInfo }) => {
   );
 };
 
-export default MovieSectionTitle;
+export default SectionTitle;

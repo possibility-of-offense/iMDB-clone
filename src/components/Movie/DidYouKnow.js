@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectDidYouKnow } from "../../features/movies/singleMovieSlice";
-import MovieSectionTitle from "./MovieSectionTitle";
+import SectionTitle from "./SectionTitle";
 import classes from "./styles/DidYouKnow.module.css";
 
 const DidYouKnow = () => {
@@ -12,7 +12,7 @@ const DidYouKnow = () => {
 
   return (
     <section className={classes["did-you-know"]}>
-      <MovieSectionTitle moreInfo={false}>Did you know</MovieSectionTitle>
+      <SectionTitle moreInfo={false}>Did you know</SectionTitle>
       {listFacts?.length > 0 && (
         <div className={classes["did-you-know__list"]}>
           {listFacts.map((el) => (

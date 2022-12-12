@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectBoxOffice } from "../../features/movies/singleMovieSlice";
-import MovieSectionTitle from "./MovieSectionTitle";
+import SectionTitle from "./SectionTitle";
 import classes from "./styles/BoxOffice.module.css";
 
 const BoxOffice = () => {
@@ -8,7 +8,7 @@ const BoxOffice = () => {
 
   return (
     <section className={classes["box-office"]}>
-      <MovieSectionTitle moreInfo={false}>Box office</MovieSectionTitle>
+      <SectionTitle moreInfo={false}>Box office</SectionTitle>
       <div className={classes["box-office__grid"]}>
         {boxOffice.budget && (
           <div>

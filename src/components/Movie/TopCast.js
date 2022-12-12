@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectTopCast } from "../../features/movies/singleMovieSlice";
-import MovieSectionTitle from "./MovieSectionTitle";
+import SectionTitle from "./SectionTitle";
 import classes from "./styles/TopCast.module.css";
 
-const TopCast = () => {
+const TopCast = ({ layoutClasses }) => {
   const topCast = useSelector(selectTopCast);
   const topCastList = Object.entries(topCast).map(([id, val]) => ({
     id,
@@ -12,7 +12,6 @@ const TopCast = () => {
   }));
 
   const navigate = useNavigate();
-  console.log(topCastList);
 
   const handleNavigate = (id) => {
     navigate("/actors/" + id.trim());
@@ -20,7 +19,9 @@ const TopCast = () => {
 
   return (
     <section className={classes["top-cast"]}>
-      <MovieSectionTitle moreInfo={true}>Top Cast</MovieSectionTitle>
+      <SectionTitle moreInfo={true} layoutClasses={layoutClasses}>
+        Top Cast
+      </SectionTitle>
       <div className={classes["top-cast__grid"]}>
         {topCastList?.length > 0 &&
           topCastList.map((actor) => (

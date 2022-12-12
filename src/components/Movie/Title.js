@@ -3,8 +3,6 @@ import classes from "./styles/Title.module.css";
 const Title = ({ titleInfo }) => {
   const { title, additional } = titleInfo;
 
-  console.log(title);
-
   return (
     <div className={classes["title"]}>
       <h1>{title}</h1>

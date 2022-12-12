@@ -1,20 +1,14 @@
-import { useSelector } from "react-redux";
 import DetailsList from "./DetailsList";
 import SectionTitle from "./SectionTitle";
 import classes from "./styles/StoryLine.module.css";
 
-const StoryLine = () => {
-  const synopsis = useSelector(
-    (state) => state.singleMovie.singleMovie.synopsis
-  );
-  const selectGenres = useSelector((state) => {
-    return state.singleMovie.singleMovie.genres;
-  });
-
+const StoryLine = ({ synopsis, genres, layoutClasses }) => {
   return (
     <section className={classes["story-line"]}>
-      <SectionTitle moreInfo={false}>Storyline</SectionTitle>
-      <p>{synopsis}</p>
+      <SectionTitle moreInfo={false} layoutClasses={layoutClasses}>
+        Storyline
+      </SectionTitle>
+      {synopsis && <p>{synopsis}</p>}
       <DetailsList
         details={[
           {
@@ -23,7 +17,7 @@ const StoryLine = () => {
           },
           {
             description: "genres",
-            body: selectGenres ? selectGenres : [],
+            body: genres ? genres : [],
           },
           {
             additionalLinks: [

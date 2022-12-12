@@ -1,14 +1,12 @@
-import { useSelector } from "react-redux";
-import { selectBoxOffice } from "../../features/movies/singleMovieSlice";
 import SectionTitle from "./SectionTitle";
 import classes from "./styles/BoxOffice.module.css";
 
-const BoxOffice = () => {
-  const boxOffice = useSelector(selectBoxOffice);
-
+const BoxOffice = ({ boxOffice, layoutClasses }) => {
   return (
     <section className={classes["box-office"]}>
-      <SectionTitle moreInfo={false}>Box office</SectionTitle>
+      <SectionTitle moreInfo={false} layoutClasses={layoutClasses}>
+        Box office
+      </SectionTitle>
       <div className={classes["box-office__grid"]}>
         {boxOffice.budget && (
           <div>

@@ -1,6 +1,6 @@
 .known-for__grid {
   display: grid;
-  grid-template-columns: 1rem;
+  grid-gap: 1rem;
 }
 
 @media (orientation: landscape) {

@@ -1,0 +1,35 @@
+.filmography__grid {
+  border-radius: 4px;
+  box-shadow: 0 0 1px rgb(0 0 0 / 12%);
+  border: 1px solid var(--light-gray-3);
+  padding: 1rem 0.8rem;
+}
+
+.filmography__grid > div {
+  display: grid;
+  grid-column-gap: 6px;
+  align-items: center;
+  border-bottom: 1px solid var(--light-gray-3);
+}
+
+@media (orientation: landscape) {
+  .filmography__grid > div {
+    grid-template-columns: 45px auto;
+  }
+}
+
+.filmography__grid > div figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+.filmography__grid > div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filmography__grid > div > div p {
+  color: var(--light-gray-2);
+  font-size: 13px;
+}

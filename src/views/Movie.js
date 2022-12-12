@@ -41,6 +41,9 @@ const Movie = () => {
     creators,
     top_cast,
     photos,
+    did_you_know,
+    synopsis,
+    box_office
   } = selectSingleMovie.singleMovie;
   const titleInfo = {
     title,
@@ -119,18 +122,18 @@ const Movie = () => {
                     },
                   ]}
                 />
-                <StoryLine />
-                <DidYouKnow />
+                <StoryLine
+                  genres={genres}
+                  synopsis={synopsis}
+                  layoutClasses="mbot1-rem"
+                />
+                <DidYouKnow facts={did_you_know} layoutClasses="mbot1-rem" />
                 <Details />
-                <BoxOffice />
+                <BoxOffice boxOffice={box_office} layoutClasses="mbot1-rem" />
               </div>
             </GridTwoColumns>
           </div>
         </section>
-
-        <footer>
-          <h2>Some footer info will be here</h2>
-        </footer>
       </main>
     );
   }

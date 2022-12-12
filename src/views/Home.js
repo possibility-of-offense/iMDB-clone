@@ -9,6 +9,10 @@ function Home() {
         <Navigation />
       </header>
       <Outlet />
+
+      <footer>
+        <h2>Some footer info will be here</h2>
+      </footer>
     </div>
   );
 }

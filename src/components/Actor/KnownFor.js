@@ -2,69 +2,32 @@ import SectionTitle from "../Movie/SectionTitle";
 
 import classes from "./styles/KnownFor.module.css";
 
-const KnownFor = ({ layoutClasses }) => {
+const KnownFor = ({ knownFor, layoutClasses }) => {
+  const listknownFor = Object.entries(knownFor).map((el) => ({
+    id: el[0],
+    ...el[1],
+  }));
+
   return (
     <section className={classes["known-for"]}>
       <SectionTitle moreInfo={false} layoutClasses={layoutClasses}>
         Known for
       </SectionTitle>
       <div className={classes["known-for__grid"]}>
-        <div>
-          <figure>
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BZTllZTdlOGEtZTBmMi00MGQ5LWFjN2MtOGEyZTliNGY1MzFiXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_QL75_UX180_CR0,0,180,266_.jpg"
-              alt="img"
-              title="img"
-            />
-          </figure>
-          <div>
-            <h4>Ad Astra</h4>
-            <p>2019</p>
-            {/* TODO implement info popup modal */}
-          </div>
-        </div>
-        <div>
-          <figure>
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BZTllZTdlOGEtZTBmMi00MGQ5LWFjN2MtOGEyZTliNGY1MzFiXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_QL75_UX180_CR0,0,180,266_.jpg"
-              alt="img"
-              title="img"
-            />
-          </figure>
-          <div>
-            <h4>Ad Astra</h4>
-            <p>2019</p>
-            {/* TODO implement info popup modal */}
-          </div>
-        </div>
-        <div>
-          <figure>
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BZTllZTdlOGEtZTBmMi00MGQ5LWFjN2MtOGEyZTliNGY1MzFiXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_QL75_UX180_CR0,0,180,266_.jpg"
-              alt="img"
-              title="img"
-            />
-          </figure>
-          <div>
-            <h4>Ad Astra</h4>
-            <p>2019</p>
-            {/* TODO implement info popup modal */}
-          </div>
-        </div>
-        <div>
-          <figure>
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BZTllZTdlOGEtZTBmMi00MGQ5LWFjN2MtOGEyZTliNGY1MzFiXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_QL75_UX180_CR0,0,180,266_.jpg"
-              alt="img"
-              title="img"
-            />
-          </figure>
-          <div>
-            <h4>Ad Astra</h4>
-            <p>2019</p>
-            {/* TODO implement info popup modal */}
-          </div>
-        </div>
+        {listknownFor &&
+          listknownFor.length > 0 &&
+          listknownFor.map((el) => (
+            <div key={el.id}>
+              <figure>
+                <img src={el.image} alt="img" title="img" />
+              </figure>
+              <div>
+                <h4>{el.name}</h4>
+                <p>{el.image}</p>
+                {/* TODO implement info popup modal */}
+              </div>
+            </div>
+          ))}
       </div>
     </section>
   );

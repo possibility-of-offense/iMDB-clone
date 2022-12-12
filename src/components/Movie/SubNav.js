@@ -1,5 +1,7 @@
 import classes from "./styles/SubNav.module.css";
 
+// REFACTOR
+
 const SubNav = () => {
   return (
     <section className={classes["subnav"]}>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SectionTitle from "../Movie/SectionTitle";
 
 import classes from "./styles/KnownFor.module.css";
@@ -22,8 +23,11 @@ const KnownFor = ({ knownFor, layoutClasses }) => {
                 <img src={el.image} alt="img" title="img" />
               </figure>
               <div>
-                <h4>{el.name}</h4>
-                <p>{el.image}</p>
+                <h4>
+                  <Link to={`/movies/${el.id.trim()}`}>{el.name}</Link>
+                </h4>
+
+                <p>{el.year}</p>
                 {/* TODO implement info popup modal */}
               </div>
             </div>

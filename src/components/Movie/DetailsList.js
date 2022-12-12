@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import classes from "./styles/DetailsList.module.css";
 
@@ -21,7 +22,17 @@ const DetailsList = ({ details }) => {
             <p>{el.description}</p>
             <div>
               {el.body.length > 0 &&
-                el.body.map((i) => <p key={i.toLowerCase()}>{i}</p>)}
+                el.body.map((single) => (
+                  <p key={single.toLowerCase()}>
+                    <Fragment>
+                      {el.description === "Genres" ? (
+                        <Link to={`/genres/${single}`}>{single}</Link>
+                      ) : (
+                        single
+                      )}
+                    </Fragment>
+                  </p>
+                ))}
             </div>
           </div>
         ))}

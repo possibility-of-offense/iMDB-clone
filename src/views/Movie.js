@@ -43,7 +43,7 @@ const Movie = () => {
     photos,
     did_you_know,
     synopsis,
-    box_office
+    box_office,
   } = selectSingleMovie.singleMovie;
   const titleInfo = {
     title,
@@ -107,8 +107,16 @@ const Movie = () => {
           <div className="main-container">
             <GridTwoColumns sizing="3/4">
               <div>
-                <Photos photos={photos} layoutClasses="mbot2-rem" />
-                <TopCast layoutClasses="mbot1-rem" />
+                <Photos
+                  photos={photos}
+                  layoutClasses="mbot2-rem"
+                  link={`/gallery/${id}`}
+                />
+                <TopCast
+                  layoutClasses="mbot1-rem"
+                  id={id}
+                  link={`/cast/${id}`}
+                />
                 <DetailsList
                   details={[
                     ...mappedMembersData,

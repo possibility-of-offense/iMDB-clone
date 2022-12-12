@@ -27,6 +27,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: -15px;
+}
+
+.filmography__grid > div > div a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .filmography__grid > div > div p {

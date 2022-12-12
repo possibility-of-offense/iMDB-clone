@@ -35,7 +35,9 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-          <Link to="/movies/ZCpKhxWwm9yl5pQrG2ah">Seven years in Tibet</Link>
+          <form>
+            <input type="text" placeholder="It is not working yet!" />
+          </form>
         </li>
       </ul>
     </nav>

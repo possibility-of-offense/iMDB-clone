@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
-import Home from "./views/Home";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import {
@@ -13,6 +12,11 @@ import {
 } from "react-router-dom";
 import Movie from "./views/Movie";
 import Actor from "./views/Actor";
+import Genres from "./views/Genres";
+import Root from "./views/Root";
+import Home from "./views/Home";
+import Gallery from "./views/Gallery";
+import Cast from "./views/Cast";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -20,9 +24,13 @@ const root = createRoot(container);
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Fragment>
-      <Route path="/" element={<Home />}>
+      <Route path="/" element={<Root />}>
+        <Route index element={<Home />}></Route>
         <Route path="/movies/:id" element={<Movie />}></Route>
         <Route path="/actors/:id" element={<Actor />}></Route>
+        <Route path="/genres/:id" element={<Genres />}></Route>
+        <Route path="/gallery/:id" element={<Gallery />}></Route>
+        <Route path="/cast/:id" element={<Cast />}></Route>
       </Route>
     </Fragment>
   )

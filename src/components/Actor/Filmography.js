@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SectionTitle from "../Movie/SectionTitle";
 
 import classes from "./styles/Filmography.module.css";
@@ -23,7 +24,9 @@ const Filmography = ({ layoutClasses, films }) => {
               </figure>
               <div>
                 <div>
-                  <h4>{el.name}</h4>
+                  <h4>
+                    <Link to={`/movies/${el.id.trim()}`}>{el.name}</Link>
+                  </h4>
                   <p>{el.characterName}</p>
                 </div>
                 <p>{el.year}</p>

@@ -4,7 +4,7 @@ import { selectTopCast } from "../../features/movies/singleMovieSlice";
 import SectionTitle from "./SectionTitle";
 import classes from "./styles/TopCast.module.css";
 
-const TopCast = ({ layoutClasses }) => {
+const TopCast = ({ layoutClasses, id, link }) => {
   const topCast = useSelector(selectTopCast);
   const topCastList = Object.entries(topCast).map(([id, val]) => ({
     id,
@@ -19,7 +19,7 @@ const TopCast = ({ layoutClasses }) => {
 
   return (
     <section className={classes["top-cast"]}>
-      <SectionTitle moreInfo={true} layoutClasses={layoutClasses}>
+      <SectionTitle moreInfo={true} layoutClasses={layoutClasses} link={link}>
         Top Cast
       </SectionTitle>
       <div className={classes["top-cast__grid"]}>

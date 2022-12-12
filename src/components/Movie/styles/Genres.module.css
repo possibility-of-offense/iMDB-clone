@@ -19,6 +19,11 @@
   transition: background-color 0.2s ease-out;
 }
 
+.genres ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .genres ul li:hover {
   background-color: var(--light-gray-2);
 }

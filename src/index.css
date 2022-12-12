@@ -47,13 +47,3 @@ nav {
   display: flex;
   align-items: center;
 }
-
-footer {
-  margin-top: 4rem;
-  height: 50vh;
-  background-color: #000;
-  color: #fff;
-  display: grid;
-  place-content: center;
-  font-size: 4rem;
-}

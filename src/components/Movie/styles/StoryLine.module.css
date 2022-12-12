@@ -6,3 +6,8 @@
   font-size: 17px;
   line-height: 27px;
 }
+
+.story-line a {
+  color: inherit;
+  text-decoration: none;
+}

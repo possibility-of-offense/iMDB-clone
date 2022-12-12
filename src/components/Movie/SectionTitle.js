@@ -1,8 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import classes from "./styles/SectionTitle.module.css";
 
-const SectionTitle = ({ children, count, moreInfo, layoutClasses }) => {
+const SectionTitle = ({ children, count, moreInfo, layoutClasses, link }) => {
+  const navigate = useNavigate();
+
+  link = link ? link : "da";
+
+  const handleNavigate = () => {
+    if (link) {
+      navigate(link);
+    }
+  };
+
   return (
     <div
+      onClick={handleNavigate}
       className={`${classes["movie-section-title"]} ${
         moreInfo ? classes["movie-section-title--cursor"] : ""
       } ${layoutClasses}`}

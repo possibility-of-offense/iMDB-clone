@@ -6,8 +6,8 @@
   margin-bottom: 5px;
   padding: 14px 20px;
   border-radius: 3px;
-  border: 1px solid var(--light-gray-3);
   font-family: var(--main-font-family);
+  border: 1px solid var(--light-gray-3);
   box-shadow: 0 0 1px rgb(0 0 0 / 12%);
 }
 

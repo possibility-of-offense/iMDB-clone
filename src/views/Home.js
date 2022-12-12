@@ -1,20 +1,14 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import Navigation from "../components/General/Navigation";
+import { Link } from "react-router-dom";
 
-function Home() {
+const Home = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Navigation />
-      </header>
-      <Outlet />
-
-      <footer>
-        <h2>Some footer info will be here</h2>
-      </footer>
+    <div style={{ minHeight: "100vh", textAlign: "center" }}>
+      <br />
+      <h1>Home page</h1>
+      <Link to="/movies/ZCpKhxWwm9yl5pQrG2ah">Seven years in Tibet</Link>
+      <br />
     </div>
   );
-}
+};
 
 export default Home;

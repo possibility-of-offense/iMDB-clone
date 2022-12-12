@@ -4,7 +4,7 @@ import SectionTitle from "./SectionTitle";
 
 import classes from "./styles/Photos.module.css";
 
-const Photos = ({ photos, layoutClasses }) => {
+const Photos = ({ photos, layoutClasses, link }) => {
   let [currentImage, setCurrentImage] = useState(4);
 
   const sliderWrapperRef = useRef();
@@ -50,22 +50,26 @@ const Photos = ({ photos, layoutClasses }) => {
   };
 
   const handleShowButton = (e) => {
-    if (e.clientX < sliderWrapperRef.current.clientWidth / 2) {
-      btnPrevRef.current.classList.add(classes["show-btn"]);
-      btnPrevRef.current.classList.remove(classes["hide-opacity"]);
-      btnNextRef.current.classList.remove(classes["show-btn"]);
-      btnNextRef.current.classList.add(classes["hide-opacity"]);
-    }
-    if (e.clientX > sliderWrapperRef.current.clientWidth / 2) {
-      btnNextRef.current.classList.add(classes["show-btn"]);
-      btnNextRef.current.classList.remove(classes["hide-opacity"]);
-      btnPrevRef.current.classList.remove(classes["show-btn"]);
-      btnPrevRef.current.classList.add(classes["hide-opacity"]);
+    if (btnPrevRef.current && btnNextRef.current) {
+      if (e.clientX < sliderWrapperRef.current.clientWidth / 2) {
+        btnPrevRef.current.classList.add(classes["show-btn"]);
+        btnPrevRef.current.classList.remove(classes["hide-opacity"]);
+        btnNextRef.current.classList.remove(classes["show-btn"]);
+        btnNextRef.current.classList.add(classes["hide-opacity"]);
+      }
+      if (e.clientX > sliderWrapperRef.current.clientWidth / 2) {
+        btnNextRef.current.classList.add(classes["show-btn"]);
+        btnNextRef.current.classList.remove(classes["hide-opacity"]);
+        btnPrevRef.current.classList.remove(classes["show-btn"]);
+        btnPrevRef.current.classList.add(classes["hide-opacity"]);
+      }
     }
   };
   const handleHideButton = (e) => {
-    btnPrevRef.current.classList.remove(classes["show-btn"]);
-    btnNextRef.current.classList.remove(classes["show-btn"]);
+    if (btnPrevRef.current && btnNextRef.current) {
+      btnPrevRef.current.classList.remove(classes["show-btn"]);
+      btnNextRef.current.classList.remove(classes["show-btn"]);
+    }
   };
 
   return (
@@ -74,6 +78,7 @@ const Photos = ({ photos, layoutClasses }) => {
         count={images && images.length ? images.length : 0}
         moreInfo={true}
         layoutClasses={layoutClasses}
+        link={link}
       >
         Photos
       </SectionTitle>

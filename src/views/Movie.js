@@ -12,6 +12,7 @@ import SubNav from "../components/Movie/SubNav";
 import Title from "../components/Movie/Title";
 import TopCast from "../components/Movie/TopCast";
 import GridTwoColumns from "../components/UI/GridTwoColumns";
+import GlobalLoader from "../components/UI/GlobalLoader";
 
 import { useEffect } from "react";
 import { fetchSingleMovie } from "../features/movies/singleMovieSlice";
@@ -85,15 +86,18 @@ const Movie = () => {
   const status = selectSingleMovie.status;
 
   if (status === "loading") {
-    return <div>LOADING...</div>;
+    return <GlobalLoader bgColor="#1F1F1F" />;
   } else if (status === "succeeded") {
     return (
-      <main className={classes["single-movie"]}>
+      <main className={`${classes["single-movie"]} pbot2-rem`}>
         <section className="main-container__bg">
           <div className="main-container">
             <SubNav />
             <Title titleInfo={titleInfo} />
-            <HeroBanner images={[main_image, video_placeholder_image]} />
+            <HeroBanner
+              images={[main_image, video_placeholder_image]}
+              photosLink={`/gallery/${id}`}
+            />
             <GridTwoColumns sizing="3/4">
               <div>
                 <Genres genres={genres} />

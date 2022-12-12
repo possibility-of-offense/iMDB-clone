@@ -1,11 +1,16 @@
 .nav ul {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .nav ul > * {
   margin: 0 10px;
   display: flex;
+}
+
+.nav ul li.search-input {
+  flex: 1;
 }
 
 .nav ul a {

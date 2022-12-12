@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 import classes from "./styles/Navigation.module.css";
 
@@ -34,10 +35,8 @@ const Navigation = () => {
             </svg>
           </Link>
         </li>
-        <li>
-          <form>
-            <input type="text" placeholder="It is not working yet!" />
-          </form>
+        <li className={classes["search-input"]}>
+          <SearchBar />
         </li>
       </ul>
     </nav>

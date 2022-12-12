@@ -36,7 +36,7 @@ const Actor = () => {
   }, []);
 
   return actorState ? (
-    <main className={classes["actor"]}>
+    <main className={`${classes["actor"]} pbot2-rem`}>
       <section
         className="main-container__bg no-paddings"
         style={{ display: "grid" }}

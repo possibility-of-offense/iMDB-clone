@@ -1,6 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import classes from "./styles/HeroBanner.module.css";
 
-const HeroBanner = ({ images }) => {
+const HeroBanner = ({ images, photosLink }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    if (photosLink) {
+      navigate(photosLink);
+    }
+  };
+
   if (images && Array.isArray(images) && images.length > 0) {
     return (
       <section className={classes["hero-banner"]}>
@@ -28,7 +37,10 @@ const HeroBanner = ({ images }) => {
             </svg>
             <h4>2 Videos</h4>
           </div>
-          <div className={classes["hero-banner__actions-images"]}>
+          <div
+            className={classes["hero-banner__actions-images"]}
+            onClick={handleNavigate}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

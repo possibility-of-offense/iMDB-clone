@@ -1,0 +1,33 @@
+.search {
+  width: 50%;
+  display: flex;
+}
+
+.search form {
+  flex: 1;
+  display: flex;
+  position: relative;
+}
+
+.search form svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  fill: #666666;
+  cursor: pointer;
+}
+
+.search form input {
+  flex: 1;
+  padding: 5px;
+  border-radius: 2px;
+  border: 3px solid transparent;
+  outline: none;
+  padding-right: 40px;
+}
+
+.search form input:active,
+.search form input:focus {
+  border-color: var(--yellow-1);
+}

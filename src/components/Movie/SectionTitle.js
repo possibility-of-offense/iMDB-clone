@@ -4,8 +4,6 @@ import classes from "./styles/SectionTitle.module.css";
 const SectionTitle = ({ children, count, moreInfo, layoutClasses, link }) => {
   const navigate = useNavigate();
 
-  link = link ? link : "da";
-
   const handleNavigate = () => {
     if (link) {
       navigate(link);

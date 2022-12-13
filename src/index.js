@@ -18,6 +18,8 @@ import Home from "./views/Home";
 import MovieGallery from "./views/MovieGallery";
 import Cast from "./views/Cast";
 import PersonGallery from "./views/PersonGallery";
+import CreateMovie from "./views/CreateMovie";
+import Admin from "./views/Admin";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -31,8 +33,10 @@ const router = createBrowserRouter(
         <Route path="/actors/:id" element={<Actor />}></Route>
         <Route path="/genres/:id" element={<Genres />}></Route>
         <Route path="/movie-gallery/:id" element={<MovieGallery />}></Route>
-        <Route path="/person-gallery/:id" element={<PersonGallery />}></Route>
+        <Route path="/actor-gallery/:id" element={<PersonGallery />}></Route>
         <Route path="/cast/:id" element={<Cast />}></Route>
+        <Route path="/create-movie" element={<CreateMovie />}></Route>
+        <Route path="/admin" element={<Admin />}></Route>
       </Route>
     </Fragment>
   )

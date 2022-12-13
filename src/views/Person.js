@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -17,22 +17,16 @@ import { db } from "../config/config";
 import classes from "./styles/Actor.module.css";
 
 const Person = () => {
-  const titleInfo = {
-    title: "Brad Pitt",
-    additional: ["Producer", "Actor", "Executive"],
-  };
-
   const { id } = useParams();
 
   const [actorState, setActorState] = useState(null);
 
   useEffect(() => {
     async function fetching() {
-      const data = await getDocs(collection(db, "actors", id, "actor_page"));
+      const document = await getDoc(doc(db, "actors", id));
 
-      const mapped = data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      if (mapped.length > 0) {
-        setActorState(mapped);
+      if (document.exists()) {
+        setActorState(document.data());
       }
     }
     fetching();
@@ -47,54 +41,56 @@ const Person = () => {
         <div className="main-container" style={{ display: "flex" }}>
           <div
             className={classes[`container-actor__inner`]}
-            style={{ backgroundImage: `url(${actorState[0].main_image})` }}
+            style={{ backgroundImage: `url(${actorState.main_image})` }}
           >
             <br />
             <Title
               titleInfo={{
-                title: actorState[0].name,
+                title: actorState.name,
                 additional: [],
               }}
             />
 
             <HeroBanner
               images={[
-                actorState[0].main_image,
-                actorState[0].video_placeholder_image,
+                actorState.main_image,
+                actorState.video_placeholder_image,
               ]}
-              photosLink={`/person-gallery/${id}`}
+              photosLink={`/actor-gallery/${id}`}
             />
             <GridTwoColumns sizing="3/4" layoutClasses="p1-rem">
-              <ShortDescription shortInfo={actorState[0].short_bio} />
+              <ShortDescription shortInfo={actorState.short_bio} />
             </GridTwoColumns>
           </div>
         </div>
       </section>
-      <section className={`${classes["actor__additional"]} ptop2-rem`}>
+      {/* <section className={`${classes["actor__additional"]} ptop2-rem`}>
         <div className="main-container">
           <GridTwoColumns sizing="3/4">
             <div>
               <Photos
-                photos={actorState[0].photos}
+                photos={actorState.photos}
                 layoutClasses="mbot1-rem"
-                link={`/person-gallery/${id}`}
+                link={`/actor-gallery/${id}`}
               />
               <KnownFor
-                knownFor={actorState[0].known_for}
+                knownFor={actorState.known_for}
                 layoutClasses="mbot2-rem"
               />
+
               <Filmography
-                films={actorState[0].filomography}
+                films={actorState.filmography}
                 layoutClasses="mtop2-rem mbot2-rem"
               />
+
               <DidYouKnow
-                facts={actorState[0].did_you_know}
+                facts={actorState.did_you_know}
                 layoutClasses="mbot1-rem"
               />
             </div>
           </GridTwoColumns>
         </div>
-      </section>
+      </section> */}
     </main>
   ) : (
     <GlobalLoader bgColor="#1F1F1F" />

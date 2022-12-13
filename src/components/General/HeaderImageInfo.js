@@ -10,7 +10,7 @@ const HeaderImageInfo = ({ img, title, year, link, heading }) => {
       <div>
         <h4>
           <Link to={link}>
-            {title} <span>({year})</span>
+            {title} {year && <span>({year})</span>}
           </Link>
         </h4>
         <h2>{heading}</h2>

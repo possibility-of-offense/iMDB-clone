@@ -1,132 +1,35 @@
 import HeaderImageInfo from "./HeaderImageInfo";
 import classes from "./styles/PhotosGallery.module.css";
 
-const PhotosGallery = ({ id }) => {
-  return (
-    <section className={classes["gallery__wrapper"]}>
-      <div className={classes["gallery__wrapper--inner"]}>
-        <div className={classes["gallery__wrapper-inner-grid"]}>
-          <HeaderImageInfo
-            img="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-            title="Seven Years in Tibet"
-            year="1997"
-            link={`/movies/${id}`}
-            heading="Photo Gallery"
-          />
-          <div className={classes["gallery__wrapper--body"]}>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
-            </div>
-            <div>
-              <figure>
-                <img
-                  title="img"
-                  alt="img"
-                  src="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
-                />
-              </figure>
+const PhotosGallery = ({ id, data, endpoint = "movies" }) => {
+  if (data.length > 0) {
+    const { name, year } = data[0];
+
+    return (
+      <section className={classes["gallery__wrapper"]}>
+        <div className={classes["gallery__wrapper--inner"]}>
+          <div className={classes["gallery__wrapper-inner-grid"]}>
+            <HeaderImageInfo
+              img="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
+              title={name}
+              year={year}
+              link={`/${endpoint}/${id}`}
+              heading="Photo Gallery"
+            />
+            <div className={classes["gallery__wrapper--body"]}>
+              {data.map((el) => (
+                <div key={el.id}>
+                  <figure>
+                    <img title="img" alt="img" src={el.image} />
+                  </figure>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
 };
 
 export default PhotosGallery;

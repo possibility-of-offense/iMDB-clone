@@ -38,6 +38,12 @@ const Navigation = () => {
         <li className={classes["search-input"]}>
           <SearchBar />
         </li>
+        <li>
+          <Link to="/admin">Admin</Link>
+        </li>
+        <li>
+          <Link to="/create-movie">Create movie</Link>
+        </li>
       </ul>
     </nav>
   );

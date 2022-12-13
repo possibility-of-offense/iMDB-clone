@@ -76,16 +76,14 @@ const Movie = () => {
   }
 
   useEffect(() => {
-    if (!Object.values(selectSingleMovie.singleMovie).length) {
-      dispatch(fetchSingleMovie(id));
-    } else {
-      console.log("already");
-    }
+    // if (!Object.values(selectSingleMovie.singleMovie).length) {
+    dispatch(fetchSingleMovie(id));
+    // } else {
+    //   console.log("already");
+    // }
   }, []);
 
   const status = selectSingleMovie.status;
-
-  console.log(mappedMembersData);
 
   if (status === "loading") {
     return <GlobalLoader bgColor="#1F1F1F" />;
@@ -104,12 +102,12 @@ const Movie = () => {
               <div>
                 <Genres genres={genres} />
                 <ShortDescription shortInfo={short_info} />
-                <MembersMetaData creators={creators} topCast={top_cast} />
+                {/* <MembersMetaData creators={creators} topCast={top_cast} /> */}
               </div>
             </GridTwoColumns>
           </div>
         </section>
-        <section className={classes["single-movie__additional"]}>
+        {/* <section className={classes["single-movie__additional"]}>
           <div className="main-container">
             <GridTwoColumns sizing="3/4">
               <div>
@@ -143,7 +141,7 @@ const Movie = () => {
               </div>
             </GridTwoColumns>
           </div>
-        </section>
+        </section> */}
       </main>
     );
   }

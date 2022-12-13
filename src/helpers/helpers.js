@@ -79,3 +79,32 @@ export const navigatingSlider = (prev, options) => {
     btnNextRef.current.classList.add(disabled);
   }
 };
+
+export const upperCaseFirstWord = (word) => {
+  if (typeof word !== "string") return;
+
+  return word[0].toUpperCase() + word.slice(1);
+};
+
+export const validateInputsFields = (fields) => {
+  let filled = true;
+
+  for (let field of fields) {
+    if (Array.isArray(field) && field.length === 0) {
+      filled = false;
+      break;
+    }
+
+    if (typeof field === "object" && Object.values(field).length === 0) {
+      filled = false;
+      break;
+    }
+
+    if (!field) {
+      filled = false;
+      break;
+    }
+  }
+
+  return filled;
+};

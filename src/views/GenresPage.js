@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { db } from "../config/config";
 import { upperCaseFirstWord } from "../helpers/helpers";
-import classes from "./styles/Genres.module.css";
+import classes from "./styles/GenresPage.module.css";
 
 const Genres = () => {
   const { id: title } = useParams();

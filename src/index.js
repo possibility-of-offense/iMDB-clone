@@ -19,9 +19,10 @@ import HomePage from "./views/HomePage";
 import SingleMoviePage from "./views/SingleMoviePage";
 import AdminPage from "./views/AdminPage";
 import CreateMoviePage from "./views/CreateMoviePage";
+import GenresPage from "./views/GenresPage";
+import LoginPage from "./views/LoginPage";
 
 import SingleActorPage from "./views/SingleActorPage";
-import Genres from "./views/Genres";
 
 import MovieGallery from "./views/MovieGallery";
 import Cast from "./views/Cast";
@@ -37,12 +38,13 @@ const router = createBrowserRouter(
         <Route index element={<HomePage />}></Route>
         <Route path="/movies/:id" element={<SingleMoviePage />}></Route>
         <Route path="/actors/:id" element={<SingleActorPage />}></Route>
-        <Route path="/genres/:id" element={<Genres />}></Route>
+        <Route path="/genres/:id" element={<GenresPage />}></Route>
         <Route path="/movie-gallery/:id" element={<MovieGallery />}></Route>
         <Route path="/actor-gallery/:id" element={<PersonGallery />}></Route>
         <Route path="/cast/:id" element={<Cast />}></Route>
         <Route path="/create-movie" element={<CreateMoviePage />}></Route>
         <Route path="/admin" element={<AdminPage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
       </Route>
     </Fragment>
   )

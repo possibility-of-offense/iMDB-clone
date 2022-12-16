@@ -1,9 +1,25 @@
-import { Link } from "react-router-dom";
+import { Fragment } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../../config/config";
+import { signOut } from "firebase/auth";
+
 import SearchBar from "./SearchBar";
 
 import classes from "./styles/Navigation.module.css";
 
 const Navigation = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      await signOut(auth);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <nav className={classes.nav}>
       <ul>
@@ -38,12 +54,26 @@ const Navigation = () => {
         <li className={classes["search-input"]}>
           <SearchBar />
         </li>
-        <li>
-          <Link to="/admin">Admin</Link>
-        </li>
-        <li>
-          <Link to="/create-movie">Create movie</Link>
-        </li>
+        {!auth.currentUser && (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        )}
+        {auth.currentUser && (
+          <Fragment>
+            <li>
+              <Link to="/admin">Admin</Link>
+            </li>
+            <li>
+              <Link to="/create-movie">Create movie</Link>
+            </li>
+            <li>
+              <a href="#" onClick={handleLogout}>
+                Logout
+              </a>
+            </li>
+          </Fragment>
+        )}
       </ul>
     </nav>
   );

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { auth } from "../../../config/config";
 import { signOut } from "firebase/auth";
 
@@ -25,7 +25,12 @@ const Navigation = ({ alertSignetOut }) => {
     <nav className={classes.nav}>
       <ul>
         <li>
-          <Link to="/">
+          <NavLink
+            style={({ isActive }) =>
+              isActive ? { color: "#f5c518" } : undefined
+            }
+            to="/"
+          >
             {" "}
             <svg
               id="home_img"
@@ -50,23 +55,44 @@ const Navigation = ({ alertSignetOut }) => {
                 <path d="M44.4299079,4.50685823 L44.749518,4.50685823 C46.5447098,4.50685823 48,5.91267586 48,7.64486762 L48,14.8619906 C48,16.5950653 46.5451816,18 44.749518,18 L44.4299079,18 C43.3314617,18 42.3602746,17.4736618 41.7718697,16.6682739 L41.4838962,17.7687785 L37,17.7687785 L37,0 L41.7843263,0 L41.7843263,5.78053556 C42.4024982,5.01015739 43.3551514,4.50685823 44.4299079,4.50685823 Z M43.4055679,13.2842155 L43.4055679,9.01907814 C43.4055679,8.31433946 43.3603268,7.85185468 43.2660746,7.63896485 C43.1718224,7.42607505 42.7955881,7.2893916 42.5316822,7.2893916 C42.267776,7.2893916 41.8607934,7.40047379 41.7816216,7.58767002 L41.7816216,9.01907814 L41.7816216,13.4207851 L41.7816216,14.8074788 C41.8721037,15.0130276 42.2602358,15.1274059 42.5316822,15.1274059 C42.8031285,15.1274059 43.1982131,15.0166981 43.281155,14.8074788 C43.3640968,14.5982595 43.4055679,14.0880581 43.4055679,13.2842155 Z"></path>
               </g>
             </svg>
-          </Link>
+          </NavLink>
         </li>
         <li className={classes["search-input"]}>
           <SearchBar />
         </li>
         {!auth.currentUser && (
           <li>
-            <Link to="/login">Login</Link>
+            <NavLink
+              style={({ isActive }) =>
+                isActive ? { color: "#f5c518" } : undefined
+              }
+              to="/login"
+            >
+              Login
+            </NavLink>
           </li>
         )}
         {auth.currentUser && (
           <Fragment>
             <li>
-              <Link to="/admin">Admin</Link>
+              <NavLink
+                style={({ isActive }) =>
+                  isActive ? { color: "#f5c518" } : undefined
+                }
+                to="/admin"
+              >
+                Admin
+              </NavLink>
             </li>
             <li>
-              <Link to="/create-movie">Create movie</Link>
+              <NavLink
+                style={({ isActive }) =>
+                  isActive ? { color: "#f5c518" } : undefined
+                }
+                to="/create-movie"
+              >
+                Create movie
+              </NavLink>
             </li>
             <li>
               <a href="#" onClick={handleLogout}>

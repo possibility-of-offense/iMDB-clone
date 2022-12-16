@@ -27,7 +27,7 @@
 }
 
 .msgbox-box.right {
-  right: 0;
+  right: 1%;
 }
 
 .msgbox-box.msgbox-box-hide {
@@ -38,10 +38,10 @@
 }
 
 .msgbox-content {
-  font-size: inherit;
   padding: 1.5rem;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.45rem;
   flex-shrink: 1;
+  font-size: 20px;
 }
 
 .msgbox-command {

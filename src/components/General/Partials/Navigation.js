@@ -7,13 +7,14 @@ import SearchBar from "./SearchBar";
 
 import classes from "./styles/Navigation.module.css";
 
-const Navigation = () => {
+const Navigation = ({ alertSignetOut }) => {
   const navigate = useNavigate();
 
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
       await signOut(auth);
+      alertSignetOut(true);
       navigate("/");
     } catch (error) {
       console.log(error);

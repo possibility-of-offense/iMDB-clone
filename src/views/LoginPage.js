@@ -1,6 +1,6 @@
 import { auth } from "../config/config";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginReducer } from "../reducers/loginReducer";
 
@@ -23,12 +23,22 @@ const LoginPage = () => {
     errorMsg: "",
     emailInputActive: false,
     passwordInputActive: false,
+    loginState: "idle",
   });
+
+  useEffect(() => {
+    if (loginState.email)
+      loginDispatch({ type: "EMAIL_INPUT_STATE", payload: true });
+
+    if (loginState.password)
+      loginDispatch({ type: "PASSWORD_INPUT_STATE", payload: true });
+  }, [loginState.email, loginState.password]);
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    loginDispatch({ type: "SET_LOGIN_STATE", payload: "pending" });
 
     if (!loginState.email || !loginState.password) {
       loginDispatch({
@@ -44,8 +54,10 @@ const LoginPage = () => {
         loginState.email,
         loginState.password
       );
+      loginDispatch({ type: "SET_LOGIN_STATE", payload: "successfull" });
+      loginDispatch({ type: "RESET_ERROR_STATE" });
 
-      navigate("/");
+      navigate("/?login=successfull");
     } catch (error) {
       loginDispatch({
         type: "NOTIFY_ERROR",
@@ -114,7 +126,26 @@ const LoginPage = () => {
               }
             />
           </div>
-          <button type="submit">Sign Up</button>
+          <div className={classes["login-page__form--submit"]}>
+            <button
+              className={
+                loginState.loginState !== "pending"
+                  ? ""
+                  : classes["pending-submit"]
+              }
+              type="submit"
+            >
+              Sign Up
+            </button>
+            {loginState.loginState === "pending" && (
+              <div className={classes["lds-ring"]}>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            )}
+          </div>
         </form>
         <div className={classes["login-icon__wrapper"]}>
           <img

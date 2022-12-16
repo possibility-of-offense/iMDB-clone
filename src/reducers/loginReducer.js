@@ -40,6 +40,11 @@ export function loginReducer(state, action) {
         errorMsg: "",
         passwordInputActive: action.payload,
       };
+    case "SET_LOGIN_STATE":
+      return {
+        ...state,
+        loginState: action.payload,
+      };
     default:
       return state;
   }

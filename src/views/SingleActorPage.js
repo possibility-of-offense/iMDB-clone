@@ -9,6 +9,9 @@ import { useParams } from "react-router-dom";
 // import Photos from "../components/SinglePageMovie/Photos";
 // import ShortDescription from "../components/SinglePageMovie/ShortDescription";
 // import Title from "../components/SinglePageMovie/Title";
+import SinglePageTitle from "../components/General/SinglePage/SinglePageTitle";
+import SinglePageHeroBanner from "../components/General/SinglePage/SinglePageHeroBanner";
+
 import GridTwoColumns from "../components/UI/Layout/GridTwoColumns";
 import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
 
@@ -27,6 +30,7 @@ const SingleActorPage = () => {
 
       if (document.exists()) {
         setActorState(document.data());
+        console.log(document.data());
       }
     }
     fetching();
@@ -44,20 +48,20 @@ const SingleActorPage = () => {
             style={{ backgroundImage: `url(${actorState.main_image})` }}
           >
             <br />
-            {/* <Title
+            <SinglePageTitle
               titleInfo={{
                 title: actorState.name,
                 additional: [],
               }}
-            /> */}
+            />
 
-            {/* <HeroBanner
+            <SinglePageHeroBanner
               images={[
                 actorState.main_image,
                 actorState.video_placeholder_image,
               ]}
               photosLink={`/actor-gallery/${id}`}
-            /> */}
+            />
             <GridTwoColumns sizing="3/4" layoutClasses="p1-rem">
               {/* <ShortDescription shortInfo={actorState.short_bio} /> */}
             </GridTwoColumns>

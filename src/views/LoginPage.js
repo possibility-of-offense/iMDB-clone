@@ -45,6 +45,7 @@ const LoginPage = () => {
         type: "NOTIFY_ERROR",
         payload: `You couldn't login! \n Check your email and password credentials again!`,
       });
+      loginDispatch({ type: "SET_LOGIN_STATE", payload: "rejected" });
       return;
     }
 
@@ -63,6 +64,7 @@ const LoginPage = () => {
         type: "NOTIFY_ERROR",
         payload: `You couldn't login! \n Check your email and password credentials again!`,
       });
+      loginDispatch({ type: "SET_LOGIN_STATE", payload: "rejected" });
     }
   };
 

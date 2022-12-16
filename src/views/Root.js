@@ -1,8 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "../components/General/Footer";
-import Navigation from "../components/General/Navigation";
-import ScrollToTop from "../components/General/ScrollTop";
+
+import Navigation from "../components/General/Partials/Navigation";
+import Footer from "../components/General/Partials/Footer";
+import ScrollToTop from "../components/UI/ScrollToTop";
 
 function Root() {
   return (

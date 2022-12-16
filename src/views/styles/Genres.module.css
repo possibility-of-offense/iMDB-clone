@@ -58,6 +58,7 @@
 .genres__wrapper-inner-grid__items .grid__item h3 {
   color: var(--blue-2);
   margin-bottom: 6px;
+  cursor: pointer;
 }
 
 .genres__wrapper-inner-grid__items .grid__item p {
@@ -70,8 +71,25 @@
 
 .genres__wrapper-inner-grid__items .grid__item div.stars {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   font-size: 14px;
+}
+
+@media (orientation: portrait) {
+  .genres__wrapper-inner-grid__items .grid__item div.stars {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .genres__wrapper-inner-grid__items .grid__item div.stars p {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .genres__wrapper-inner-grid__items .grid__item div.stars p a {
+    margin: 3px 0;3e3
+  }
 }
 
 .genres__wrapper-inner-grid__items .grid__item div.stars > * {

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import classes from "./styles/HeroBanner.module.css";
+import classes from "./styles/SinglePageHeroBanner.module.css";
 
-const HeroBanner = ({ images, photosLink }) => {
+const SinglePageHeroBanner = ({ images, photosLink }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -62,4 +62,4 @@ const HeroBanner = ({ images, photosLink }) => {
   }
 };
 
-export default HeroBanner;
+export default SinglePageHeroBanner;

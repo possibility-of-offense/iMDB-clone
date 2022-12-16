@@ -2,21 +2,21 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import Filmography from "../components/Actor/Filmography";
-import KnownFor from "../components/Actor/KnownFor";
-import DidYouKnow from "../components/Movie/DidYouKnow";
-import HeroBanner from "../components/Movie/HeroBanner";
-import Photos from "../components/Movie/Photos";
-import ShortDescription from "../components/Movie/ShortDescription";
-import Title from "../components/Movie/Title";
-import GridTwoColumns from "../components/UI/GridTwoColumns";
-import GlobalLoader from "../components/UI/GlobalLoader";
+// import Filmography from "../components/SingleActorPage/Filmography";
+// import KnownFor from "../components/SingleActorPage/KnownFor";
+// import DidYouKnow from "../components/SinglePageMovie/DidYouKnow";
+// import HeroBanner from "../components/SinglePageMovie/HeroBanner";
+// import Photos from "../components/SinglePageMovie/Photos";
+// import ShortDescription from "../components/SinglePageMovie/ShortDescription";
+// import Title from "../components/SinglePageMovie/Title";
+import GridTwoColumns from "../components/UI/Layout/GridTwoColumns";
+import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
 
 import { db } from "../config/config";
 
-import classes from "./styles/Actor.module.css";
+import classes from "./styles/SingleActorPage.module.css";
 
-const Person = () => {
+const SingleActorPage = () => {
   const { id } = useParams();
 
   const [actorState, setActorState] = useState(null);
@@ -44,22 +44,22 @@ const Person = () => {
             style={{ backgroundImage: `url(${actorState.main_image})` }}
           >
             <br />
-            <Title
+            {/* <Title
               titleInfo={{
                 title: actorState.name,
                 additional: [],
               }}
-            />
+            /> */}
 
-            <HeroBanner
+            {/* <HeroBanner
               images={[
                 actorState.main_image,
                 actorState.video_placeholder_image,
               ]}
               photosLink={`/actor-gallery/${id}`}
-            />
+            /> */}
             <GridTwoColumns sizing="3/4" layoutClasses="p1-rem">
-              <ShortDescription shortInfo={actorState.short_bio} />
+              {/* <ShortDescription shortInfo={actorState.short_bio} /> */}
             </GridTwoColumns>
           </div>
         </div>
@@ -97,4 +97,4 @@ const Person = () => {
   );
 };
 
-export default Person;
+export default SingleActorPage;

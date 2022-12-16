@@ -17,7 +17,7 @@ const Genres = () => {
         const docs = await getDocs(
           query(
             collection(db, "genres"),
-            where("genres", "array-contains", title)
+            where("movieGenres", "array-contains", title)
           )
         );
 
@@ -43,27 +43,42 @@ const Genres = () => {
             {genresState.length > 0 &&
               genresState.map(
                 (
-                  { name, year, stars, short_info, genres, movieId, id, image },
+                  {
+                    movieTitle,
+                    movieYear,
+                    movieStars,
+                    movieShortInfo,
+                    movieGenres,
+                    id,
+                    movieId,
+                    movieMainImage,
+                  },
                   i
                 ) => (
                   <div key={id} className={classes["grid__item"]}>
                     <figure>
-                      <img src={image} alt="img" title="img" />
+                      <img src={movieMainImage} alt="img" title="img" />
                     </figure>
                     <div>
                       <h3 onClick={() => navigate("/movies/" + movieId)}>
-                        {i + 1}. {name} ({year})
+                        {i + 1}. {movieTitle} ({movieYear})
                       </h3>
-                      <p className={classes["genres"]}>{genres?.join(", ")}</p>
-                      <p className={classes["short-info"]}>{short_info}</p>
+                      <p className={classes["genres"]}>
+                        {movieGenres?.join(", ")}
+                      </p>
+                      <p className={classes["short-info"]}>{movieShortInfo}</p>
                       <div className={classes["stars"]}>
                         Stars:
                         <p>
-                          {stars &&
-                            Object.entries(stars).length > 0 &&
-                            Object.entries(stars).map((el) => (
-                              <Link key={el[0]} to={`/actors/${el[1].actorId}`}>
-                                {el[1].name}
+                          {movieStars &&
+                            movieStars.length > 0 &&
+                            movieStars.map((el, i, arr) => (
+                              <Link
+                                key={el.actorId}
+                                to={`/actors/${el.actorId}`}
+                              >
+                                {el.actorName}/{el.movieCharacterName}
+                                {i === arr.length - 1 ? "" : ", "}
                               </Link>
                             ))}
                         </p>

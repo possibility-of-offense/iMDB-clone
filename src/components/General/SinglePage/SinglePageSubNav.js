@@ -1,8 +1,8 @@
-import classes from "./styles/SubNav.module.css";
+import classes from "./styles/SinglePageSubNav.module.css";
 
 // REFACTOR
 
-const SubNav = () => {
+const SinglePageSubNav = () => {
   return (
     <section className={classes["subnav"]}>
       <ul>
@@ -44,4 +44,4 @@ const SubNav = () => {
   );
 };
 
-export default SubNav;
+export default SinglePageSubNav;

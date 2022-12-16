@@ -10,16 +10,22 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Movie from "./views/Movie";
-import Actor from "./views/Person";
-import Genres from "./views/Genres";
+
+// Root
 import Root from "./views/Root";
-import Home from "./views/Home";
+
+// Pages
+import HomePage from "./views/HomePage";
+import SingleMoviePage from "./views/SingleMoviePage";
+import AdminPage from "./views/AdminPage";
+import CreateMoviePage from "./views/CreateMoviePage";
+
+import SingleActorPage from "./views/SingleActorPage";
+import Genres from "./views/Genres";
+
 import MovieGallery from "./views/MovieGallery";
 import Cast from "./views/Cast";
 import PersonGallery from "./views/PersonGallery";
-import CreateMovie from "./views/CreateMovie";
-import Admin from "./views/Admin";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -28,15 +34,15 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Fragment>
       <Route path="/" element={<Root />}>
-        <Route index element={<Home />}></Route>
-        <Route path="/movies/:id" element={<Movie />}></Route>
-        <Route path="/actors/:id" element={<Actor />}></Route>
+        <Route index element={<HomePage />}></Route>
+        <Route path="/movies/:id" element={<SingleMoviePage />}></Route>
+        <Route path="/actors/:id" element={<SingleActorPage />}></Route>
         <Route path="/genres/:id" element={<Genres />}></Route>
         <Route path="/movie-gallery/:id" element={<MovieGallery />}></Route>
         <Route path="/actor-gallery/:id" element={<PersonGallery />}></Route>
         <Route path="/cast/:id" element={<Cast />}></Route>
-        <Route path="/create-movie" element={<CreateMovie />}></Route>
-        <Route path="/admin" element={<Admin />}></Route>
+        <Route path="/create-movie" element={<CreateMoviePage />}></Route>
+        <Route path="/admin" element={<AdminPage />}></Route>
       </Route>
     </Fragment>
   )

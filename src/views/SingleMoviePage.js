@@ -1,27 +1,33 @@
-import BoxOffice from "../components/Movie/BoxOffice";
-import Details from "../components/Movie/Details";
-import DetailsList from "../components/General/DetailsList";
-import DidYouKnow from "../components/Movie/DidYouKnow";
-import Genres from "../components/Movie/Genres";
-import HeroBanner from "../components/Movie/HeroBanner";
-import MembersMetaData from "../components/Movie/MembersMetaData";
-import Photos from "../components/Movie/Photos";
-import ShortDescription from "../components/Movie/ShortDescription";
-import StoryLine from "../components/Movie/StoryLine";
-import SubNav from "../components/Movie/SubNav";
-import Title from "../components/Movie/Title";
-import TopCast from "../components/Movie/TopCast";
-import GridTwoColumns from "../components/UI/GridTwoColumns";
-import GlobalLoader from "../components/UI/GlobalLoader";
+// Components
+import SinglePageSubNav from "../components/General/SinglePage/SinglePageSubNav";
+import SinglePageTitle from "../components/General/SinglePage/SinglePageTitle";
+import SinglePageHeroBanner from "../components/General/SinglePage/SinglePageHeroBanner";
+import SingleMoviePageGenres from "../components/SingleMoviePage/SingleMoviePageGenres";
+import SinglePageShortDescription from "../components/General/SinglePage/SinglePageShortDescription";
+import SingleMoviePageStuffMetaData from "../components/SingleMoviePage/SingleMoviePageStuffMetaData";
 
+import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
+import GridTwoColumns from "../components/UI/Layout/GridTwoColumns";
+
+// Hooks / Functions
 import { useEffect } from "react";
 import { fetchSingleMovie } from "../features/movies/singleMovieSlice";
 import { useDispatch, useSelector } from "react-redux";
-
-import classes from "./styles/Movie.module.css";
 import { useParams } from "react-router-dom";
 
-const Movie = () => {
+// Classes
+import classes from "./styles/SingleMoviePage.module.css";
+
+// NOT VISIBLE YET
+// import BoxOffice from "../components/SinglePageMovie/BoxOffice";
+// import Details from "../components/SinglePageMovie/Details";
+// import DetailsList from "../components/General/DetailsList";
+// import DidYouKnow from "../components/SinglePageMovie/DidYouKnow";
+// import Photos from "../components/SinglePageMovie/Photos";
+// import StoryLine from "../components/SinglePageMovie/StoryLine";
+// import TopCast from "../components/SinglePageMovie/TopCast";
+
+const SingleMoviePage = () => {
   const dispatch = useDispatch();
 
   // Get params id
@@ -32,23 +38,23 @@ const Movie = () => {
 
   // Destructure all state variables
   const {
-    title,
-    year,
-    duration,
-    main_image,
-    video_placeholder_image,
-    short_info,
-    genres,
-    creators,
-    top_cast,
-    photos,
-    did_you_know,
-    synopsis,
-    box_office,
+    movieTitle,
+    movieYear,
+    movieDuration,
+    movieMainImage,
+    movieVideoPlaceholderImage,
+    movieShortInfo,
+    movieGenres,
+    movieStuff,
+    moviePhotos,
+    movieDidYouKnow,
+    movieSynopsis,
+    movieBoxOffice,
   } = selectSingleMovie.singleMovie;
+
   const titleInfo = {
-    title,
-    additional: [year, duration],
+    title: movieTitle,
+    additional: [movieYear, movieDuration],
   };
 
   const selectCreators = useSelector(
@@ -76,11 +82,7 @@ const Movie = () => {
   }
 
   useEffect(() => {
-    // if (!Object.values(selectSingleMovie.singleMovie).length) {
     dispatch(fetchSingleMovie(id));
-    // } else {
-    //   console.log("already");
-    // }
   }, []);
 
   const status = selectSingleMovie.status;
@@ -92,21 +94,23 @@ const Movie = () => {
       <main className={`${classes["single-movie"]} pbot2-rem`}>
         <section className="main-container__bg">
           <div className="main-container">
-            <SubNav />
-            <Title titleInfo={titleInfo} />
-            <HeroBanner
-              images={[main_image, video_placeholder_image]}
+            <SinglePageSubNav />
+            <SinglePageTitle titleInfo={titleInfo} />
+            <SinglePageHeroBanner
+              images={[movieMainImage, movieVideoPlaceholderImage]}
               photosLink={`/movie-gallery/${id}`}
             />
             <GridTwoColumns sizing="3/4">
               <div>
-                <Genres genres={genres} />
-                <ShortDescription shortInfo={short_info} />
-                {/* <MembersMetaData creators={creators} topCast={top_cast} /> */}
+                <SingleMoviePageGenres genres={movieGenres} />
+                <SinglePageShortDescription shortInfo={movieShortInfo} />
+                <SingleMoviePageStuffMetaData stuff={movieStuff} />
               </div>
             </GridTwoColumns>
           </div>
         </section>
+
+        {/* // NOT VISIBLE YET */}
         {/* <section className={classes["single-movie__additional"]}>
           <div className="main-container">
             <GridTwoColumns sizing="3/4">
@@ -147,4 +151,4 @@ const Movie = () => {
   }
 };
 
-export default Movie;
+export default SingleMoviePage;

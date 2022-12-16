@@ -1,6 +1,6 @@
-import classes from "./styles/Title.module.css";
+import classes from "./styles/SinglePageTitle.module.css";
 
-const Title = ({ titleInfo }) => {
+const SinglePageTitle = ({ titleInfo }) => {
   const { title, additional } = titleInfo;
 
   if (title && additional) {
@@ -20,4 +20,4 @@ const Title = ({ titleInfo }) => {
   }
 };
 
-export default Title;
+export default SinglePageTitle;

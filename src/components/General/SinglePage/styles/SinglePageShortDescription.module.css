@@ -1,0 +1,13 @@
+.short-description {
+  margin: 14px 0 14px;
+  color: #fff;
+  font-size: 17px;
+  padding: 0 10px;
+  text-align: center;
+}
+
+@media (orientation: landscape) {
+  .short-description {
+    text-align: initial;
+  }
+}

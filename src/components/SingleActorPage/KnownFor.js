@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SectionTitle from "../Movie/SectionTitle";
+import SectionTitle from "../SinglePageMovie/SectionTitle";
 
 import classes from "./styles/KnownFor.module.css";
 

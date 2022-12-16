@@ -6,6 +6,13 @@
 .genres ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (orientation: landscape) {
+  .genres ul {
+    justify-content: flex-start;
+  }
 }
 
 .genres ul li {

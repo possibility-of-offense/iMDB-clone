@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { db } from "../config/config";
 import useFetchData from "../hooks/useFetchData";
 
-const Home = () => {
+const HomePage = () => {
   const { data } = useFetchData(() => getDocs(collection(db, "movies")));
 
   const mappedData =
@@ -19,11 +19,11 @@ const Home = () => {
       {mappedData.length > 0 &&
         mappedData.map((el) => (
           <div key={el.id}>
-            <Link to={`/movies/${el.id}`}>{el.title}</Link>
+            <Link to={`/movies/${el.id}`}>{el.movieTitle}</Link>
           </div>
         ))}
     </div>
   );
 };
 
-export default Home;
+export default HomePage;

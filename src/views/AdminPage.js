@@ -2,7 +2,7 @@ import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../config/config";
 
-const Admin = () => {
+const AdminPage = () => {
   const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
 
@@ -52,4 +52,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default AdminPage;

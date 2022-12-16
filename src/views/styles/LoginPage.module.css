@@ -1,24 +1,108 @@
 .login-page {
-  min-height: 70vh;
-}
-
-.login-page__form {
-  max-width: 600px;
-  margin: 1rem auto;
-  background-color: #ddd;
-  padding: 1rem 15px 2rem;
+  display: grid;
+  grid-gap: 1rem;
+  grid-column-gap: 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #fff;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 3px;
 }
 
-@media (min-width: 1024px) {
-  .login-page__form {
-    margin-top: 6%;
+@media (orientation: landscape) {
+  .login-page {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
+.login-page__form {
+  padding: 15px;
+}
+
+.login-page__form form > div {
+  position: relative;
+}
+
+.login-page__form form > div label {
+  font-size: 14px;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  left: 10px;
+  transition: all 0.2s ease-in;
+  pointer-events: none;
+}
+
+.login-page__form form > div.active label {
+  transform: translateY(-100%);
+  top: calc(0% + 8px);
+  z-index: 2;
+  background-color: #fff;
+  color: #c59b02;
+  padding: 1px 4px;
+  padding-right: 10px;
+  font-size: 11px;
+}
+
+.login-page__form input {
+  border: 1px solid #dddddd;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.login-page__form input:focus,
+.login-page__form input:active {
+  outline-color: #c59b02;
+}
+
+.login-page__form button {
+  background-color: var(--yellow-1);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 6px 20px;
+  border-radius: 3px;
+  color: #333;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 100%;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.login-page__form button:hover,
+.login-page__form button:focus,
+.login-page__form button:active {
+  background-color: rgb(255 201 5 / 66%);
+}
+
 .login-page__form h2 {
+  text-align: center;
   font-weight: normal;
   margin-bottom: 20px;
   font-size: 1.9rem;
+}
+
+.login-page__img img {
+  display: block;
+  max-width: 100%;
+}
+
+.login-icon__wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.login-icon {
+  width: 80px;
+}
+
+.login-page__form input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }

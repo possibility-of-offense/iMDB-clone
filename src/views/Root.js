@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import Navigation from "../components/General/Partials/Navigation";
 import Footer from "../components/General/Partials/Footer";
@@ -9,6 +9,15 @@ import { onAuthStateChanged } from "firebase/auth";
 import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
 
 function Root() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/login") document.body.style.background = "#ddd";
+    else {
+      document.body.style.background = "transparent";
+    }
+  }, [location]);
+
   const [fetchUserState, setFetchUserState] = useState("pending");
 
   useEffect(() => {

@@ -26,6 +26,20 @@ export function loginReducer(state, action) {
         hasError: false,
         errorMsg: "",
       };
+    case "EMAIL_INPUT_STATE":
+      return {
+        ...state,
+        hasError: false,
+        errorMsg: "",
+        emailInputActive: action.payload,
+      };
+    case "PASSWORD_INPUT_STATE":
+      return {
+        ...state,
+        hasError: false,
+        errorMsg: "",
+        passwordInputActive: action.payload,
+      };
     default:
       return state;
   }

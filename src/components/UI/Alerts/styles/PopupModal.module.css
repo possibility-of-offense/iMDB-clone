@@ -1,15 +1,12 @@
 .msgbox-box {
   font-size: inherit;
   color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
   margin: 0 0 1rem;
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 100px;
-  left: 5%;
-  right: 5%;
-  min-height: 50vh;
+  top: 80px;
   min-width: 250px;
   border-radius: 12px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.65);
@@ -17,6 +14,7 @@
   backdrop-filter: blur(4px);
   transition: opacity 256ms ease-in;
   animation: showMessage 0.25s ease-out forwards;
+  z-index: 9999;
 }
 
 @keyframes showMessage {
@@ -28,6 +26,10 @@
   }
 }
 
+.msgbox-box.right {
+  right: 0;
+}
+
 .msgbox-box.msgbox-box-hide {
   opacity: 0;
 }
@@ -36,15 +38,13 @@
 }
 
 .msgbox-content {
-  text-align: center;
-  font-size: 1.5rem;
+  font-size: inherit;
   padding: 1.5rem;
   padding-bottom: 0.25rem;
   flex-shrink: 1;
 }
 
 .msgbox-command {
-  margin-top: auto;
   padding: 1.5rem;
   padding-top: 0.35rem;
   padding-bottom: 0.85rem;

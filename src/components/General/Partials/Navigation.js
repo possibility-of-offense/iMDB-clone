@@ -81,7 +81,7 @@ const Navigation = ({ alertSignetOut }) => {
                 }
                 to="/admin"
               >
-                Admin
+                {auth.currentUser.displayName || auth.currentUser.email}
               </NavLink>
             </li>
             <li>

@@ -1,3 +1,2 @@
 - add <Alert /> component to the CreateMoviePage to handle some errors
-- add <ErrorBoundary /> component for REST/async errors
 - add state slices for the other Pages

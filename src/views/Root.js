@@ -74,7 +74,7 @@ function Root() {
               handleSignIn(false);
             }}
           >
-            You just sign in!
+            Hello {auth.currentUser.displayName || auth.currentUser.email}!
           </PopupModal>
         )}
 

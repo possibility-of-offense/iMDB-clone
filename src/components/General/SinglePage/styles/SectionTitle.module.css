@@ -1,6 +1,11 @@
 .movie-section-title {
   position: relative;
   display: flex;
+  justify-content: space-between;
+}
+
+.movie-section-title > div {
+  display: flex;
   align-items: center;
   padding-left: 10px;
 }
@@ -40,4 +45,8 @@
 
 .movie-section-title svg {
   transition: fill 0.2s ease-out;
+}
+
+.movie-section-title > div:nth-child(2) img {
+  width: 20px;
 }

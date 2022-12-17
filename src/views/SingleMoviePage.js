@@ -5,6 +5,9 @@ import SinglePageHeroBanner from "../components/General/SinglePage/SinglePageHer
 import SingleMoviePageGenres from "../components/SingleMoviePage/SingleMoviePageGenres";
 import SinglePageShortDescription from "../components/General/SinglePage/SinglePageShortDescription";
 import SingleMoviePageStuffMetaData from "../components/SingleMoviePage/SingleMoviePageStuffMetaData";
+import SingleMoviePagePhotos from "../components/SingleMoviePage/SingleMoviePagePhotos";
+import SingleMoviePageTopCast from "../components/SingleMoviePage/SingleMoviePageTopCast";
+import SingleMoviePageBoxOffice from "../components/SingleMoviePage/SingleMoviePageBoxOffice";
 
 import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
 import GridTwoColumns from "../components/UI/Layout/GridTwoColumns";
@@ -19,13 +22,10 @@ import { useParams } from "react-router-dom";
 import classes from "./styles/SingleMoviePage.module.css";
 
 // NOT VISIBLE YET
-// import BoxOffice from "../components/SinglePageMovie/BoxOffice";
 // import Details from "../components/SinglePageMovie/Details";
 // import DetailsList from "../components/General/DetailsList";
 // import DidYouKnow from "../components/SinglePageMovie/DidYouKnow";
-// import Photos from "../components/SinglePageMovie/Photos";
 // import StoryLine from "../components/SinglePageMovie/StoryLine";
-// import TopCast from "../components/SinglePageMovie/TopCast";
 
 const SingleMoviePage = () => {
   const dispatch = useDispatch();
@@ -50,6 +50,7 @@ const SingleMoviePage = () => {
     movieDidYouKnow,
     movieSynopsis,
     movieBoxOffice,
+    authorId,
   } = selectSingleMovie.singleMovie;
 
   const titleInfo = {
@@ -110,21 +111,23 @@ const SingleMoviePage = () => {
           </div>
         </section>
 
-        {/* // NOT VISIBLE YET */}
-        {/* <section className={classes["single-movie__additional"]}>
+        <section className={classes["single-movie__additional"]}>
           <div className="main-container">
             <GridTwoColumns sizing="3/4">
               <div>
-                <Photos
-                  photos={photos}
+                <SingleMoviePagePhotos
+                  photos={moviePhotos}
                   layoutClasses="mbot2-rem"
                   link={`/movie-gallery/${id}`}
+                  authorId={authorId}
                 />
-                <TopCast
+                <SingleMoviePageTopCast
                   layoutClasses="mbot1-rem"
                   id={id}
                   link={`/cast/${id}`}
+                  authorId={authorId}
                 />
+                {/*
                 <DetailsList
                   details={[
                     ...mappedMembersData,
@@ -133,19 +136,23 @@ const SingleMoviePage = () => {
                       body: "/cast/" + id,
                     },
                   ]}
-                />
-                <StoryLine
+                /> */}
+                {/* <StoryLine
                   genres={genres}
                   synopsis={synopsis}
                   layoutClasses="mbot1-rem"
                 />
                 <DidYouKnow facts={did_you_know} layoutClasses="mbot1-rem" />
-                <Details />
-                <BoxOffice boxOffice={box_office} layoutClasses="mbot1-rem" />
+                <Details />  */}
+                <SingleMoviePageBoxOffice
+                  authorId={authorId}
+                  boxOffice={movieBoxOffice}
+                  layoutClasses="mbot1-rem"
+                />
               </div>
             </GridTwoColumns>
           </div>
-        </section> */}
+        </section>
       </main>
     );
   }

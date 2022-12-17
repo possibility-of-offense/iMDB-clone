@@ -1,15 +1,18 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectTopCast } from "../../features/movies/singleMovieSlice";
-import SectionTitle from "./SectionTitle";
-import classes from "./styles/TopCast.module.css";
+import SectionTitle from "../General/SinglePage/SectionTitle";
 
-const TopCast = ({ layoutClasses, id, link }) => {
+import classes from "./styles/SingleMoviePageTopCast.module.css";
+
+const SingleMoviePageTopCast = ({ layoutClasses, id, link, authorId }) => {
   const topCast = useSelector(selectTopCast);
-  const topCastList = Object.entries(topCast).map(([id, val]) => ({
-    id,
-    ...val,
-  }));
+  // const topCastList = Object.entries(topCast).map(([id, val]) => ({
+  //   id,
+  //   ...val,
+  // }));
+
+  const layoutClassesConditional = topCast > 0 ? layoutClasses : "mbot2-rem";
 
   const navigate = useNavigate();
 
@@ -19,11 +22,16 @@ const TopCast = ({ layoutClasses, id, link }) => {
 
   return (
     <section className={classes["top-cast"]}>
-      <SectionTitle moreInfo={true} layoutClasses={layoutClasses} link={link}>
+      <SectionTitle
+        authorId={authorId}
+        moreInfo={true}
+        layoutClasses={layoutClassesConditional}
+        link={link}
+      >
         Top Cast
       </SectionTitle>
       <div className={classes["top-cast__grid"]}>
-        {topCastList?.length > 0 &&
+        {/* {topCastList?.length > 0 &&
           topCastList.map((actor) => (
             <div key={actor.id} onClick={handleNavigate.bind(null, actor.id)}>
               <div className={classes["top-cast__grid--image"]}>
@@ -34,10 +42,12 @@ const TopCast = ({ layoutClasses, id, link }) => {
                 <p>{actor.characterName}</p>
               </div>
             </div>
-          ))}
+          ))} */}
+
+        {topCast ? "" : <h3 className="pbot2-rem">No top cast info yet!</h3>}
       </div>
     </section>
   );
 };
 
-export default TopCast;
+export default SingleMoviePageTopCast;

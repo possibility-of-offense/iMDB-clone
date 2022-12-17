@@ -8,14 +8,3 @@
   background-color: rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
-
-.modal {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 3px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: initial;
-}

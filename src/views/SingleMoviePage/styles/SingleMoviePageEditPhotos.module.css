@@ -1,0 +1,103 @@
+.edit-form__wrapper {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 3px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: initial;
+  max-width: 90%;
+  margin: 0 auto;
+  overflow: scroll;
+}
+
+.edit-form__wrapper form {
+  display: grid;
+}
+
+.edit-form__wrapper form > p:first-of-type {
+  color: var(--red-1);
+}
+
+.edit-form__wrapper label {
+  font-size: 1.6rem;
+  display: block;
+}
+
+.edit-form__wrapper small {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.edit-form__wrapper textarea {
+  height: 200px;
+  border-radius: 6px;
+  border: 1px solid var(--light-gray-3);
+  box-shadow: 0 0 1px rgb(0 0 0 / 12%);
+}
+
+.edit-form__wrapper textarea:focus,
+.edit-form__wrapper textarea:active {
+  outline-color: var(--yellow-1);
+}
+
+@media (orientation: portrait) {
+  .edit-form__wrapper textarea {
+    min-width: 250px;
+  }
+}
+
+@media (orientation: landscape) {
+  .edit-form__wrapper textarea {
+    height: 150px;
+    min-width: 550px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  .edit-form__wrapper textarea {
+    height: 250px;
+    min-width: 550px;
+  }
+}
+
+.edit-form__wrapper form button {
+  display: inline-block;
+  margin-top: 10px;
+  cursor: pointer;
+  justify-self: end;
+  background-color: var(--yellow-1);
+  color: #333;
+  border: none;
+  padding: 3px 15px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1.2px 1.2px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-out;
+}
+
+.edit-form__wrapper form button:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.photos-list {
+  margin-bottom: 20px;
+}
+
+.photos-list p {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.photos-list p span:nth-of-type(2) {
+  cursor: pointer;
+}
+
+.photos-list p span:nth-of-type(2) img {
+  width: 30px;
+}

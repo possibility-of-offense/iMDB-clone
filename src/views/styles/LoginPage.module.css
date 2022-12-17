@@ -59,15 +59,15 @@
 }
 
 .invalid-input {
-  border-color: #ed4337 !important;
+  border-color: var(--red-1) !important;
 }
 
 .invalid-label {
-  color: #ed4337 !important;
+  color: var(--red-1) !important;
 }
 
 .invalid-msg {
-  color: #ed4337;
+  color: var(--red-1);
   margin: 0;
   font-size: 12px;
   font-weight: 500;
@@ -75,7 +75,7 @@
 }
 
 .login-page__form form > div label.invalid-label {
-  color: #ed4337;
+  color: var(--red-1);
   transform: translateY(-100%);
   top: calc(0% + 8px);
   z-index: 2;

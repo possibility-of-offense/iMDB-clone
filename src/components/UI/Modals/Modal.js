@@ -16,7 +16,7 @@ const Modal = ({ children, navigate }) => {
       onClick={handleClick}
       className={classes["modal__wrapper"]}
     >
-      <div className={classes.modal}>{children}</div>
+      {children}
     </section>,
     document.getElementById("modal")
   );

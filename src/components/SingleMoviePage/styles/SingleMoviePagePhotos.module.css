@@ -1,3 +1,7 @@
+.single-movie__photos img {
+  width: 200px;
+}
+
 .photos-slider-wrapper {
   position: relative;
   height: 185px;
@@ -74,5 +78,6 @@
 .photos-slider-inner img {
   display: block;
   height: 185px;
+  width: 200px;
   object-fit: cover;
 }

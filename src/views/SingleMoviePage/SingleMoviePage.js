@@ -85,6 +85,7 @@ const SingleMoviePage = () => {
 
   useEffect(() => {
     dispatch(fetchSingleMovie(id));
+    console.log(5);
   }, []);
 
   const status = selectSingleMovie.status;

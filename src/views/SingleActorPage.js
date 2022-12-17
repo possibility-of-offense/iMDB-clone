@@ -2,15 +2,14 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-// import Filmography from "../components/SingleActorPage/Filmography";
-// import KnownFor from "../components/SingleActorPage/KnownFor";
-// import DidYouKnow from "../components/SinglePageMovie/DidYouKnow";
-// import HeroBanner from "../components/SinglePageMovie/HeroBanner";
-// import Photos from "../components/SinglePageMovie/Photos";
-// import ShortDescription from "../components/SinglePageMovie/ShortDescription";
-// import Title from "../components/SinglePageMovie/Title";
 import SinglePageTitle from "../components/General/SinglePage/SinglePageTitle";
 import SinglePageHeroBanner from "../components/General/SinglePage/SinglePageHeroBanner";
+import SinglePageSubNav from "../components/General/SinglePage/SinglePageSubNav";
+import SingleMoviePhotos from "../components/SingleMoviePage/SingleMoviePagePhotos";
+import SinglePageShortDescription from "../components/General/SinglePage/SinglePageShortDescription";
+import SingleActorPageFilmography from "../components/SingleActorPage/SingleActorPageFilmography";
+import SingleActorPageKnownFor from "../components/SingleActorPage/SingleActorPageKnownFor";
+import SinglePageDidYouKnow from "../components/General/SinglePage/SinglePageDidYouKnow";
 
 import GridTwoColumns from "../components/UI/Layout/GridTwoColumns";
 import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
@@ -30,7 +29,6 @@ const SingleActorPage = () => {
 
       if (document.exists()) {
         setActorState(document.data());
-        console.log(document.data());
       }
     }
     fetching();
@@ -40,14 +38,14 @@ const SingleActorPage = () => {
     <main className={`${classes["actor"]} pbot2-rem`}>
       <section
         className="main-container__bg no-paddings"
-        style={{ display: "grid" }}
+        // style={{ display: "grid" }}
       >
-        <div className="main-container" style={{ display: "flex" }}>
+        <div className="main-container">
           <div
             className={classes[`container-actor__inner`]}
             style={{ backgroundImage: `url(${actorState.main_image})` }}
           >
-            <br />
+            <SinglePageSubNav />
             <SinglePageTitle
               titleInfo={{
                 title: actorState.name,
@@ -63,38 +61,38 @@ const SingleActorPage = () => {
               photosLink={`/actor-gallery/${id}`}
             />
             <GridTwoColumns sizing="3/4" layoutClasses="p1-rem">
-              {/* <ShortDescription shortInfo={actorState.short_bio} /> */}
+              <SinglePageShortDescription shortInfo={actorState.short_bio} />
             </GridTwoColumns>
           </div>
         </div>
       </section>
-      {/* <section className={`${classes["actor__additional"]} ptop2-rem`}>
+      <section className={`${classes["actor__additional"]} ptop2-rem`}>
         <div className="main-container">
           <GridTwoColumns sizing="3/4">
             <div>
-              <Photos
+              <SingleMoviePhotos
                 photos={actorState.photos}
                 layoutClasses="mbot1-rem"
                 link={`/actor-gallery/${id}`}
               />
-              <KnownFor
+              {/* <SingleActorPageKnownFor
                 knownFor={actorState.known_for}
                 layoutClasses="mbot2-rem"
-              />
+              /> */}
 
-              <Filmography
+              <SingleActorPageFilmography
                 films={actorState.filmography}
                 layoutClasses="mtop2-rem mbot2-rem"
               />
 
-              <DidYouKnow
+              <SinglePageDidYouKnow
                 facts={actorState.did_you_know}
                 layoutClasses="mbot1-rem"
               />
             </div>
           </GridTwoColumns>
         </div>
-      </section> */}
+      </section>
     </main>
   ) : (
     <GlobalLoader bgColor="#1F1F1F" />

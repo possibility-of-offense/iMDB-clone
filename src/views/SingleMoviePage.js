@@ -8,6 +8,7 @@ import SingleMoviePageStuffMetaData from "../components/SingleMoviePage/SingleMo
 import SingleMoviePagePhotos from "../components/SingleMoviePage/SingleMoviePagePhotos";
 import SingleMoviePageTopCast from "../components/SingleMoviePage/SingleMoviePageTopCast";
 import SingleMoviePageBoxOffice from "../components/SingleMoviePage/SingleMoviePageBoxOffice";
+import SingleMoviePageStoryLine from "../components/SingleMoviePage/SingleMoviePageStoryLine";
 
 import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
 import GridTwoColumns from "../components/UI/Layout/GridTwoColumns";
@@ -25,7 +26,6 @@ import classes from "./styles/SingleMoviePage.module.css";
 // import Details from "../components/SinglePageMovie/Details";
 // import DetailsList from "../components/General/DetailsList";
 // import DidYouKnow from "../components/SinglePageMovie/DidYouKnow";
-// import StoryLine from "../components/SinglePageMovie/StoryLine";
 
 const SingleMoviePage = () => {
   const dispatch = useDispatch();
@@ -137,12 +137,13 @@ const SingleMoviePage = () => {
                     },
                   ]}
                 /> */}
-                {/* <StoryLine
-                  genres={genres}
-                  synopsis={synopsis}
+                <SingleMoviePageStoryLine
+                  genres={movieGenres}
+                  synopsis={movieSynopsis}
                   layoutClasses="mbot1-rem"
+                  authorId={authorId}
                 />
-                <DidYouKnow facts={did_you_know} layoutClasses="mbot1-rem" />
+                {/* <DidYouKnow facts={did_you_know} layoutClasses="mbot1-rem" />
                 <Details />  */}
                 <SingleMoviePageBoxOffice
                   authorId={authorId}

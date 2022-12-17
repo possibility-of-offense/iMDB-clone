@@ -1,7 +1,8 @@
 import SectionTitle from "./SectionTitle";
-import classes from "./styles/DidYouKnow.module.css";
 
-const DidYouKnow = ({ facts, layoutClasses }) => {
+import classes from "./styles/SinglePageDidYouKnow.module.css";
+
+const SinglePageDidYouKnow = ({ facts, layoutClasses }) => {
   const listFacts = Object.entries(facts).map((el) => ({
     id: el[0],
     ...el[1],
@@ -26,4 +27,4 @@ const DidYouKnow = ({ facts, layoutClasses }) => {
   );
 };
 
-export default DidYouKnow;
+export default SinglePageDidYouKnow;

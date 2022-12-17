@@ -14,13 +14,16 @@
 
 @media (orientation: landscape) {
   .filmography__grid > div {
-    grid-template-columns: 45px auto;
+    grid-template-columns: 65px auto;
   }
 }
 
 .filmography__grid > div figure img {
-  max-width: 100%;
-  height: auto;
+  /* max-width: 100%;
+  height: auto; */
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
 }
 
 .filmography__grid > div > div {

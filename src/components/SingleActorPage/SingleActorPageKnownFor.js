@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
-import SectionTitle from "../SinglePageMovie/SectionTitle";
+import SectionTitle from "../General/SinglePage/SectionTitle";
 
-import classes from "./styles/KnownFor.module.css";
+import classes from "./styles/SingleActorPageKnownFor.module.css";
 
-const KnownFor = ({ knownFor, layoutClasses }) => {
-  const listknownFor = Object.entries(knownFor).map((el) => ({
-    id: el[0],
-    ...el[1],
-  }));
+const SingleActorPageKnownFor = ({ knownFor, layoutClasses }) => {
+  const listknownFor =
+    knownFor &&
+    Object.entries(knownFor).map((el) => ({
+      id: el[0],
+      ...el[1],
+    }));
 
   return (
     <section className={classes["known-for"]}>
@@ -37,4 +39,4 @@ const KnownFor = ({ knownFor, layoutClasses }) => {
   );
 };
 
-export default KnownFor;
+export default SingleActorPageKnownFor;

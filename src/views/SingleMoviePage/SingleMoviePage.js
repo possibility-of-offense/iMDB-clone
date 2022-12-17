@@ -1,23 +1,24 @@
 // Components
-import SinglePageSubNav from "../components/General/SinglePage/SinglePageSubNav";
-import SinglePageTitle from "../components/General/SinglePage/SinglePageTitle";
-import SinglePageHeroBanner from "../components/General/SinglePage/SinglePageHeroBanner";
-import SingleMoviePageGenres from "../components/SingleMoviePage/SingleMoviePageGenres";
-import SinglePageShortDescription from "../components/General/SinglePage/SinglePageShortDescription";
-import SingleMoviePageStuffMetaData from "../components/SingleMoviePage/SingleMoviePageStuffMetaData";
-import SingleMoviePagePhotos from "../components/SingleMoviePage/SingleMoviePagePhotos";
-import SingleMoviePageTopCast from "../components/SingleMoviePage/SingleMoviePageTopCast";
-import SingleMoviePageBoxOffice from "../components/SingleMoviePage/SingleMoviePageBoxOffice";
-import SingleMoviePageStoryLine from "../components/SingleMoviePage/SingleMoviePageStoryLine";
+import SingleMoviePageSubNav from "../../components/SingleMoviePage/SingleMoviePageSubNav";
 
-import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
-import GridTwoColumns from "../components/UI/Layout/GridTwoColumns";
+import SinglePageTitle from "../../components/General/SinglePage/SinglePageTitle";
+import SinglePageHeroBanner from "../../components/General/SinglePage/SinglePageHeroBanner";
+import SingleMoviePageGenres from "../../components/SingleMoviePage/SingleMoviePageGenres";
+import SinglePageShortDescription from "../../components/General/SinglePage/SinglePageShortDescription";
+import SingleMoviePageStuffMetaData from "../../components/SingleMoviePage/SingleMoviePageStuffMetaData";
+import SingleMoviePagePhotos from "../../components/SingleMoviePage/SingleMoviePagePhotos";
+import SingleMoviePageTopCast from "../../components/SingleMoviePage/SingleMoviePageTopCast";
+import SingleMoviePageBoxOffice from "../../components/SingleMoviePage/SingleMoviePageBoxOffice";
+import SingleMoviePageStoryLine from "../../components/SingleMoviePage/SingleMoviePageStoryLine";
+
+import GlobalLoader from "../../components/UI/Loaders/GlobalLoader";
+import GridTwoColumns from "../../components/UI/Layout/GridTwoColumns";
 
 // Hooks / Functions
 import { useEffect } from "react";
-import { fetchSingleMovie } from "../features/movies/singleMovieSlice";
+import { fetchSingleMovie } from "../../features/movies/singleMovieSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 
 // Classes
 import classes from "./styles/SingleMoviePage.module.css";
@@ -93,9 +94,10 @@ const SingleMoviePage = () => {
   } else if (status === "succeeded") {
     return (
       <main className={`${classes["single-movie"]} pbot2-rem`}>
+        <Outlet />
         <section className="main-container__bg">
           <div className="main-container">
-            <SinglePageSubNav />
+            <SingleMoviePageSubNav link={`/cast/${id}`} />
             <SinglePageTitle titleInfo={titleInfo} />
             <SinglePageHeroBanner
               images={[movieMainImage, movieVideoPlaceholderImage]}

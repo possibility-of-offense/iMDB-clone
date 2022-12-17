@@ -80,6 +80,7 @@ const SingleMoviePhotos = ({ photos, layoutClasses, link, authorId }) => {
         layoutClasses={layoutClasses}
         link={link}
         authorId={authorId}
+        editLink="edit-photos"
       >
         Photos
       </SectionTitle>

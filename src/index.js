@@ -16,7 +16,7 @@ import Root from "./views/Root";
 
 // Pages
 import HomePage from "./views/HomePage";
-import SingleMoviePage from "./views/SingleMoviePage";
+import SingleMoviePage from "./views/SingleMoviePage/SingleMoviePage";
 import AdminPage from "./views/AdminPage";
 import CreateMoviePage from "./views/CreateMoviePage";
 import GenresPage from "./views/GenresPage";
@@ -27,6 +27,7 @@ import SingleActorPage from "./views/SingleActorPage";
 import MovieGallery from "./views/MovieGallery";
 import Cast from "./views/Cast";
 import PersonGallery from "./views/PersonGallery";
+import SingleMoviePageEditPhotos from "./views/SingleMoviePage/SingleMoviePageEditPhotos";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -36,7 +37,12 @@ const router = createBrowserRouter(
     <Fragment>
       <Route path="/" element={<Root />}>
         <Route index element={<HomePage />}></Route>
-        <Route path="/movies/:id" element={<SingleMoviePage />}></Route>
+        <Route path="/movies/:id" element={<SingleMoviePage />}>
+          <Route
+            path="edit-photos"
+            element={<SingleMoviePageEditPhotos />}
+          ></Route>
+        </Route>
         <Route path="/actors/:id" element={<SingleActorPage />}></Route>
         <Route path="/genres/:id" element={<GenresPage />}></Route>
         <Route path="/movie-gallery/:id" element={<MovieGallery />}></Route>

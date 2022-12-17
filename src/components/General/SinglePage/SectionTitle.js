@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../../config/config";
 
 // Classes and images
 import classes from "./styles/SectionTitle.module.css";
 import edit from "./imgs/edit.png";
+import { useSelector } from "react-redux";
 
 const SectionTitle = ({
   children,
@@ -12,6 +13,7 @@ const SectionTitle = ({
   layoutClasses,
   link,
   authorId,
+  editLink,
 }) => {
   const navigate = useNavigate();
 
@@ -46,7 +48,9 @@ const SectionTitle = ({
       </div>
       {auth && authorId && auth.currentUser?.uid === authorId && (
         <div>
-          <img title="Edit" alt="Edit" src={edit} />
+          <Link to={editLink}>
+            <img title="Edit" alt="Edit" src={edit} />
+          </Link>
         </div>
       )}
     </div>

@@ -7,6 +7,16 @@ export function loginReducer(state, action) {
         hasError: false,
         errorMsg: "",
       };
+    case "VALIDATE_EMAIL":
+      return {
+        ...state,
+        invalidEmail: action.payload,
+      };
+    case "VALIDATE_PASSWORD":
+      return {
+        ...state,
+        invalidPassword: action.payload,
+      };
     case "FILL_PASSWORD":
       return {
         ...state,

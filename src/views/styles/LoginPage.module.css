@@ -20,6 +20,7 @@
 
 .login-page__form form > div {
   position: relative;
+  margin-bottom: 15px;
 }
 
 .login-page__form form > div label {
@@ -49,13 +50,39 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   padding: 8px;
   border-radius: 4px;
-  margin-bottom: 15px;
   cursor: pointer;
 }
 
 .login-page__form input:focus,
 .login-page__form input:active {
   outline-color: #c59b02;
+}
+
+.invalid-input {
+  border-color: #ed4337 !important;
+}
+
+.invalid-label {
+  color: #ed4337 !important;
+}
+
+.invalid-msg {
+  color: #ed4337;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.login-page__form form > div label.invalid-label__password {
+  color: #ed4337;
+  transform: translateY(-100%);
+  top: calc(0% + 8px);
+  z-index: 2;
+  background-color: #fff;
+  padding: 1px 4px;
+  padding-right: 10px;
+  font-size: 11px;
 }
 
 .login-page__form--submit {

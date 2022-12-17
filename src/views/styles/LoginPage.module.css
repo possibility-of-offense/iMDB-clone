@@ -74,7 +74,7 @@
   letter-spacing: 1px;
 }
 
-.login-page__form form > div label.invalid-label__password {
+.login-page__form form > div label.invalid-label {
   color: #ed4337;
   transform: translateY(-100%);
   top: calc(0% + 8px);

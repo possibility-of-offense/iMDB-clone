@@ -77,17 +77,7 @@ const LoginPage = () => {
   // Handle changing email input
   const handleChangeEmailInput = (e) => {
     loginDispatch({ type: "FILL_EMAIL", payload: e.target.value });
-
-    // Check if email has certain regex pattern
-    if (
-      loginValidator.validateInput(e.target.value, (inp) =>
-        /\w+\@\w+\.\w+/.test(e.target.value)
-      )
-    ) {
-      loginDispatch({ type: "VALIDATE_EMAIL", payload: false });
-    } else {
-      loginDispatch({ type: "VALIDATE_EMAIL", payload: true });
-    }
+    loginDispatch({ type: "VALIDATE_EMAIL", payload: false });
   };
 
   // Handle focus email input
@@ -99,6 +89,19 @@ const LoginPage = () => {
   const handleBlurEmailInput = (e) => {
     !loginState.email &&
       loginDispatch({ type: "EMAIL_INPUT_STATE", payload: false });
+
+    if (loginState.invalidEmail === null) return;
+
+    // Check if email has certain regex pattern
+    if (
+      loginValidator.validateInput(e.target.value, (inp) =>
+        /\w+\@\w+\.\w+/.test(e.target.value)
+      )
+    ) {
+      loginDispatch({ type: "VALIDATE_EMAIL", payload: false });
+    } else {
+      loginDispatch({ type: "VALIDATE_EMAIL", payload: true });
+    }
   };
 
   // Handle changing password input
@@ -183,9 +186,7 @@ const LoginPage = () => {
           >
             <label
               className={
-                loginState.invalidPassword
-                  ? classes["invalid-label__password"]
-                  : ""
+                loginState.invalidPassword ? classes["invalid-label"] : ""
               }
               htmlFor="password"
             >

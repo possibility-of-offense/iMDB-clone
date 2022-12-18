@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { navigatingSlider } from "../../helpers/helpers";
 import SectionTitle from "../General/SinglePage/SectionTitle";
 
-// import Slider from "react-slick";
+import { FaLink } from "react-icons/fa";
 
 import classes from "./styles/SingleMoviePagePhotos.module.css";
 
@@ -137,7 +138,10 @@ const SingleMoviePhotos = ({ photos, layoutClasses, link, authorId }) => {
             {images?.length > 0 &&
               images.slice(0, 10).map((img, i) => (
                 <div key={i}>
-                  <img src={img} />
+                  <Link to="/some-photo-route">
+                    <img src={img} />
+                    <FaLink color="#333" size="2em" />
+                  </Link>
                 </div>
               ))}
           </div>

@@ -11,3 +11,9 @@
     text-align: initial;
   }
 }
+
+@media (min-width: 1024px) {
+  .short-description {
+    padding-left: 0;
+  }
+}

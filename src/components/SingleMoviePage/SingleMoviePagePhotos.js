@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { navigatingSlider } from "../../helpers/helpers";
 import SectionTitle from "../General/SinglePage/SectionTitle";
 
-import Slider from "react-slick";
+// import Slider from "react-slick";
 
 import classes from "./styles/SingleMoviePagePhotos.module.css";
 
@@ -135,7 +135,7 @@ const SingleMoviePhotos = ({ photos, layoutClasses, link, authorId }) => {
           }
           <div className={classes["photos-slider-inner"]} ref={sliderInnerRef}>
             {images?.length > 0 &&
-              images.slice(0, 3).map((img, i) => (
+              images.slice(0, 10).map((img, i) => (
                 <div key={i}>
                   <img src={img} />
                 </div>

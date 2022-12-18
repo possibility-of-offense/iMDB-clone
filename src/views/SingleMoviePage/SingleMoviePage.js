@@ -158,7 +158,11 @@ const SingleMoviePage = () => {
                   boxOffice={movieBoxOffice}
                   layoutClasses="mbot1-rem"
                 />
-                {location.pathname.includes("/edit-box-office") && <Outlet />}
+                {location.pathname.includes("/edit-box-office") && (
+                  <div className="overflow-hidden">
+                    <Outlet />
+                  </div>
+                )}
 
                 {!location.pathname.includes("/edit-storyline") &&
                   !location.pathname.includes("/edit-box-office") && <Outlet />}

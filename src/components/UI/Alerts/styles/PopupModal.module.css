@@ -17,6 +17,15 @@
   z-index: 9999;
 }
 
+.msgbox-box.white-bg {
+  background-color: #fff;
+  color: #333;
+}
+
+.msgbox-box.white-bg .msgbox-close {
+  color: #333;
+}
+
 @keyframes showMessage {
   from {
     opacity: 0;

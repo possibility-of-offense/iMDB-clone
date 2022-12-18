@@ -1,0 +1,7 @@
+.photos {
+  max-width: 900px;
+  margin: 2rem auto;
+  background-color: #000;
+  color: #fff;
+  padding: 12px;
+}

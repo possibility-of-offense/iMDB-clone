@@ -41,13 +41,16 @@ const SingleMoviePageEditPhotos = () => {
     }
 
     try {
-      const newMoviePhotos = photos
+      let newMoviePhotos = photos
         .concat(photosState.split("\n"))
         .filter((el) => el !== "");
+
+      if (newMoviePhotos.length > 10) return;
 
       await updateDoc(doc(db, "movies", id), {
         moviePhotos: newMoviePhotos,
       });
+
       dispatch(fetchSingleMovie(id));
 
       navigate("/movies/" + id);

@@ -13,11 +13,23 @@ const MovieGallery = () => {
     if (movieGalleryState.length === 0) {
       const fetching = async () => {
         try {
-          const docs = await getDocs(
-            collection(db, "movies", id, "movie_gallery")
-          );
-          if (docs.docs.length > 0) {
-            const mapped = docs.docs.map((el) => ({ id: el.id, ...el.data() }));
+          const [movieGallery, movieGalleryDocs] = await Promise.all([
+            getDoc(doc(db, "movies", id)),
+            getDocs(collection(db, "movies", id, "movie_gallery")),
+          ]);
+
+          if (movieGallery.exists()) {
+            let mapped = [...movieGallery.data().moviePhotos];
+
+            if (movieGalleryDocs.docs.length > 0) {
+              console.log(movieGalleryDocs.docs.length);
+              mapped = mapped.concat(
+                movieGalleryDocs.docs
+                  .map((el) => ({ id: el.id, ...el.data() }))
+                  .map((el) => el.url)
+              );
+            }
+
             setMovieGalleryState(mapped);
           }
         } catch (error) {

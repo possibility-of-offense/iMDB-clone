@@ -93,7 +93,7 @@ const SingleMoviePhotos = ({ photos, layoutClasses, link, authorId }) => {
         authorId={authorId}
         editLink="edit-photos"
       >
-        Photos
+        All Photos
       </SectionTitle>
       {images?.length > 0 ? (
         <section

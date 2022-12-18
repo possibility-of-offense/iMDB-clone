@@ -8,6 +8,20 @@
   /* overflow: hidden; */
   margin-bottom: 2rem;
   display: flex;
+  border-radius: 6px;
+  border: 1px solid var(--light-gray-3);
+  box-shadow: 0 0 1px rgb(0 0 0 / 12%);
+  padding: 10px;
+  padding-top: 25px;
+}
+
+.photos-slider-wrapper > *:first-child {
+  position: absolute;
+  top: 0;
+  transform: translateY(-57%);
+  background-color: #fff;
+  z-index: 1;
+  padding: 0 7px;
 }
 
 .photos-slider-wrapper:hover .buttons button.disabled {

@@ -18,37 +18,38 @@ const HomePage = () => {
     <div className={classes["home-page"]}>
       <h1>Welcome to my iMDB clone</h1>
 
-      <div className={classes["home-page__container"]}>
-        {mappedData.length > 0 ? (
-          mappedData.map((el) => (
-            <div key={el.id}>
-              <div>
-                <figure>
-                  <img
-                    alt={el.movieTitle}
-                    title={el.movieTitle}
-                    src={el.movieMainImage}
-                  />
-                </figure>
-              </div>
-              <main>
-                <header>
-                  <h4>{el.movieTitle}</h4>
-                </header>
+      {mappedData.length > 0 ? (
+        <div className={classes["home-page__container"]}>
+          {mappedData.length > 0 &&
+            mappedData.map((el) => (
+              <div key={el.id}>
                 <div>
-                  <Link to={`/movies/${el.id}`}>{el.movieTitle}</Link>
+                  <figure>
+                    <img
+                      alt={el.movieTitle}
+                      title={el.movieTitle}
+                      src={el.movieMainImage}
+                    />
+                  </figure>
                 </div>
-              </main>
-            </div>
-          ))
-        ) : (
-          <div className={classes["home-page--skeletons"]}>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        )}
-      </div>
+                <main>
+                  <header>
+                    <h4>{el.movieTitle}</h4>
+                  </header>
+                  <div>
+                    <Link to={`/movies/${el.id}`}>{el.movieTitle}</Link>
+                  </div>
+                </main>
+              </div>
+            ))}
+        </div>
+      ) : (
+        <div className={classes["home-page--skeletons"]}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      )}
     </div>
   );
 };

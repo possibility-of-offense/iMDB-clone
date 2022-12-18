@@ -4,11 +4,6 @@
   padding-top: 2.3rem;
 }
 
-.home-page__container {
-  max-width: 850px;
-  margin: 0 auto;
-}
-
 .home-page h1 {
   font-weight: normal;
   font-size: 2.4rem;
@@ -16,40 +11,43 @@
   color: #fff;
 }
 
-.home-page > div:first-of-type {
+.home-page__container {
+  max-width: 850px;
+  margin: 0 auto;
   margin-top: 3rem;
   display: grid;
   grid-gap: 1.5rem;
+  padding: 0 15px;
 }
 
 @media (orientation: landscape) {
-  .home-page > div:first-of-type {
+  .home-page__container {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.home-page > div:first-of-type > div {
+.home-page__container > div {
   background-color: #fff;
   border-radius: 4px;
   overflow: hidden;
 }
 
-.home-page > div:first-of-type > div main {
+.home-page__container > div main {
   padding: 10px;
 }
 
-.home-page > div:first-of-type > div main header h4 {
+.home-page__container > div main header h4 {
   text-align: center;
   font-size: 22px;
   font-weight: normal;
 }
 
-.home-page > div:first-of-type > div figure {
+.home-page__container > div figure {
   position: relative;
   padding-top: 110%;
 }
 
-.home-page > div:first-of-type > div figure img {
+.home-page__container > div figure img {
   position: absolute;
   top: 0;
   left: 0;
@@ -58,13 +56,13 @@
   object-fit: cover;
 }
 
-.home-page > div:first-of-type > div main > div {
+.home-page__container > div main > div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.home-page > div:first-of-type > div main a {
+.home-page__container > div main a {
   text-decoration: none;
   display: inline-block;
   margin-top: 15px;
@@ -76,12 +74,31 @@
 }
 
 .home-page--skeletons {
+  max-width: 850px;
+  margin: 0 auto;
+  margin-top: 3rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+  padding: 0 15px;
+}
+
+@media (orientation: landscape) {
+  .home-page--skeletons {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .home-page--skeletons > div {
-  background-color: red;
-  width: 30%;
-  height: 200px;
+  background: #eee;
+  background: linear-gradient(90deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background-size: 200% 100%;
+  -webkit-animation: 1.5s shine linear infinite;
+  animation: 1.5s shine linear infinite;
+  padding-top: 140%;
+  border-radius: 4px;
+}
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
 }

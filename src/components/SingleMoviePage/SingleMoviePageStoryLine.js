@@ -1,4 +1,4 @@
-// import DetailsList from "../General/DetailsList";
+import DetailsList from "../General/DetailsList";
 import SectionTitle from "../General/SinglePage/SectionTitle";
 import classes from "./styles/SingleMoviePageStoryLine.module.css";
 
@@ -16,23 +16,28 @@ const SingleMoviePageStoryLine = ({
         moreInfo={false}
         layoutClasses={layoutClassesConditional}
         authorId={authorId}
+        editLink="edit-storyline"
       >
         Storyline
       </SectionTitle>
-      {synopsis && <p>{synopsis}</p>}
-      {/* <DetailsList
+
+      {synopsis?.storyline ? (
+        <p>{synopsis.storyline}</p>
+      ) : (
+        <h3 className="pbot1-rem">No storyline info yet!</h3>
+      )}
+      <DetailsList
         details={[
           {
             description: "taglines",
-            body: ["At the end of the world his real journey began."],
+            body: synopsis.taglines,
           },
           {
             description: "genres",
             body: genres ? genres : [],
           },
         ]}
-      /> */}
-      {synopsis ? "" : <h3 className="pbot2-rem">No synopsis info yet!</h3>}
+      />
     </section>
   );
 };

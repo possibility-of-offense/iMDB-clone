@@ -18,7 +18,7 @@ import GridTwoColumns from "../../components/UI/Layout/GridTwoColumns";
 import { useEffect } from "react";
 import { fetchSingleMovie } from "../../features/movies/singleMovieSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 
 // Classes
 import classes from "./styles/SingleMoviePage.module.css";
@@ -30,6 +30,7 @@ import classes from "./styles/SingleMoviePage.module.css";
 
 const SingleMoviePage = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   // Get params id
   const { id } = useParams();
@@ -85,7 +86,6 @@ const SingleMoviePage = () => {
 
   useEffect(() => {
     dispatch(fetchSingleMovie(id));
-    console.log(5);
   }, []);
 
   const status = selectSingleMovie.status;
@@ -95,7 +95,6 @@ const SingleMoviePage = () => {
   } else if (status === "succeeded") {
     return (
       <main className={`${classes["single-movie"]} pbot2-rem`}>
-        <Outlet />
         <section className="main-container__bg">
           <div className="main-container">
             <SingleMoviePageSubNav link={`/cast/${id}`} />
@@ -146,6 +145,11 @@ const SingleMoviePage = () => {
                   layoutClasses="mbot1-rem"
                   authorId={authorId}
                 />
+                {location.pathname.includes("/edit-storyline") && (
+                  <div className="overflow-hidden">
+                    <Outlet />
+                  </div>
+                )}
                 {/* <DidYouKnow facts={did_you_know} layoutClasses="mbot1-rem" />
                 <Details />  */}
                 <SingleMoviePageBoxOffice
@@ -153,6 +157,7 @@ const SingleMoviePage = () => {
                   boxOffice={movieBoxOffice}
                   layoutClasses="mbot1-rem"
                 />
+                {!location.pathname.includes("/edit-storyline") && <Outlet />}
               </div>
             </GridTwoColumns>
           </div>

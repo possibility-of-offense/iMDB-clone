@@ -129,8 +129,6 @@ const LoginPage = () => {
     !loginState.password &&
       loginDispatch({ type: "PASSWORD_INPUT_STATE", payload: false });
 
-    console.log(e.target.value);
-
     if (e.target.value) {
       loginDispatch({ type: "VALIDATE_PASSWORD", payload: false });
     } else {

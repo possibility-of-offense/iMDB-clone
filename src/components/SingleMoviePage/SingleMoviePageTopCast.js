@@ -12,8 +12,6 @@ const SingleMoviePageTopCast = ({ layoutClasses, id, link, authorId }) => {
     ...val,
   }));
 
-  console.log(topCastList);
-
   const layoutClassesConditional = topCast > 0 ? layoutClasses : "mbot2-rem";
 
   const navigate = useNavigate();

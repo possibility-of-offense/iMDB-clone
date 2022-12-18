@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useFetchData = (urlCallback) => {
+const useFetchData = (urlCallback, singleDoc = false) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -8,7 +8,11 @@ const useFetchData = (urlCallback) => {
       try {
         const data = await urlCallback();
 
-        setData(data);
+        if (singleDoc) {
+          setData(data.data());
+        } else {
+          setData(data);
+        }
       } catch (error) {
         console.log(error);
       }

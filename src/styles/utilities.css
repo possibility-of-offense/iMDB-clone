@@ -64,3 +64,13 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+/* Text formatting */
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
+/* Overflow */
+.overflow-hidden {
+  overflow: hidden;
+}

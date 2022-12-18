@@ -126,6 +126,9 @@ const SingleMoviePageEditCast = () => {
   const handleAddCast = async (e) => {
     e.preventDefault();
 
+    if (inputs.length === 0)
+      return alert("No actors available for this movie!");
+
     try {
       const objs = {};
 

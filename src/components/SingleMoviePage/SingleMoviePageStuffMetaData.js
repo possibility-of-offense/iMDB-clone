@@ -11,8 +11,6 @@ const SingleMoviePageStuffMetaData = ({ stuff }) => {
       }))
       .filter((actor) => actor.isStar);
 
-    console.log(actors);
-
     return (
       <section className={classes["members"]}>
         <div className={classes["members-single"]}>

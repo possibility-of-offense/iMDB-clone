@@ -21,14 +21,14 @@ import AdminPage from "./views/AdminPage";
 import CreateMoviePage from "./views/CreateMoviePage";
 import GenresPage from "./views/GenresPage";
 import LoginPage from "./views/LoginPage";
-
 import SingleActorPage from "./views/SingleActorPage";
+import SingleMoviePageEditPhotos from "./views/SingleMoviePage/SingleMoviePageEditPhotos";
+import SingleMoviePageEditCast from "./views/SingleMoviePage/SingleMoviePageEditCast";
+import SingleMoviePageEditStoryline from "./views/SingleMoviePage/SingleMoviePageEditStoryline";
 
 import MovieGallery from "./views/MovieGallery";
 import Cast from "./views/Cast";
 import PersonGallery from "./views/PersonGallery";
-import SingleMoviePageEditPhotos from "./views/SingleMoviePage/SingleMoviePageEditPhotos";
-import SingleMoviePageEditCast from "./views/SingleMoviePage/SingleMoviePageEditCast";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -42,6 +42,10 @@ const router = createBrowserRouter(
           <Route
             path="edit-photos"
             element={<SingleMoviePageEditPhotos />}
+          ></Route>
+          <Route
+            path="edit-storyline"
+            element={<SingleMoviePageEditStoryline />}
           ></Route>
         </Route>
         <Route

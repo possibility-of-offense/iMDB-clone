@@ -173,15 +173,19 @@ const CreateMoviePage = () => {
               star.movieCharacterName === movieCharacterName
           )
         ) {
-          return {
-            ...prev,
-            actors: prev.actors.concat({
-              actorId: id,
-              actorName,
-              movieCharacterName,
-              isStar: isActorStar === "star" || false,
-            }),
-          };
+          getDoc(doc(db, "actors", id)).then((res) => {
+            prev = {
+              ...prev,
+              actors: prev.actors.concat({
+                actorId: id,
+                actorName,
+                movieCharacterName,
+                actorMainImage: res.data().main_image,
+                isStar: isActorStar === "star" || false,
+              }),
+            };
+          });
+          return prev;
         } else {
           return prev;
         }

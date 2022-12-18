@@ -9,13 +9,14 @@ const DetailsList = ({ details }) => {
       ...el,
       description: el.description[0].toUpperCase() + el.description.slice(1),
     }));
-
   const navigate = useNavigate();
   const handleNavigate = (body) => {
     if (body[0] === "/") {
       navigate(body);
     }
   };
+
+  console.log(getDescriptionAndBody);
 
   return (
     <section className={classes["details-list"]}>
@@ -42,6 +43,7 @@ const DetailsList = ({ details }) => {
                     </Fragment>
                   </p>
                 ))}
+              {el.description === "Taglines" && el.body && <p>{el.body}</p>}
             </div>
           </div>
         ))}

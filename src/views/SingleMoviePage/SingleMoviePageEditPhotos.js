@@ -93,18 +93,30 @@ const SingleMoviePageEditPhotos = () => {
         )}
         <form onSubmit={handleAddPhotos}>
           {showError && <p>The input is empty! Fill it before sending it!</p>}
-          <label htmlFor="add-photos">Add photos</label>
-          <small>
-            Add different image URL's on different lines to add multiple
-            photos/images!
-          </small>
+          <div>
+            <div>
+              <label htmlFor="add-photos">Add photos</label>
+              <small>
+                Add different image URL's on different lines to add multiple
+                photos/images!
+              </small>
+            </div>
+            <button>Go back</button>
+          </div>
           <textarea
             value={photosState}
             onChange={handleTextareaChange}
             id="add-photos"
             type="text"
           ></textarea>
-          <button type="submit">Add photos</button>
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+            type="submit"
+          >
+            Add photos
+          </button>
         </form>
       </section>
     </Modal>

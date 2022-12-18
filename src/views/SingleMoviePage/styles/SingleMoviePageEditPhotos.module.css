@@ -20,6 +20,19 @@
   color: var(--red-1);
 }
 
+.edit-form__wrapper form > div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@media (orientation: landscape) {
+  .edit-form__wrapper form > div:first-of-type {
+    flex-direction: row;
+  }
+}
+
 .edit-form__wrapper label {
   font-size: 1.6rem;
   display: block;

@@ -4,7 +4,14 @@ import classes from "./styles/SingleMoviePageStuffMetaData.module.css";
 const SingleMoviePageStuffMetaData = ({ stuff }) => {
   if (Object.values(stuff).length === 3) {
     const { actors, directors, writers } = stuff;
-    const getActorStars = actors.filter((actor) => actor.isStar);
+    const getActorStars = Object.entries(actors)
+      .map(([id, val]) => ({
+        id,
+        ...val,
+      }))
+      .filter((actor) => actor.isStar);
+
+    console.log(actors);
 
     return (
       <section className={classes["members"]}>

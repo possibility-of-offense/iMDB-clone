@@ -7,12 +7,12 @@ import classes from "./styles/SingleMoviePageTopCast.module.css";
 
 const SingleMoviePageTopCast = ({ layoutClasses, id, link, authorId }) => {
   const topCast = useSelector(selectTopCast);
-  // const topCastList = Object.entries(topCast).map(([id, val]) => ({
-  //   id,
-  //   ...val,
-  // }));
+  const topCastList = Object.entries(topCast).map(([id, val]) => ({
+    id,
+    ...val,
+  }));
 
-  console.log(topCast);
+  console.log(topCastList);
 
   const layoutClassesConditional = topCast > 0 ? layoutClasses : "mbot2-rem";
 
@@ -29,22 +29,30 @@ const SingleMoviePageTopCast = ({ layoutClasses, id, link, authorId }) => {
         moreInfo={true}
         layoutClasses={layoutClassesConditional}
         link={link}
+        editLink="edit-cast"
       >
         Top Cast
       </SectionTitle>
       <div className={classes["top-cast__grid"]}>
-        {/* {topCastList?.length > 0 &&
+        {topCastList?.length > 0 &&
           topCastList.map((actor) => (
-            <div key={actor.id} onClick={handleNavigate.bind(null, actor.id)}>
+            <div
+              key={actor.actorId}
+              onClick={handleNavigate.bind(null, actor.actorId)}
+            >
               <div className={classes["top-cast__grid--image"]}>
-                <img src={actor.image} title={actor.name} alt={actor.name} />
+                <img
+                  src={actor.actorMainImage}
+                  title={actor.actorName}
+                  alt={actor.actorName}
+                />
               </div>
               <div>
-                <h4>{actor.name}</h4>
+                <h4>{actor.actorName}</h4>
                 <p>{actor.characterName}</p>
               </div>
             </div>
-          ))} */}
+          ))}
 
         {topCast ? "" : <h3 className="pbot2-rem">No top cast info yet!</h3>}
       </div>

@@ -28,6 +28,7 @@ import MovieGallery from "./views/MovieGallery";
 import Cast from "./views/Cast";
 import PersonGallery from "./views/PersonGallery";
 import SingleMoviePageEditPhotos from "./views/SingleMoviePage/SingleMoviePageEditPhotos";
+import SingleMoviePageEditCast from "./views/SingleMoviePage/SingleMoviePageEditCast";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -43,6 +44,10 @@ const router = createBrowserRouter(
             element={<SingleMoviePageEditPhotos />}
           ></Route>
         </Route>
+        <Route
+          path="/movies/:id/edit-cast"
+          element={<SingleMoviePageEditCast />}
+        ></Route>
         <Route path="/actors/:id" element={<SingleActorPage />}></Route>
         <Route path="/genres/:id" element={<GenresPage />}></Route>
         <Route path="/movie-gallery/:id" element={<MovieGallery />}></Route>

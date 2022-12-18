@@ -16,8 +16,6 @@ const DetailsList = ({ details }) => {
     }
   };
 
-  console.log(getDescriptionAndBody);
-
   return (
     <section className={classes["details-list"]}>
       {getDescriptionAndBody.length > 0 &&

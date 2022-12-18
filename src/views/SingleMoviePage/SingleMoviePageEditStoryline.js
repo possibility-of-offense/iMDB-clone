@@ -49,7 +49,7 @@ const SingleMoviePageEditStoryline = () => {
   return pendingState === "finish" ? (
     <section className={classes["edit-storyline"]}>
       <h3>
-        <span>Edit Form</span>
+        <span>Edit Synopsis</span>
         <span>
           <FaWindowClose
             onClick={() => navigate(`/movies/${id}`)}

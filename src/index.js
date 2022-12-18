@@ -29,6 +29,7 @@ import SingleMoviePageEditStoryline from "./views/SingleMoviePage/SingleMoviePag
 import MovieGallery from "./views/MovieGallery";
 import Cast from "./views/Cast";
 import PersonGallery from "./views/PersonGallery";
+import SingleMoviePageEditBoxOffice from "./views/SingleMoviePage/SingleMoviePageEditBoxOffice";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -46,6 +47,10 @@ const router = createBrowserRouter(
           <Route
             path="edit-storyline"
             element={<SingleMoviePageEditStoryline />}
+          ></Route>
+          <Route
+            path="edit-box-office"
+            element={<SingleMoviePageEditBoxOffice />}
           ></Route>
         </Route>
         <Route

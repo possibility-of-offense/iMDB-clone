@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { collection, doc, getDocs, where, getDoc } from "firebase/firestore";
 import { db } from "../config/config";
 import { useParams } from "react-router-dom";
-import PhotosGallery from "../components/General/PhotosGallery";
+import PhotosGallery from "../components/General/Diverse/PhotosGallery";
 
 const MovieGallery = () => {
   const { id } = useParams();

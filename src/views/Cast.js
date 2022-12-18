@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { collection, doc, getDocs, where, getDoc } from "firebase/firestore";
 import { db } from "../config/config";
-import HeaderImageInfo from "../components/General/HeaderImageInfo";
+import HeaderImageInfo from "../components/General/Diverse/HeaderImageInfo";
 import classes from "./styles/Cast.module.css";
 
 const Cast = () => {

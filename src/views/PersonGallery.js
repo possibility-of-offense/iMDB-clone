@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import PhotosGallery from "../components/General/PhotosGallery";
+import PhotosGallery from "../components/General/Diverse/PhotosGallery";
 import { collection, doc, getDocs, where, getDoc } from "firebase/firestore";
 import { db } from "../config/config";
 import { useEffect, useState } from "react";

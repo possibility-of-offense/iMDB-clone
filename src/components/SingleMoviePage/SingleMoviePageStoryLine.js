@@ -1,4 +1,4 @@
-import DetailsList from "../General/DetailsList";
+import DetailsList from "../General/SinglePage/DetailsList";
 import SectionTitle from "../General/SinglePage/SectionTitle";
 import classes from "./styles/SingleMoviePageStoryLine.module.css";
 

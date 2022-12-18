@@ -11,6 +11,7 @@ const SingleMoviePageBoxOffice = ({ boxOffice, layoutClasses, authorId }) => {
         authorId={authorId}
         moreInfo={false}
         layoutClasses={layoutClassesConditional}
+        editLink="edit-box-office"
       >
         Box office
       </SectionTitle>
@@ -24,10 +25,10 @@ const SingleMoviePageBoxOffice = ({ boxOffice, layoutClasses, authorId }) => {
         {Object.values(boxOffice).length > 0 ? (
           <div>
             <h4>Expected Profit</h4>
-            <p>{boxOffice.expected_profit}</p>
+            <p>{boxOffice.expectedProfit}</p>
           </div>
         ) : (
-          <h3 className="pbot2-rem">No box office info yet!</h3>
+          <h3 className="pbot1-rem">No box office info yet!</h3>
         )}
       </div>
     </section>

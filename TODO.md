@@ -1,2 +1,3 @@
 - add <Alert /> component to the CreateMoviePage to handle some errors
 - add state slices for the other Pages
+- add validation for the forms it there are none

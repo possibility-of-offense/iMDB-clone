@@ -22,7 +22,11 @@ const DetailsList = ({ details }) => {
         getDescriptionAndBody.map((el, i) => (
           <div key={i} className={classes["details-list__item"]}>
             <p
-              className={el.body[0] === "/" ? "cursor-pointer" : ""}
+              className={
+                Array.isArray(el.body) && el.body[0] === "/"
+                  ? "cursor-pointer"
+                  : ""
+              }
               onClick={() => handleNavigate(el.body)}
             >
               {el.description}
@@ -41,7 +45,14 @@ const DetailsList = ({ details }) => {
                     </Fragment>
                   </p>
                 ))}
-              {el.description === "Taglines" && el.body && <p>{el.body}</p>}
+              {el.description === "Taglines" && el.body ? (
+                <p>{el.body}</p>
+              ) : (
+                el.description === "Taglines" &&
+                !el.body && (
+                  <p className="text-decoration-underline">No taglines yet!</p>
+                )
+              )}
             </div>
           </div>
         ))}

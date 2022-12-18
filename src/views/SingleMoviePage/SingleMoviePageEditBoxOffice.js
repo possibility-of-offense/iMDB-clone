@@ -40,6 +40,9 @@ const SingleMoviePageEditBoxOffice = () => {
     e.preventDefault();
 
     try {
+      if (Object.values(boxOffice).some((el) => typeof el !== "number"))
+        return alert("Not a number");
+
       await updateDoc(doc(db, "movies", id), {
         movieBoxOffice: boxOffice,
       });
@@ -66,6 +69,7 @@ const SingleMoviePageEditBoxOffice = () => {
         <div>
           <label htmlFor="edit-storyline">Edit/add budget</label>
           <input
+            type="number"
             value={boxOffice.budget}
             onChange={(e) => {
               setBoxOffice((prev) => {
@@ -83,6 +87,7 @@ const SingleMoviePageEditBoxOffice = () => {
         <div>
           <label htmlFor="edit-taglines">Edit/add expected profit</label>
           <input
+            type="number"
             value={boxOffice.expectedProfit}
             onChange={(e) => {
               setBoxOffice((prev) => {
@@ -92,7 +97,6 @@ const SingleMoviePageEditBoxOffice = () => {
                 };
               });
             }}
-            type="text"
             placeholder="Add Expected Profit"
           />
         </div>

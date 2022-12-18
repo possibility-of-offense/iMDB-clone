@@ -1,4 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../config/config";
 import useFetchData from "../hooks/useFetchData";
@@ -18,7 +19,7 @@ const HomePage = () => {
       <h1>Welcome to my iMDB clone</h1>
 
       <div className={classes["home-page__container"]}>
-        {mappedData.length > 0 &&
+        {mappedData.length > 0 ? (
           mappedData.map((el) => (
             <div key={el.id}>
               <div>
@@ -39,7 +40,14 @@ const HomePage = () => {
                 </div>
               </main>
             </div>
-          ))}
+          ))
+        ) : (
+          <div className={classes["home-page--skeletons"]}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        )}
       </div>
     </div>
   );

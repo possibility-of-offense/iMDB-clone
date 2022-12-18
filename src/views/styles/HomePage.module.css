@@ -74,3 +74,14 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   justify-self: center;
 }
+
+.home-page--skeletons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.home-page--skeletons > div {
+  background-color: red;
+  width: 30%;
+  height: 200px;
+}

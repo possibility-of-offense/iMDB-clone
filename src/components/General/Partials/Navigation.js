@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../../../config/config";
 import { signOut } from "firebase/auth";
 
@@ -9,6 +9,7 @@ import classes from "./styles/Navigation.module.css";
 
 const Navigation = ({ alertSignetOut }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -22,7 +23,11 @@ const Navigation = ({ alertSignetOut }) => {
   };
 
   return (
-    <nav className={classes.nav}>
+    <nav
+      className={`${classes.nav} ${
+        location.pathname === "/" && classes["nav-inverse"]
+      }`}
+    >
       <ul>
         <li>
           <NavLink

@@ -23,3 +23,7 @@
   color: #fff;
   text-decoration: none;
 }
+
+.nav-inverse {
+  background-color: #121212;
+}

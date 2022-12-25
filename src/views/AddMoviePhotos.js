@@ -44,7 +44,6 @@ const AddMoviePhotos = () => {
 
   useEffect(() => {
     setAuthorChecking("pending");
-    console.log(authorChecking);
 
     getDoc(doc(db, "movies", id))
       .then((data) => {
@@ -91,7 +90,6 @@ const AddMoviePhotos = () => {
       }
 
       for (let photo of concatanated) {
-        console.log(photo);
         if (photo) {
           await addDoc(collection(db, "movies", id, "movie_gallery"), {
             url: photo.hasOwnProperty("url") ? photo.url : photo,

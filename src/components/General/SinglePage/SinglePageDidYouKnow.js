@@ -23,7 +23,7 @@ const SinglePageDidYouKnow = ({ facts, layoutClasses }) => {
           ))}
         </div>
       ) : (
-        <h3 class="pbot2-rem">No info yet!</h3>
+        <h3 className="pbot2-rem">No info yet!</h3>
       )}
     </section>
   );

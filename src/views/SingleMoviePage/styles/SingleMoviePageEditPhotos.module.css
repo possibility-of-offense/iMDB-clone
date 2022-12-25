@@ -99,6 +99,16 @@
   margin-bottom: 20px;
 }
 
+.photos-list p > img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.photos-list span img {
+  width: 30px;
+}
+
 .photos-list p {
   font-size: 13px;
   display: flex;

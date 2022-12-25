@@ -33,11 +33,13 @@ import GenresPage from "./views/Archives/GenresPage";
 import MovieGalleryRoot from "./views/Archives/MovieGalleryRoot";
 import MovieGallery from "./views/Archives/MovieGallery";
 
+// Image
+import MovieImage from "./views/Image/MovieImage";
+
 import Cast from "./views/Cast";
 import PersonGallery from "./views/PersonGallery";
 import SingleMoviePageEditBoxOffice from "./views/SingleMoviePage/SingleMoviePageEditBoxOffice";
 import AddMoviePhotos from "./views/AddMoviePhotos";
-import MovieImage from "./views/MovieImage";
 import AddActorPage from "./views/UserPages/AddActorPage";
 
 const container = document.getElementById("root");
@@ -67,7 +69,7 @@ const router = createBrowserRouter(
           element={<SingleMoviePageEditCast />}
         ></Route>
         <Route
-          path="/movies/:movieId/image/:imageEId"
+          path="/movies/:movieId/image/:imageId"
           element={<MovieImage />}
         ></Route>
         <Route path="/actors/:id" element={<SingleActorPage />}></Route>

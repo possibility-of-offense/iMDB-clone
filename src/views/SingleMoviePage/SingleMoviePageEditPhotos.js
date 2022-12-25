@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
 import { auth, db } from "../../config/config";
 
 import Modal from "../../components/UI/Modals/Modal";
@@ -13,6 +20,9 @@ import { fetchSingleMovie } from "../../features/movies/singleMovieSlice";
 const SingleMoviePageEditPhotos = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // Get movie Info
+  const singleMovie = useSelector((state) => state.singleMovie);
 
   const { authorId, moviePhotos } = useSelector(
     (state) => state.singleMovie.singleMovie
@@ -47,8 +57,42 @@ const SingleMoviePageEditPhotos = () => {
 
       if (newMoviePhotos.length > 10) return;
 
+      let moviesRefs = [];
+
+      for (let movie of newMoviePhotos) {
+        if (!movie.hasOwnProperty("url")) {
+          const movieDoc = await addDoc(
+            collection(db, "movies", id, "gallery"),
+            {
+              url: movie,
+              movieId: singleMovie.singleMovie.id,
+              movieName: singleMovie.singleMovie.movieTitle,
+              movieMainImage: singleMovie.singleMovie.movieMainImage,
+              movieYear: singleMovie.singleMovie.movieYear,
+            }
+          );
+          moviesRefs.push({
+            id: movieDoc.id,
+            url: movie,
+            movieId: singleMovie.singleMovie.id,
+            movieName: singleMovie.singleMovie.movieTitle,
+            movieMainImage: singleMovie.singleMovie.movieMainImage,
+            movieYear: singleMovie.singleMovie.movieYear,
+          });
+        } else {
+          moviesRefs.push({
+            id: movie.id,
+            url: movie.url,
+            movieId: movie.id,
+            movieName: movie.movieName,
+            movieMainImage: movie.movieMainImage,
+            movieYear: movie.movieYear,
+          });
+        }
+      }
+
       await updateDoc(doc(db, "movies", id), {
-        moviePhotos: newMoviePhotos,
+        moviePhotos: moviesRefs,
       });
 
       dispatch(fetchSingleMovie(id));
@@ -81,15 +125,17 @@ const SingleMoviePageEditPhotos = () => {
           <div className={classes["photos-list"]}>
             {photos.map((photo, i) => (
               <p key={photo + "---" + i}>
-                <span>{photo}</span>
-                <span>
-                  <img
-                    onClick={handleDelete.bind(null, i)}
-                    alt="Delete icon"
-                    title="Delete icon"
-                    src={deleteIcon}
-                  />
-                </span>
+                <img src={photo.url} />
+                {photos.length > 1 && (
+                  <span>
+                    <img
+                      onClick={handleDelete.bind(null, i)}
+                      alt="Delete icon"
+                      title="Delete icon"
+                      src={deleteIcon}
+                    />
+                  </span>
+                )}
               </p>
             ))}
           </div>
@@ -112,14 +158,16 @@ const SingleMoviePageEditPhotos = () => {
             id="add-photos"
             type="text"
           ></textarea>
-          <button
-            onClick={() => {
-              navigate(-1);
-            }}
-            type="submit"
-          >
-            Add photos
-          </button>
+          {photos.length > 1 && (
+            <button
+              onClick={() => {
+                navigate(-1);
+              }}
+              type="submit"
+            >
+              Add photos
+            </button>
+          )}
         </form>
       </section>
     </Modal>

@@ -41,7 +41,6 @@ const SingleMoviePageEditBoxOffice = () => {
     e.preventDefault();
 
     try {
-      console.log(boxOffice);
       if (
         Object.values(boxOffice)
           .map((el) => Number(el))

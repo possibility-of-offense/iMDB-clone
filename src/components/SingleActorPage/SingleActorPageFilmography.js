@@ -18,7 +18,9 @@ const SingleActorPageFilmography = ({ layoutClasses, films }) => {
   return (
     <section>
       <SectionTitle layoutClasses={layoutClasses}>Filmography</SectionTitle>
-      <div className={listFilms?.length > 0 && classes["filmography__grid"]}>
+      <div
+        className={listFilms?.length > 0 ? classes["filmography__grid"] : ""}
+      >
         {listFilms && listFilms.length > 0 ? (
           listFilms.map((el) => (
             <div key={el.id}>
@@ -39,7 +41,7 @@ const SingleActorPageFilmography = ({ layoutClasses, films }) => {
             </div>
           ))
         ) : (
-          <h3 class="pbot2-rem">No info yet!</h3>
+          <h3 className="pbot2-rem">No info yet!</h3>
         )}
       </div>
     </section>

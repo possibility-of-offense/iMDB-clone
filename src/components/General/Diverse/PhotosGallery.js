@@ -1,31 +1,32 @@
 import { Link } from "react-router-dom";
 import HeaderImageInfo from "./HeaderImageInfo";
-import classes from "./styles/PhotosGallery.module.css";
+import attributes from "./styles/PhotosGallery.module.css";
 
 const PhotosGallery = ({ id, data, endpoint = "movies" }) => {
   if (data.length > 0) {
-    const { name, year } = data[0];
+    const { movieName: name, movieYear: year, movieMainImage } = data[0];
 
     return (
-      <section className={classes["gallery__wrapper"]}>
-        <div className={classes["gallery__wrapper--inner"]}>
-          <Link className={classes["add-more-photos"]} to="add-photos">
+      <section className={attributes["gallery__wrapper"]}>
+        <div className={attributes["gallery__wrapper--inner"]}>
+          <Link className={attributes["add-more-photos"]} to="add-photos">
             Add more photos
           </Link>
-          <div className={classes["gallery__wrapper-inner-grid"]}>
+          <div className={attributes["gallery__wrapper-inner-grid"]}>
             <HeaderImageInfo
-              img="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
+              img={movieMainImage}
               title={name}
               year={year}
               link={`/${endpoint}/${id}`}
               heading="Photo Gallery"
             />
-            <div className={classes["gallery__wrapper--body"]}>
+            <div className={attributes["gallery__wrapper--body"]}>
               {data.map((el) => (
-                <div key={el}>
+                <div key={el.id}>
                   <figure>
-                    {/* <img title="img" alt="img" src={el.image} /> */}
-                    <img title="img" alt="img" src={el} />
+                    <Link to={`/movies/${id}/image/${el.id}`}>
+                      <img title="img" alt="img" src={el.url} />
+                    </Link>
                   </figure>
                 </div>
               ))}

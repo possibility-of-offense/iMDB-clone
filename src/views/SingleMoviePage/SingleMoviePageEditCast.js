@@ -126,7 +126,6 @@ const SingleMoviePageEditCast = () => {
 
           setActorsData(finalActors);
           setAllActors(actorsAlreadyInMovie);
-          console.log(actorsAlreadyInMovie);
         }
       } catch (error) {
         console.log(error);

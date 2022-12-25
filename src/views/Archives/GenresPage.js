@@ -1,6 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import RedirectionModal from "../../components/UI/Modals/RedirectionModal";
 import { db } from "../../config/config";
 import { upperCaseFirstWord } from "../../helpers/helpers";
 import classes from "./styles/GenresPage.module.css";
@@ -21,7 +22,6 @@ const Genres = () => {
         );
 
         const mapped = docs.docs.map((el) => ({ id: el.id, ...el.data() }));
-        console.log(mapped);
         setGenresState(mapped);
       } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ const Genres = () => {
         <div className={classes["genres__wrapper-inner-grid"]}>
           <h2>{upperCaseFirstWord(title)} Movies</h2>
           <div className={classes["genres__wrapper-inner-grid__items"]}>
-            {genresState.length > 0 &&
+            {genresState.length > 0 ? (
               genresState.map(
                 (
                   {
@@ -82,7 +82,10 @@ const Genres = () => {
                     </div>
                   </div>
                 )
-              )}
+              )
+            ) : (
+              <RedirectionModal>No genre found</RedirectionModal>
+            )}
           </div>
         </div>
       </div>

@@ -41,11 +41,7 @@ const MovieGallery = () => {
     }
   }, []);
 
-  if (movieGalleryState.length === 0) {
-    return <h1>No photos yet!</h1>;
-  } else {
-    return <PhotosGallery id={id} data={movieGalleryState} />;
-  }
+  return <PhotosGallery id={id} data={movieGalleryState} />;
 };
 
 export default MovieGallery;

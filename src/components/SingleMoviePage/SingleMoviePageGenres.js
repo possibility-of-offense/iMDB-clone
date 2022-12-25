@@ -13,6 +13,9 @@ const SingleMoviePageGenres = ({ genres }) => {
     return (
       <section className={classes["genres"]}>
         <ul>
+          <li>
+            <Link to="/genres/testing-link">Testing link</Link>
+          </li>
           {genres?.length > 0 &&
             genres.map((el, i) => (
               <li key={i}>

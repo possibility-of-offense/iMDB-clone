@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { upperCaseFirstWord } from "../../helpers/helpers";
+import SingleMoviePageTooltip from "../UI/Tooltips/SingleMoviePageTooltip";
 import classes from "./styles/SingleMoviePageGenres.module.css";
 
 const SingleMoviePageGenres = ({ genres }) => {
@@ -14,6 +15,9 @@ const SingleMoviePageGenres = ({ genres }) => {
       <section className={classes["genres"]}>
         <ul>
           <li>
+            <SingleMoviePageTooltip>
+              This genre doesn't exist! TESTING PURPOSE!
+            </SingleMoviePageTooltip>
             <Link to="/genres/testing-link">Testing link</Link>
           </li>
           {genres?.length > 0 &&

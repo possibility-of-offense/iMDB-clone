@@ -102,6 +102,7 @@ const SingleMoviePage = () => {
             <SinglePageHeroBanner
               images={[movieMainImage, movieVideoPlaceholderImage]}
               photosLink={`/movie-gallery/${id}`}
+              photos={moviePhotos}
             />
             <GridTwoColumns sizing="3/4">
               <div>

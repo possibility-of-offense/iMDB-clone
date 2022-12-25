@@ -27,6 +27,7 @@
   line-height: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease-out;
+  position: relative;
 }
 
 .genres ul li a {

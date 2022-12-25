@@ -7,10 +7,12 @@ import classes from "./styles/SingleMoviePageTopCast.module.css";
 
 const SingleMoviePageTopCast = ({ layoutClasses, id, link, authorId }) => {
   const topCast = useSelector(selectTopCast);
-  const topCastList = Object.entries(topCast).map(([id, val]) => ({
-    id,
-    ...val,
-  }));
+  const topCastList = topCast.map((el) => {
+    const actorValues = Object.values(el);
+    return {
+      ...actorValues[0],
+    };
+  });
 
   const layoutClassesConditional = topCast > 0 ? layoutClasses : "mbot2-rem";
 
@@ -32,8 +34,8 @@ const SingleMoviePageTopCast = ({ layoutClasses, id, link, authorId }) => {
         Top Cast
       </SectionTitle>
       <div className={classes["top-cast__grid"]}>
-        {topCastList?.length > 0 &&
-          topCastList.map((actor) => (
+        {topCast?.length > 0 ? (
+          topCast.map((actor) => (
             <div
               key={actor.actorId}
               onClick={handleNavigate.bind(null, actor.actorId)}
@@ -50,7 +52,10 @@ const SingleMoviePageTopCast = ({ layoutClasses, id, link, authorId }) => {
                 <p>{actor.characterName}</p>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <h3>No actors yet</h3>
+        )}
 
         {topCast ? "" : <h3 className="pbot2-rem">No top cast info yet!</h3>}
       </div>

@@ -1,7 +1,7 @@
 .create-movie__wrapper {
   max-width: 800px;
   margin: 1.5rem auto;
-  background-color: #ddd;
+  background-color: #f4f4f4;
   padding: 15px;
   border-radius: 4px;
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
@@ -36,6 +36,7 @@
 .create-movie__wrapper form > div label {
   font-size: 14px;
   margin-bottom: 3px;
+  margin-left: 6px;
   display: inline-block;
 }
 
@@ -53,6 +54,7 @@
   outline: none;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   margin: 0 0 10px 0;
+  border-radius: 13px;
 }
 
 .create-movie__wrapper form select {
@@ -63,6 +65,8 @@
   outline: none;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   margin: 0 0 10px 0;
+  width: 100%;
+  border-radius: 13px;
 }
 
 .create-movie__wrapper form input:focus,
@@ -77,9 +81,33 @@
   cursor: pointer;
   display: inline-block;
   margin-top: 10px;
-  padding: 6px 25px;
-  border-radius: 3px;
+  padding: 6px 35px;
+  border-radius: 13px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   font-size: 17px;
   color: #333;
   border: none;
+  justify-self: start;
+}
+
+.no-more-actors {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: var(--red-1);
+}
+
+.empty-div {
+  height: 1px;
+  width: 100%;
+  background-color: #ddd;
+}
+
+.selected-actors p {
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.selected-actors p:last-child {
+  margin-bottom: 15px;
 }

@@ -147,7 +147,7 @@ const SingleMoviePage = () => {
                 />
                 {/* prettier-ignore */}
                 {location.pathname.includes("/edit-storyline") && (
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden accordion-showed-up">
                     <Outlet />
                   </div>
                 )}
@@ -159,7 +159,7 @@ const SingleMoviePage = () => {
                   layoutClasses="mbot1-rem"
                 />
                 {location.pathname.includes("/edit-box-office") && (
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden accordion-showed-up">
                     <Outlet />
                   </div>
                 )}

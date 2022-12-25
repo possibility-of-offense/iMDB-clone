@@ -17,8 +17,7 @@ const SingleActorPageKnownFor = ({ knownFor, layoutClasses }) => {
         Known for
       </SectionTitle>
       <div className={classes["known-for__grid"]}>
-        {listknownFor &&
-          listknownFor.length > 0 &&
+        {listknownFor && listknownFor.length > 0 ? (
           listknownFor.map((el) => (
             <div key={el.id}>
               <figure>
@@ -33,7 +32,10 @@ const SingleActorPageKnownFor = ({ knownFor, layoutClasses }) => {
                 {/* TODO implement info popup modal */}
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <h3 class="pbot2-rem">No info yet!</h3>
+        )}
       </div>
     </section>
   );

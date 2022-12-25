@@ -25,7 +25,8 @@ const Navigation = ({ alertSignetOut }) => {
   return (
     <nav
       className={`${classes.nav} ${
-        location.pathname === "/" && classes["nav-inverse"]
+        location.pathname === "/" ||
+        (location.pathname.endsWith("/edit-cast") && classes["nav-inverse"])
       }`}
     >
       <ul>
@@ -84,7 +85,7 @@ const Navigation = ({ alertSignetOut }) => {
                 style={({ isActive }) =>
                   isActive ? { color: "#f5c518" } : undefined
                 }
-                to="/admin"
+                to="/user-page"
               >
                 {auth.currentUser.displayName || auth.currentUser.email}
               </NavLink>
@@ -96,7 +97,17 @@ const Navigation = ({ alertSignetOut }) => {
                 }
                 to="/create-movie"
               >
-                Create movie
+                Add movie
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                style={({ isActive }) =>
+                  isActive ? { color: "#f5c518" } : undefined
+                }
+                to="/add-actor"
+              >
+                Add Actor
               </NavLink>
             </li>
             <li>

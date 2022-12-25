@@ -1,19 +1,28 @@
-import { auth } from "../config/config";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// React Hooks
 import { useEffect, useReducer } from "react";
+
+// React Router Hooks
 import { useNavigate } from "react-router-dom";
-import { loginReducer } from "../reducers/loginReducer";
-import { validator } from "../helpers/validators";
+
+// Firebase SDK functions
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+// Config references
+import { auth } from "../../config/config";
+
+// Helpers/Reducers
+import { loginReducer } from "../../reducers/loginReducer";
+import { validator } from "../../helpers/validators";
 
 // Components
-import PopupModal from "../components/UI/Alerts/PopupModal";
+import PopupModal from "../../components/UI/Alerts/PopupModal";
 
-// Classes
-import classes from "./styles/LoginPage.module.css";
+// Attributes
+import attributes from "./styles/LoginPage.module.css";
 
 // Assets
-import loginImage from "./imgs/loginImage.jpg";
-import loginIcon from "./imgs/loginIcon.png";
+import loginImage from "../imgs/loginImage.jpg";
+import loginIcon from "../imgs/loginIcon.png";
 
 const LoginPage = () => {
   const [loginState, loginDispatch] = useReducer(loginReducer, {
@@ -137,11 +146,11 @@ const LoginPage = () => {
   };
 
   return (
-    <section className={`${classes["login-page"]}`}>
-      <div className={classes["login-page__img"]}>
+    <section className={`${attributes["login-page"]}`}>
+      <div className={attributes["login-page__img"]}>
         <img alt="Login image" title="Login image" src={loginImage} />
       </div>
-      <div className={classes["login-page__form"]}>
+      <div className={attributes["login-page__form"]}>
         <h2>Login</h2>
         {loginState.hasError && (
           <PopupModal
@@ -154,10 +163,12 @@ const LoginPage = () => {
           </PopupModal>
         )}
         <form onSubmit={handleLogin}>
-          <div className={loginState.emailInputActive ? classes["active"] : ""}>
+          <div
+            className={loginState.emailInputActive ? attributes["active"] : ""}
+          >
             <label
               className={
-                loginState.invalidEmail ? classes["invalid-label"] : ""
+                loginState.invalidEmail ? attributes["invalid-label"] : ""
               }
               htmlFor="email"
             >
@@ -167,7 +178,7 @@ const LoginPage = () => {
               id="email"
               type="email"
               className={
-                loginState.invalidEmail ? classes["invalid-input"] : ""
+                loginState.invalidEmail ? attributes["invalid-input"] : ""
               }
               value={loginState.email}
               onChange={handleChangeEmailInput}
@@ -175,16 +186,20 @@ const LoginPage = () => {
               onBlur={handleBlurEmailInput}
             />
             {loginState.invalidEmail && (
-              <p className={classes["invalid-msg"]}>Email input is invalid</p>
+              <p className={attributes["invalid-msg"]}>
+                Email input is invalid
+              </p>
             )}
           </div>
 
           <div
-            className={loginState.passwordInputActive ? classes["active"] : ""}
+            className={
+              loginState.passwordInputActive ? attributes["active"] : ""
+            }
           >
             <label
               className={
-                loginState.invalidPassword ? classes["invalid-label"] : ""
+                loginState.invalidPassword ? attributes["invalid-label"] : ""
               }
               htmlFor="password"
             >
@@ -194,7 +209,7 @@ const LoginPage = () => {
               id="password"
               type="password"
               className={
-                loginState.invalidPassword ? classes["invalid-input"] : ""
+                loginState.invalidPassword ? attributes["invalid-input"] : ""
               }
               value={loginState.password}
               onChange={handleChangePasswordInput}
@@ -202,24 +217,24 @@ const LoginPage = () => {
               onBlur={handleBlurPasswordInput}
             />
             {loginState.invalidPassword && (
-              <p className={classes["invalid-msg"]}>
+              <p className={attributes["invalid-msg"]}>
                 Password input is invalid
               </p>
             )}
           </div>
-          <div className={classes["login-page__form--submit"]}>
+          <div className={attributes["login-page__form--submit"]}>
             <button
               className={
                 loginState.loginState !== "pending"
                   ? ""
-                  : classes["pending-submit"]
+                  : attributes["pending-submit"]
               }
               type="submit"
             >
               Sign Up
             </button>
             {loginState.loginState === "pending" && (
-              <div className={classes["lds-ring"]}>
+              <div className={attributes["lds-ring"]}>
                 <div></div>
                 <div></div>
                 <div></div>
@@ -228,9 +243,9 @@ const LoginPage = () => {
             )}
           </div>
         </form>
-        <div className={classes["login-icon__wrapper"]}>
+        <div className={attributes["login-icon__wrapper"]}>
           <img
-            className={classes["login-icon"]}
+            className={attributes["login-icon"]}
             alt="Login Icon"
             title="Login Icon"
             src={loginIcon}

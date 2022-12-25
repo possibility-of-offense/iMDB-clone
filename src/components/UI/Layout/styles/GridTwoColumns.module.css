@@ -7,4 +7,12 @@
   .grid-third-fourth {
     grid-template-columns: 1fr 0.5fr;
   }
+
+  .grid-auto-1fr {
+    grid-template-columns: auto 1fr;
+  }
+
+  .grid-equal {
+    grid-template-columns: 1fr 1fr;
+  }
 }

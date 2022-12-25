@@ -13,7 +13,7 @@ const SinglePageDidYouKnow = ({ facts, layoutClasses }) => {
       <SectionTitle moreInfo={false} layoutClasses={layoutClasses}>
         Did you know
       </SectionTitle>
-      {listFacts?.length > 0 && (
+      {listFacts?.length > 0 ? (
         <div className={classes["did-you-know__list"]}>
           {listFacts.map((el) => (
             <div key={el.id}>
@@ -22,6 +22,8 @@ const SinglePageDidYouKnow = ({ facts, layoutClasses }) => {
             </div>
           ))}
         </div>
+      ) : (
+        <h3 class="pbot2-rem">No info yet!</h3>
       )}
     </section>
   );

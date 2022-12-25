@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { navigatingSlider } from "../../helpers/helpers";
 import SectionTitle from "../General/SinglePage/SectionTitle";
 
@@ -8,6 +8,8 @@ import { FaLink } from "react-icons/fa";
 import classes from "./styles/SingleMoviePagePhotos.module.css";
 
 const SingleMoviePhotos = ({ photos, layoutClasses, link, authorId }) => {
+  const { id } = useParams();
+
   const settings = {
     dots: true,
     infinite: true,
@@ -24,6 +26,7 @@ const SingleMoviePhotos = ({ photos, layoutClasses, link, authorId }) => {
   const btnNextRef = useRef();
 
   const images = photos;
+  console.log(images);
 
   useEffect(() => {
     if (btnPrevRef.current && btnNextRef.current) {
@@ -144,7 +147,7 @@ const SingleMoviePhotos = ({ photos, layoutClasses, link, authorId }) => {
               {images?.length > 0 &&
                 images.slice(0, 10).map((img, i) => (
                   <div key={i}>
-                    <Link to="/some-photo-route">
+                    <Link to={`/movies/${id}/image/${i}`}>
                       <img src={img} />
                       <FaLink color="#333" size="2em" />
                     </Link>

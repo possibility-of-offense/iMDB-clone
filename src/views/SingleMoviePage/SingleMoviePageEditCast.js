@@ -3,6 +3,7 @@ import classes from "./styles/SingleMoviePageEditCast.module.css";
 
 import { nanoid } from "nanoid";
 import {
+  arrayUnion,
   collection,
   doc,
   getDoc,
@@ -10,7 +11,8 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../config/config";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import SingleMoviePageAccordionContainer from "../../components/SingleMoviePage/SingleMoviePageAccordionContainer";
 
 const EditCastInput = ({ actors, editActors, updatePickedActors }) => {
   const [actor, setActor] = useState("choose-actor");
@@ -27,6 +29,7 @@ const EditCastInput = ({ actors, editActors, updatePickedActors }) => {
       if (found) {
         return prev.filter((el) => el.id !== found.id);
       }
+      setActor("choose-actor");
     });
     updatePickedActors((prev) => prev.concat(foundActor));
   };
@@ -50,29 +53,35 @@ const EditCastInput = ({ actors, editActors, updatePickedActors }) => {
   }, [inputValue]);
 
   return (
-    <Fragment>
-      <label htmlFor="pick-actor">Pick an actor</label>
-      {actors.length > 0 ? (
-        <select id="pick-actor" value={actor} onChange={handleAddActor}>
-          <option disabled value="choose-actor">
-            Pick an actor
-          </option>
-          {actors.map((actor) => (
-            <option key={actor.id} value={actor.id}>
-              {actor.name}
-            </option>
-          ))}
-        </select>
-      ) : (
-        <p>No more actors to choose from</p>
-      )}
-      <input
-        type="text"
-        placeholder="Add cast member"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-    </Fragment>
+    <SingleMoviePageAccordionContainer>
+      <section className={classes["edit-cast-form"]}>
+        {actors.length > 0 ? (
+          <div className={classes["edit-cast-form__select"]}>
+            <label htmlFor="pick-actor">Pick an actor</label>
+            <select id="pick-actor" value={actor} onChange={handleAddActor}>
+              <option disabled value="choose-actor">
+                Pick an actor
+              </option>
+              {actors.map((actor) => (
+                <option key={actor.id} value={actor.id}>
+                  {actor.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : (
+          <p className={classes["no-more-actors"]}>
+            No more actors to choose from!
+          </p>
+        )}
+        <input
+          type="text"
+          placeholder="Add cast member"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+      </section>
+    </SingleMoviePageAccordionContainer>
   );
 };
 
@@ -86,6 +95,9 @@ const SingleMoviePageEditCast = () => {
   const [pickedActors, setPickedActors] = useState([]);
   const [allActors, setAllActors] = useState([]);
 
+  const [status, setStatus] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetching = async () => {
       try {
@@ -97,14 +109,24 @@ const SingleMoviePageEditCast = () => {
 
           const mapped = actors.docs.map((d) => ({ id: d.id, ...d.data() }));
 
+          const actorsAlreadyInMovie = [];
           const finalActors = [];
+
           for (let actor of mapped) {
-            if (!movieActors.movieStuff.actors[actor.id])
+            if (
+              !movieActors.movieStuff.actors.find(
+                (el) => Object.values(el)[0].actorId === actor.id
+              )
+            ) {
               finalActors.push(actor);
+            } else {
+              actorsAlreadyInMovie.push(actor);
+            }
           }
 
           setActorsData(finalActors);
-          setAllActors(finalActors);
+          setAllActors(actorsAlreadyInMovie);
+          console.log(actorsAlreadyInMovie);
         }
       } catch (error) {
         console.log(error);
@@ -126,14 +148,16 @@ const SingleMoviePageEditCast = () => {
   const handleAddCast = async (e) => {
     e.preventDefault();
 
+    setStatus("pending");
+
     if (inputs.length === 0)
       return alert("No actors available for this movie!");
 
     try {
-      const objs = {};
+      const additionalActors = {};
 
       const mappedPickedActors = pickedActors.map((el) => {
-        objs[el.id] = {
+        additionalActors[el.id] = {
           actorId: el.id,
           actorMainImage: el.main_image,
           actorName: el.name,
@@ -142,10 +166,13 @@ const SingleMoviePageEditCast = () => {
       });
 
       await updateDoc(doc(db, "movies", id), {
-        "movieStuff.actors": objs,
+        "movieStuff.actors": arrayUnion(additionalActors),
       });
+      navigate("/movies/" + id);
     } catch (error) {
       console.log(error);
+    } finally {
+      setStatus("finished");
     }
   };
 
@@ -153,29 +180,56 @@ const SingleMoviePageEditCast = () => {
     <section className={classes["edit-cast__wrapper"]}>
       <div className="main-container">
         <h1>Edit cast</h1>
-        <small>
-          Add cast member in the input in the following format - e.g.: Brad Pitt
-          - Heinrich Harrer
-        </small>
-        <form onSubmit={handleAddCast}>
-          {!hideButton && (
-            <button onClick={handleAddInputs} type="button">
-              Add Cast
-            </button>
-          )}
-          <hr />
-          {inputs.length > 0 &&
-            inputs.map((inp) => (
-              <EditCastInput
-                actors={actorsData}
-                editActors={setActorsData}
-                updatePickedActors={setPickedActors}
-                key={inp}
-              />
-            ))}
 
-          <br />
-          <button type="submit">Save</button>
+        <form onSubmit={handleAddCast}>
+          <div
+            className={`${
+              inputs.length > 0
+                ? classes.instructions
+                : classes["initial-instructions"]
+            }`}
+          >
+            <small>
+              Add cast member in the input in the following format - e.g.: Brad
+              Pitt - Heinrich Harrer
+            </small>
+            {!hideButton && (
+              <button
+                onClick={handleAddInputs}
+                type="button"
+                className={classes["add-cast"]}
+              >
+                Add Cast
+              </button>
+            )}
+          </div>
+          {allActors?.length > 0 &&
+            allActors.map((actor) => <p key={actor.id}>{actor.name}</p>)}
+          {inputs.length > 0 && (
+            <div className="overflow-hidden">
+              {inputs.map((inp) => (
+                <EditCastInput
+                  actors={actorsData}
+                  editActors={setActorsData}
+                  updatePickedActors={setPickedActors}
+                  key={inp}
+                />
+              ))}
+              <div className={classes["save-wrapper"]}>
+                {status === "pending" && (
+                  <div className={classes["lds-ring"]}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                )}
+                <button type="submit" className={classes.save}>
+                  Save
+                </button>
+              </div>
+            </div>
+          )}
         </form>
       </div>
     </section>

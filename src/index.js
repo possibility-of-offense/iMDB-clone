@@ -17,21 +17,28 @@ import Root from "./views/Root";
 // Pages
 import HomePage from "./views/HomePage";
 import SingleMoviePage from "./views/SingleMoviePage/SingleMoviePage";
-import AdminPage from "./views/AdminPage";
-import CreateMoviePage from "./views/CreateMoviePage";
-import GenresPage from "./views/GenresPage";
-import LoginPage from "./views/LoginPage";
-import SingleActorPage from "./views/SingleActorPage";
+
+import SingleActorPage from "./views/SingleActorPage/SingleActorPage";
 import SingleMoviePageEditPhotos from "./views/SingleMoviePage/SingleMoviePageEditPhotos";
 import SingleMoviePageEditCast from "./views/SingleMoviePage/SingleMoviePageEditCast";
 import SingleMoviePageEditStoryline from "./views/SingleMoviePage/SingleMoviePageEditStoryline";
 
-import MovieGallery from "./views/MovieGallery";
+// User Pages
+import LoginPage from "./views/UserPages/LoginPage";
+import UserPage from "./views/UserPages/UserPage";
+import CreateMoviePage from "./views/UserPages/CreateMoviePage";
+
+// Archives
+import GenresPage from "./views/Archives/GenresPage";
+import MovieGalleryRoot from "./views/Archives/MovieGalleryRoot";
+import MovieGallery from "./views/Archives/MovieGallery";
+
 import Cast from "./views/Cast";
 import PersonGallery from "./views/PersonGallery";
 import SingleMoviePageEditBoxOffice from "./views/SingleMoviePage/SingleMoviePageEditBoxOffice";
 import AddMoviePhotos from "./views/AddMoviePhotos";
-import MovieGalleryRoot from "./views/MovieGalleryRoot";
+import MovieImage from "./views/MovieImage";
+import AddActorPage from "./views/UserPages/AddActorPage";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -59,6 +66,10 @@ const router = createBrowserRouter(
           path="/movies/:id/edit-cast"
           element={<SingleMoviePageEditCast />}
         ></Route>
+        <Route
+          path="/movies/:movieId/image/:imageEId"
+          element={<MovieImage />}
+        ></Route>
         <Route path="/actors/:id" element={<SingleActorPage />}></Route>
         <Route path="/genres/:id" element={<GenresPage />}></Route>
         <Route path="/movie-gallery/:id" element={<MovieGalleryRoot />}>
@@ -67,9 +78,11 @@ const router = createBrowserRouter(
         </Route>
         <Route path="/actor-gallery/:id" element={<PersonGallery />}></Route>
         <Route path="/cast/:id" element={<Cast />}></Route>
+        {/* USER ROUTES */}
         <Route path="/create-movie" element={<CreateMoviePage />}></Route>
-        <Route path="/admin" element={<AdminPage />}></Route>
+        <Route path="/user-page" element={<UserPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/add-actor" element={<AddActorPage />}></Route>
       </Route>
     </Fragment>
   )

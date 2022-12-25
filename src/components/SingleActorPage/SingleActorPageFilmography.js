@@ -15,14 +15,11 @@ const SingleActorPageFilmography = ({ layoutClasses, films }) => {
 
   const listFilms = data.docs?.map((doc) => ({ id: doc.id, ...doc.data() }));
 
-  console.log(listFilms);
-
   return (
     <section>
       <SectionTitle layoutClasses={layoutClasses}>Filmography</SectionTitle>
-      <div className={classes["filmography__grid"]}>
-        {listFilms &&
-          listFilms.length > 0 &&
+      <div className={listFilms?.length > 0 && classes["filmography__grid"]}>
+        {listFilms && listFilms.length > 0 ? (
           listFilms.map((el) => (
             <div key={el.id}>
               <figure>
@@ -40,7 +37,10 @@ const SingleActorPageFilmography = ({ layoutClasses, films }) => {
                 <p>{el.movieYear}</p>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <h3 class="pbot2-rem">No info yet!</h3>
+        )}
       </div>
     </section>
   );

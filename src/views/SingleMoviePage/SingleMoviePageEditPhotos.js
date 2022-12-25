@@ -75,7 +75,7 @@ const SingleMoviePageEditPhotos = () => {
   };
 
   return (
-    <Modal navigate={() => navigate(-1)}>
+    <Modal navigate={() => navigate("/movies/" + id)}>
       <section className={classes["edit-form__wrapper"]}>
         {photos.length > 0 && (
           <div className={classes["photos-list"]}>
@@ -104,7 +104,7 @@ const SingleMoviePageEditPhotos = () => {
                 photos/images!
               </small>
             </div>
-            <button>Go back</button>
+            <button onClick={() => navigate("/movies/" + id)}>Go back</button>
           </div>
           <textarea
             value={photosState}

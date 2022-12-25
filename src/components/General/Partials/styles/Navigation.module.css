@@ -27,3 +27,9 @@
 .nav-inverse {
   background-color: #121212;
 }
+
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+}

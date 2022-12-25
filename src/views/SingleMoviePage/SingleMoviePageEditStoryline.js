@@ -7,6 +7,7 @@ import { db } from "../../config/config";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchSingleMovie } from "../../features/movies/singleMovieSlice";
+import SingleMoviePageAccordionContainer from "../../components/SingleMoviePage/SingleMoviePageAccordionContainer";
 
 const SingleMoviePageEditStoryline = () => {
   const navigate = useNavigate();
@@ -47,53 +48,55 @@ const SingleMoviePageEditStoryline = () => {
   };
 
   return pendingState === "finish" ? (
-    <section className={classes["edit-storyline"]}>
-      <h3>
-        <span>Edit Synopsis</span>
-        <span>
-          <FaWindowClose
-            onClick={() => navigate(`/movies/${id}`)}
-            color="#ed4337"
-            className="cursor-pointer"
-          />
-        </span>
-      </h3>
-      <form onSubmit={handleEditStoryline}>
-        <div>
-          <label htmlFor="edit-storyline">Edit/add storyline</label>
-          <textarea
-            value={synopsis.storyline}
-            onChange={(e) => {
-              setSynopsis((prev) => {
-                return {
-                  ...prev,
-                  storyline: e.target.value,
-                };
-              });
-            }}
-            id="edit-storyline"
-          ></textarea>
-        </div>
+    <SingleMoviePageAccordionContainer>
+      <section className={classes["edit-storyline"]}>
+        <h3>
+          <span>Edit Synopsis</span>
+          <span>
+            <FaWindowClose
+              onClick={() => navigate(`/movies/${id}`)}
+              color="#ed4337"
+              className="cursor-pointer"
+            />
+          </span>
+        </h3>
+        <form onSubmit={handleEditStoryline}>
+          <div>
+            <label htmlFor="edit-storyline">Edit/add storyline</label>
+            <textarea
+              value={synopsis.storyline}
+              onChange={(e) => {
+                setSynopsis((prev) => {
+                  return {
+                    ...prev,
+                    storyline: e.target.value,
+                  };
+                });
+              }}
+              id="edit-storyline"
+            ></textarea>
+          </div>
 
-        <div>
-          <label htmlFor="edit-taglines">Edit/add taglines</label>
-          <input
-            value={synopsis.taglines}
-            onChange={(e) => {
-              setSynopsis((prev) => {
-                return {
-                  ...prev,
-                  taglines: e.target.value,
-                };
-              });
-            }}
-            type="text"
-            placeholder="Taglines..."
-          />
-        </div>
-        <button type="submit">Save</button>
-      </form>
-    </section>
+          <div>
+            <label htmlFor="edit-taglines">Edit/add taglines</label>
+            <input
+              value={synopsis.taglines}
+              onChange={(e) => {
+                setSynopsis((prev) => {
+                  return {
+                    ...prev,
+                    taglines: e.target.value,
+                  };
+                });
+              }}
+              type="text"
+              placeholder="Taglines..."
+            />
+          </div>
+          <button type="submit">Save</button>
+        </form>
+      </section>
+    </SingleMoviePageAccordionContainer>
   ) : (
     // prettier-ignore
     pendingState === "pending" && (

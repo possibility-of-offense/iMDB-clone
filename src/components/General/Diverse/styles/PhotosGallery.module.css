@@ -46,3 +46,11 @@
   display: block;
   margin: 1px;
 }
+
+.gallery__wrapper .add-more-photos {
+  background-color: var(--yellow-1);
+  padding: 3px 20px;
+  text-decoration: none;
+  border-radius: 5px 5px 0 0;
+  font-size: 14px;
+}

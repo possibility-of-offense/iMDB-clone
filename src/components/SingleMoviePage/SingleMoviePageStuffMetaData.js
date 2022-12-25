@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import classes from "./styles/SingleMoviePageStuffMetaData.module.css";
 
 const SingleMoviePageStuffMetaData = ({ stuff }) => {
+  console.log(stuff);
   if (Object.values(stuff).length === 3) {
     const { actors, directors, writers } = stuff;
     const getActorStars = Object.entries(actors)

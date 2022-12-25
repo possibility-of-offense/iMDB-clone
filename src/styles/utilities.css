@@ -51,6 +51,9 @@
 .mbot1-rem {
   margin-bottom: 1rem;
 }
+.mbot1-rem_I {
+  margin-bottom: 1rem !important;
+}
 
 .mtop2-rem {
   margin-top: 2rem;
@@ -73,4 +76,21 @@
 /* Overflow */
 .overflow-hidden {
   overflow: hidden;
+}
+
+/* Accordion Container */
+.accordion-showed-up {
+  padding: 3px;
+  margin-top: 15px;
+}
+
+/* Errors */
+.error {
+  color: rgb(237, 52, 52);
+  font-size: 13px;
+  margin: 0;
+}
+
+.error-input {
+  border: 1.5px solid rgb(237, 52, 52, 0.8) !important;
 }

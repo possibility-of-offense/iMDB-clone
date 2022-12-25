@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { collection, doc, getDocs, where, getDoc } from "firebase/firestore";
-import { db } from "../config/config";
+import { db } from "../../config/config";
 import { useParams } from "react-router-dom";
-import PhotosGallery from "../components/General/Diverse/PhotosGallery";
+import PhotosGallery from "../../components/General/Diverse/PhotosGallery";
 
 const MovieGallery = () => {
   const { id } = useParams();
@@ -41,7 +41,11 @@ const MovieGallery = () => {
     }
   }, []);
 
-  return <PhotosGallery id={id} data={movieGalleryState} />;
+  if (movieGalleryState.length === 0) {
+    return <h1>No photos yet!</h1>;
+  } else {
+    return <PhotosGallery id={id} data={movieGalleryState} />;
+  }
 };
 
 export default MovieGallery;

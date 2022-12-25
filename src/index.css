@@ -25,6 +25,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App-header + *:not([class*="Modal"]) {
+  min-height: 80vh;
+}
+
 ul,
 li {
   list-style: none outside;

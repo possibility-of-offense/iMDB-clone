@@ -1,21 +1,3 @@
-.edit-storyline {
-  padding-top: 2rem;
-  transform: translateY(-100%);
-  opacity: 0;
-  animation: showStoryline 0.7s ease-in-out forwards;
-}
-
-@keyframes showStoryline {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: none;
-    opacity: 1;
-  }
-}
-
 .edit-storyline h3 {
   display: flex;
   flex-direction: column;

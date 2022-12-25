@@ -7,6 +7,7 @@ import { db } from "../../config/config";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchSingleMovie } from "../../features/movies/singleMovieSlice";
+import SingleMoviePageAccordionContainer from "../../components/SingleMoviePage/SingleMoviePageAccordionContainer";
 
 const SingleMoviePageEditBoxOffice = () => {
   const navigate = useNavigate();
@@ -40,7 +41,12 @@ const SingleMoviePageEditBoxOffice = () => {
     e.preventDefault();
 
     try {
-      if (Object.values(boxOffice).some((el) => typeof el !== "number"))
+      console.log(boxOffice);
+      if (
+        Object.values(boxOffice)
+          .map((el) => Number(el))
+          .some((el) => typeof el !== "number")
+      )
         return alert("Not a number");
 
       await updateDoc(doc(db, "movies", id), {
@@ -54,55 +60,57 @@ const SingleMoviePageEditBoxOffice = () => {
   };
 
   return pendingState === "finish" ? (
-    <section className={classes["edit-storyline"]}>
-      <h3>
-        <span>Edit Box Office</span>
-        <span>
-          <FaWindowClose
-            onClick={() => navigate(`/movies/${id}`)}
-            color="#ed4337"
-            className="cursor-pointer"
-          />
-        </span>
-      </h3>
-      <form onSubmit={handleEditStoryline}>
-        <div>
-          <label htmlFor="edit-storyline">Edit/add budget</label>
-          <input
-            type="number"
-            value={boxOffice.budget}
-            onChange={(e) => {
-              setBoxOffice((prev) => {
-                return {
-                  ...prev,
-                  budget: e.target.value,
-                };
-              });
-            }}
-            id="edit-storyline"
-            placeholder="Add Budget"
-          />
-        </div>
+    <SingleMoviePageAccordionContainer>
+      <section className={classes["edit-storyline"]}>
+        <h3>
+          <span>Edit Box Office</span>
+          <span>
+            <FaWindowClose
+              onClick={() => navigate(`/movies/${id}`)}
+              color="#ed4337"
+              className="cursor-pointer"
+            />
+          </span>
+        </h3>
+        <form onSubmit={handleEditStoryline}>
+          <div>
+            <label htmlFor="edit-storyline">Edit/add budget</label>
+            <input
+              type="number"
+              value={boxOffice.budget}
+              onChange={(e) => {
+                setBoxOffice((prev) => {
+                  return {
+                    ...prev,
+                    budget: e.target.value,
+                  };
+                });
+              }}
+              id="edit-storyline"
+              placeholder="Add Budget"
+            />
+          </div>
 
-        <div>
-          <label htmlFor="edit-taglines">Edit/add expected profit</label>
-          <input
-            type="number"
-            value={boxOffice.expectedProfit}
-            onChange={(e) => {
-              setBoxOffice((prev) => {
-                return {
-                  ...prev,
-                  expectedProfit: e.target.value,
-                };
-              });
-            }}
-            placeholder="Add Expected Profit"
-          />
-        </div>
-        <button type="submit">Save</button>
-      </form>
-    </section>
+          <div>
+            <label htmlFor="edit-taglines">Edit/add expected profit</label>
+            <input
+              type="number"
+              value={boxOffice.expectedProfit}
+              onChange={(e) => {
+                setBoxOffice((prev) => {
+                  return {
+                    ...prev,
+                    expectedProfit: e.target.value,
+                  };
+                });
+              }}
+              placeholder="Add Expected Profit"
+            />
+          </div>
+          <button type="submit">Save</button>
+        </form>
+      </section>
+    </SingleMoviePageAccordionContainer>
   ) : (
     // prettier-ignore
     pendingState === "pending" && (

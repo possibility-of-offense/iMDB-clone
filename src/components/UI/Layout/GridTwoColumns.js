@@ -11,6 +11,26 @@ const GridTwoColumns = ({ sizing, children, layoutClasses }) => {
         {children}
       </div>
     );
+  } else if (sizing === "auto-1fr") {
+    return (
+      <div
+        className={`${classes["grid"]} ${layoutClasses ? layoutClasses : ""} ${
+          classes["grid-auto-1fr"]
+        }`}
+      >
+        {children}
+      </div>
+    );
+  } else if (sizing === "equal") {
+    return (
+      <div
+        className={`${classes["grid"]} ${layoutClasses ? layoutClasses : ""} ${
+          classes["grid-equal"]
+        }`}
+      >
+        {children}
+      </div>
+    );
   }
 };
 

@@ -1,8 +1,8 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { db } from "../config/config";
-import { upperCaseFirstWord } from "../helpers/helpers";
+import { db } from "../../config/config";
+import { upperCaseFirstWord } from "../../helpers/helpers";
 import classes from "./styles/GenresPage.module.css";
 
 const Genres = () => {
@@ -11,7 +11,6 @@ const Genres = () => {
   const [genresState, setGenresState] = useState([]);
 
   useEffect(() => {
-    // if (genresState.length === 0) {
     const fetching = async () => {
       try {
         const docs = await getDocs(
@@ -22,6 +21,7 @@ const Genres = () => {
         );
 
         const mapped = docs.docs.map((el) => ({ id: el.id, ...el.data() }));
+        console.log(mapped);
         setGenresState(mapped);
       } catch (error) {
         console.log(error);
@@ -29,7 +29,6 @@ const Genres = () => {
     };
 
     fetching();
-    // }
   }, []);
 
   const navigate = useNavigate();
@@ -73,11 +72,8 @@ const Genres = () => {
                           {movieStars &&
                             movieStars.length > 0 &&
                             movieStars.map((el, i, arr) => (
-                              <Link
-                                key={el.actorId}
-                                to={`/actors/${el.actorId}`}
-                              >
-                                {el.actorName}/{el.movieCharacterName}
+                              <Link key={el.actorId} to={`/actors/${el.id}`}>
+                                {el.actorName}/{el.actorCharacterName}
                                 {i === arr.length - 1 ? "" : ", "}
                               </Link>
                             ))}

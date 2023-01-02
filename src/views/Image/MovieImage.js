@@ -2,14 +2,16 @@
 import { useEffect, useState } from "react";
 
 // React Router hooks
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 // Firebase SDK functions
 import { doc, getDoc } from "firebase/firestore";
 
 // Config references
 import { db } from "../../config/config";
-import GlobalLoader from "../../components/UI/Loaders/GlobalLoader";
+
+// Attributes
+import attributes from "./styles/MovieImage.module.css";
 
 const MovieImage = () => {
   // State variables
@@ -18,6 +20,9 @@ const MovieImage = () => {
 
   // Movie id
   const { movieId, imageId } = useParams();
+
+  // Navigate hook
+  const navigate = useNavigate();
 
   // Fetch image
   useEffect(() => {
@@ -30,6 +35,8 @@ const MovieImage = () => {
 
         if (imgRef.exists()) {
           setImage({ id: imgRef.id, ...imgRef.data() });
+
+          console.log(imgRef.data());
         }
       } catch (error) {
         console.log(error);
@@ -38,17 +45,52 @@ const MovieImage = () => {
       }
     };
     fetching();
-  }, []);
+  }, [imageId, movieId]);
 
   return (
-    <div>
-      <h2>Movie Image</h2>
-      {status !== "pending" ? (
-        Object.values(image).length > 0 && <img src={image.url} />
-      ) : (
-        <div>LOADING</div>
-      )}
-    </div>
+    <section className={attributes["movie-image__wrapper"]}>
+      <div className={attributes["movie-image__wrapper--content"]}>
+        {status !== "pending" ? (
+          Object.values(image).length > 0 && (
+            <>
+              <div
+                className={attributes["go-back"]}
+                onClick={() => navigate(`/movies/${movieId}`)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  className="ipc-icon ipc-icon--clear ipc-button__icon ipc-button__icon--pre"
+                  id="iconContext-clear"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  role="presentation"
+                >
+                  <path fill="none" d="M0 0h24v24H0V0z"></path>
+                  <path d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59 7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12 5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"></path>
+                </svg>
+                <p>Close</p>
+              </div>
+              <img
+                src={image.url}
+                alt={image.movieName}
+                title={image.movieName}
+              />
+              <div className={attributes["movie-image__wrapper--content-info"]}>
+                <h5>
+                  {image.movieName} ({image.movieYear})
+                </h5>
+              </div>
+            </>
+          )
+        ) : (
+          <div className={attributes["skeleton"]}>
+            <h2>Loading</h2>
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 

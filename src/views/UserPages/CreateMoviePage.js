@@ -1,5 +1,5 @@
 // React Hooks
-import { useRef, useEffect, useState, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 
 // React Router Hooks
 import { useNavigate } from "react-router-dom";
@@ -11,8 +11,6 @@ import {
   doc,
   getDoc,
   getDocs,
-  query,
-  where,
   writeBatch,
 } from "firebase/firestore";
 
@@ -25,7 +23,6 @@ import { upperCaseFirstWord } from "../../helpers/helpers";
 
 // Components
 import InputText from "../../components/UI/Form/InputText";
-import Multiselect from "multiselect-react-dropdown";
 import GlobalLoader from "../../components/UI/Loaders/GlobalLoader";
 
 // Attributes
@@ -427,7 +424,7 @@ const CreateMoviePage = () => {
               className={attributes["form-control-group-full-col"]}
               type="submit"
             >
-              Create
+              Add movie
             </button>
           </form>
         </div>

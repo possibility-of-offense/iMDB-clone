@@ -53,6 +53,7 @@ const SingleMoviePage = () => {
     movieSynopsis,
     movieBoxOffice,
     authorId,
+    imagesLen,
   } = selectSingleMovie.singleMovie;
 
   const titleInfo = {
@@ -102,7 +103,7 @@ const SingleMoviePage = () => {
             <SinglePageHeroBanner
               images={[movieMainImage, movieVideoPlaceholderImage]}
               photosLink={`/movie-gallery/${id}`}
-              photos={moviePhotos}
+              photos={imagesLen}
             />
             <GridTwoColumns sizing="3/4">
               <div>

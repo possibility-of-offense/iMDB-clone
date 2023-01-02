@@ -64,7 +64,7 @@ const EditCastInput = ({ actors, editActors, updatePickedActors }) => {
               </option>
               {actors.map((actor) => (
                 <option key={actor.id} value={actor.id}>
-                  {actor.name}
+                  {actor.actorName}
                 </option>
               ))}
             </select>

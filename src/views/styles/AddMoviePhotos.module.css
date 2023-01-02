@@ -1,7 +1,50 @@
 .photos {
-  max-width: 900px;
-  margin: 2rem auto;
   background-color: #000;
   color: #fff;
   padding: 12px;
+  min-height: 85vh;
+}
+
+.photos--inner {
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.photos h2 {
+  text-align: center;
+  font-weight: normal;
+  margin: 1rem;
+  font-size: 1.9rem;
+}
+
+.photos--inner form > div {
+  border: 3.5px solid transparent;
+  border-radius: 4px;
+  margin: 6px 0;
+  transition: border 0.2s ease-in;
+}
+
+.photos--inner form textarea {
+  min-height: 300px;
+  margin: 0;
+  transition: outline 0.2s ease-in;
+}
+
+.photos--inner form textarea:focus,
+.photos--inner form textarea:active,
+.photos--inner form textarea:hover {
+  outline: 4px solid var(--yellow-1);
+}
+
+.photos--inner form button {
+  background-color: var(--yellow-1);
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 35px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 17px;
+  color: #333;
+  border: none;
 }

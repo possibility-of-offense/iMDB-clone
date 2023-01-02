@@ -22,14 +22,15 @@ const Navigation = ({ alertSignetOut }) => {
     }
   };
 
-  console.log(location);
-
   return (
     <nav
       className={`${classes.nav} ${
         // prettier-ignore
         (location.pathname === "/" ||
-        location.pathname.endsWith("/edit-cast")) && classes["nav-inverse"]
+        location.pathname.endsWith("/edit-cast") ||
+        // prettier-ignore
+        location.pathname.endsWith('/add-photos'))
+        && classes["nav-inverse"]
       }`}
     >
       <ul>

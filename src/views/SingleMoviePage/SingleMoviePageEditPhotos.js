@@ -118,6 +118,8 @@ const SingleMoviePageEditPhotos = () => {
     setPhotos((prev) => prev.filter((el, ind) => ind !== i));
   };
 
+  console.log(photos.length >= 1);
+
   return (
     <Modal navigate={() => navigate("/movies/" + id)}>
       <section className={classes["edit-form__wrapper"]}>
@@ -158,7 +160,10 @@ const SingleMoviePageEditPhotos = () => {
             id="add-photos"
             type="text"
           ></textarea>
-          {photos.length > 1 && (
+          {/* prettier-ignore */}
+          {(photos.length >= 1 ||
+            /* prettier-ignore */
+            photos.length === 0) && (
             <button
               onClick={() => {
                 navigate(-1);

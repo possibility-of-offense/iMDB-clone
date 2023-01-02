@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // React Router hooks
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 // Firebase SDK functions
 import { doc, getDoc } from "firebase/firestore";
@@ -29,11 +29,19 @@ const MovieImage = () => {
     const fetching = async () => {
       setStatus("pending");
       try {
-        const imgRef = await getDoc(
-          doc(db, "movies", movieId, "gallery", imageId)
-        );
+        let imgRef;
+        imgRef = await getDoc(doc(db, "movies", movieId, "gallery", imageId));
 
-        if (imgRef.exists()) {
+        if (!imgRef.exists()) {
+          imgRef = await getDoc(doc(db, "movies", movieId));
+          const imgData = imgRef.data();
+          const findImage = imgData.moviePhotos.findIndex(
+            (el) => el.id === imageId
+          );
+          if (findImage !== -1) {
+            setImage(imgData.moviePhotos[findImage]);
+          }
+        } else if (imgRef.exists()) {
           setImage({ id: imgRef.id, ...imgRef.data() });
 
           console.log(imgRef.data());
@@ -57,20 +65,23 @@ const MovieImage = () => {
                 className={attributes["go-back"]}
                 onClick={() => navigate(`/movies/${movieId}`)}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  className="ipc-icon ipc-icon--clear ipc-button__icon ipc-button__icon--pre"
-                  id="iconContext-clear"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  role="presentation"
-                >
-                  <path fill="none" d="M0 0h24v24H0V0z"></path>
-                  <path d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59 7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12 5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"></path>
-                </svg>
-                <p>Close</p>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    className="ipc-icon ipc-icon--clear ipc-button__icon ipc-button__icon--pre"
+                    id="iconContext-clear"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    role="presentation"
+                  >
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59 7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12 5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"></path>
+                  </svg>
+                  <p>Close</p>
+                </div>
+                <div onClick={() => navigate(-1)}>Go back</div>
               </div>
               <img
                 src={image.url}
@@ -79,7 +90,9 @@ const MovieImage = () => {
               />
               <div className={attributes["movie-image__wrapper--content-info"]}>
                 <h5>
-                  {image.movieName} ({image.movieYear})
+                  <Link to={`/movies/${image.movieId}`}>
+                    {image.movieName} ({image.movieYear})
+                  </Link>
                 </h5>
               </div>
             </>

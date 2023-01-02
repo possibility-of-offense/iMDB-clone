@@ -25,9 +25,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App-header + *:not([class*="Modal"]) {
+/* .App-header + *:not([class*="Modal"]) {
   min-height: 80vh;
-}
+} */
 
 ul,
 li {

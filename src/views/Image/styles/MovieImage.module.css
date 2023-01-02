@@ -72,30 +72,8 @@
   border-radius: 4px;
 }
 
-.skeleton h2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: scale(1) translate(-50%, -50%);
-  letter-spacing: 1px;
-  z-index: 2;
-  color: #333;
-  animation: 1s text linear infinite alternate;
-}
-
 @keyframes shine {
   to {
     background-position-x: -200%;
-  }
-}
-
-@keyframes text {
-  from {
-    transform: scale(1) translate(-50%, -50%);
-    color: #333;
-  }
-  to {
-    transform: scale(0.8) translate(-50%, -50%);
-    color: #000;
   }
 }

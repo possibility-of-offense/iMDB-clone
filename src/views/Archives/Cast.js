@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { collection, doc, getDocs, where, getDoc } from "firebase/firestore";
-import { db } from "../config/config";
-import HeaderImageInfo from "../components/General/Diverse/HeaderImageInfo";
-import classes from "./styles/Cast.module.css";
+import { db } from "../../config/config";
+import HeaderImageInfo from "../../components/General/Diverse/HeaderImageInfo";
+import attributes from "./styles/Cast.module.css";
 
 const Cast = () => {
   const { id } = useParams();
@@ -32,9 +32,9 @@ const Cast = () => {
     const { name, year, directors, writers } = topCastState[0];
 
     return (
-      <section className={classes["Cast__wrapper"]}>
-        <div className={classes["Cast__wrapper--inner"]}>
-          <div className={classes["Cast__wrapper-inner-grid"]}>
+      <section className={attributes["Cast__wrapper"]}>
+        <div className={attributes["Cast__wrapper--inner"]}>
+          <div className={attributes["Cast__wrapper-inner-grid"]}>
             <HeaderImageInfo
               img="https://m.media-amazon.com/images/M/MV5BYTNkMDMxMDMtMDlhNi00MzQxLTk4NTAtODc0YTFmNGVlNDAyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX67_CR0,0,67,98_AL_.jpg"
               title={name}
@@ -43,7 +43,7 @@ const Cast = () => {
               heading="Photo Gallery"
             />
 
-            <div className={classes["Cast__wrapper--creators"]}>
+            <div className={attributes["Cast__wrapper--creators"]}>
               <div>
                 <h5>
                   <span>Directed by</span>
@@ -68,11 +68,11 @@ const Cast = () => {
               </div>
             </div>
 
-            <div className={classes["Cast__wrapper--body"]}>
+            <div className={attributes["Cast__wrapper--body"]}>
               <p>
                 <strong>Cast</strong>
               </p>
-              <div className={classes["Cast__wrapper--body__grid"]}>
+              <div className={attributes["Cast__wrapper--body__grid"]}>
                 {topCastState.length > 0 &&
                   topCastState.map((cast) => (
                     <div key={cast.id}>
@@ -95,6 +95,12 @@ const Cast = () => {
           </div>
         </div>
       </section>
+    );
+  } else {
+    return (
+      <div className={attributes["no-cast"]}>
+        <h2>No cast yet!</h2>
+      </div>
     );
   }
 };

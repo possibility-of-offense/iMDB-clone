@@ -8,11 +8,11 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { auth, db } from "../config/config";
+import { auth, db } from "../../config/config";
 
-import GlobalLoader from "../components/UI/Loaders/GlobalLoader";
+import GlobalLoader from "../../components/UI/Loaders/GlobalLoader";
 
-import useFetchData from "../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 
 import attributes from "./styles/AddMoviePhotos.module.css";
 
@@ -69,12 +69,14 @@ const AddMoviePhotos = () => {
 
     try {
       const splitAddPhotos = addPhotos.split("\n");
-      const concatanated = splitAddPhotos;
+      let concatanated = splitAddPhotos;
 
       const photosDocs = await getDocs(collection(db, "movies", id, "gallery"));
 
       for (let p of photosDocs.docs) {
-        concatanated.push(p.data());
+        // if (!concatanated.find((el) => el.movieName !== p.data().movieName)) {
+        //   concatanated.push(p.data());
+        // }
         await deleteDoc(doc(db, "movies", id, "gallery", p.id));
       }
 

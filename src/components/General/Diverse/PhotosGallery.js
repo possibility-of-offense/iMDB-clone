@@ -21,7 +21,7 @@ const PhotosGallery = ({ id, data, endpoint = "movies" }) => {
               heading="Photo Gallery"
             />
             <div className={attributes["gallery__wrapper--body"]}>
-              {data.map((el) => (
+              {data.slice(1).map((el) => (
                 <div key={el.id}>
                   <figure>
                     <Link to={`/movies/${id}/image/${el.id}`}>

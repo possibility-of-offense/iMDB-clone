@@ -36,10 +36,10 @@ import MovieGallery from "./views/Archives/MovieGallery";
 // Image
 import MovieImage from "./views/Image/MovieImage";
 
-import Cast from "./views/Cast";
+import Cast from "./views/Archives/Cast";
 import PersonGallery from "./views/PersonGallery";
 import SingleMoviePageEditBoxOffice from "./views/SingleMoviePage/SingleMoviePageEditBoxOffice";
-import AddMoviePhotos from "./views/AddMoviePhotos";
+import AddMoviePhotos from "./views/UserPages/AddMoviePhotos";
 import AddActorPage from "./views/UserPages/AddActorPage";
 
 const container = document.getElementById("root");

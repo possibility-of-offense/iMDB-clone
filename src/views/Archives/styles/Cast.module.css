@@ -97,3 +97,13 @@
 .Cast__wrapper--body__grid > div > div p {
   margin-bottom: -6px;
 }
+
+.no-cast {
+  padding: 2rem;
+  text-align: center;
+  min-height: 85vh;
+}
+
+.no-cast h2 {
+  font-weight: normal;
+}

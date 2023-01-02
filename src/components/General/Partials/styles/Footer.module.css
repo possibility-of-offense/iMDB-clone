@@ -8,6 +8,7 @@
   text-align: center;
   display: flex;
   align-items: center;
+  min-height: 20vh;
 }
 
 .footer-inverse {
